@@ -410,6 +410,7 @@ export default function LandingPage() {
 
             <div className="mt-8 inline-flex items-center gap-1 rounded-full border border-border bg-card p-1">
               <button
+                suppressHydrationWarning={true}
                 onClick={() => setYearly(false)}
                 className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
                   !yearly ? "bg-foreground text-background" : "text-muted-foreground"
@@ -418,6 +419,7 @@ export default function LandingPage() {
                 Monthly
               </button>
               <button
+                suppressHydrationWarning={true}
                 onClick={() => setYearly(true)}
                 className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
                   yearly ? "bg-foreground text-background" : "text-muted-foreground"
@@ -550,6 +552,7 @@ export default function LandingPage() {
             {faqs.map((f, i) => (
               <div key={i} className="border-b border-border pb-4">
                 <button
+                  suppressHydrationWarning={true}
                   onClick={() => setActiveFaq(activeFaq === i ? null : i)}
                   className="flex w-full items-center justify-between py-4 text-left text-base font-medium hover:text-primary transition-colors focus:outline-none"
                 >
@@ -645,7 +648,11 @@ export default function LandingPage() {
                   <label className="text-sm font-medium" htmlFor="cmsg">Message</label>
                   <textarea id="cmsg" required rows={4} className="flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm" placeholder="How can we help?" />
                 </div>
-                <button type="submit" className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 w-full">
+                <button
+                  suppressHydrationWarning={true}
+                  type="submit"
+                  className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 w-full"
+                >
                   Send Message
                 </button>
               </div>

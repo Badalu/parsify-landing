@@ -64,7 +64,11 @@ export default function RootLayout({
               </a>
             </div>
 
-            <button className="grid h-9 w-9 place-items-center rounded-lg md:hidden" aria-label="Menu">
+            <button
+              suppressHydrationWarning={true}
+              className="grid h-9 w-9 place-items-center rounded-lg md:hidden"
+              aria-label="Menu"
+            >
               <Menu className="h-5 w-5" />
             </button>
           </div>
