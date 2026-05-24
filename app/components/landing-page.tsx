@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Upload,
@@ -22,7 +22,17 @@ import {
 export function LandingPageClient() {
   const [yearly, setYearly] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const [currency, setCurrency] = useState<"INR" | "USD">("INR");
   const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
+
+  useEffect(() => {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (tz && !tz.toLowerCase().includes("asia/calcutta") && !tz.toLowerCase().includes("asia/kolkata")) {
+        setCurrency("USD");
+      }
+    } catch (e) {}
+  }, []);
 
   const features = [
     {
@@ -114,7 +124,7 @@ export function LandingPageClient() {
   const plans = [
     {
       name: "Starter",
-      monthly: 15,
+      monthly: { INR: 499, USD: 8 },
       desc: "For individuals filing personal returns.",
       features: ["100 pages/month", "Excel + CSV export", "All banks supported", "Email support"],
       cta: "Get Started",
@@ -122,7 +132,7 @@ export function LandingPageClient() {
     },
     {
       name: "Professional",
-      monthly: 39,
+      monthly: { INR: 999, USD: 12 },
       desc: "For practising CAs and freelancers.",
       features: [
         "500 pages/month",
@@ -136,7 +146,7 @@ export function LandingPageClient() {
     },
     {
       name: "Business",
-      monthly: 99,
+      monthly: { INR: 3999, USD: 49 },
       desc: "For firms and high-volume teams.",
       features: ["Unlimited pages", "API access", "Custom integrations", "Dedicated support"],
       cta: "Contact Sales",
@@ -408,34 +418,60 @@ export function LandingPageClient() {
               No hidden fees. No complicated setup. Credits never expire.
             </p>
 
-            <div className="mt-8 inline-flex items-center gap-1 rounded-full border border-border bg-card p-1">
-              <button
-                suppressHydrationWarning={true}
-                onClick={() => setYearly(false)}
-                className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
-                  !yearly ? "bg-foreground text-background" : "text-muted-foreground"
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                suppressHydrationWarning={true}
-                onClick={() => setYearly(true)}
-                className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
-                  yearly ? "bg-foreground text-background" : "text-muted-foreground"
-                }`}
-              >
-                Yearly
-                <span className="rounded-full bg-success/15 px-1.5 py-0.5 text-[10px] font-semibold text-success">
-                  −20%
-                </span>
-              </button>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="inline-flex items-center gap-1 rounded-full border border-border bg-card p-1">
+                <button
+                  suppressHydrationWarning={true}
+                  onClick={() => setYearly(false)}
+                  className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
+                    !yearly ? "bg-foreground text-background" : "text-muted-foreground"
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button
+                  suppressHydrationWarning={true}
+                  onClick={() => setYearly(true)}
+                  className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
+                    yearly ? "bg-foreground text-background" : "text-muted-foreground"
+                  }`}
+                >
+                  Yearly
+                  <span className="rounded-full bg-success/15 px-1.5 py-0.5 text-[10px] font-semibold text-success">
+                    −20%
+                  </span>
+                </button>
+              </div>
+
+              <div className="inline-flex items-center gap-1 rounded-full border border-border bg-card p-1">
+                <button
+                  suppressHydrationWarning={true}
+                  onClick={() => setCurrency("INR")}
+                  className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
+                    currency === "INR" ? "bg-foreground text-background" : "text-muted-foreground"
+                  }`}
+                >
+                  ₹ INR
+                </button>
+                <button
+                  suppressHydrationWarning={true}
+                  onClick={() => setCurrency("USD")}
+                  className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
+                    currency === "USD" ? "bg-foreground text-background" : "text-muted-foreground"
+                  }`}
+                >
+                  $ USD
+                </button>
+              </div>
             </div>
           </div>
 
           <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
             {plans.map((p) => {
-              const price = yearly ? Math.round(p.monthly * 0.8) : p.monthly;
+              const basePrice = currency === "INR" ? p.monthly.INR : p.monthly.USD;
+              const price = yearly ? Math.round(basePrice * 0.8) : basePrice;
+              const symbol = currency === "INR" ? "₹" : "$";
+              
               return (
                 <div
                   key={p.name}
@@ -453,12 +489,12 @@ export function LandingPageClient() {
                   <h3 className="text-lg font-semibold">{p.name}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
                   <div className="mt-6 flex items-baseline gap-1">
-                    <span className="font-serif text-5xl">${price}</span>
+                    <span className="font-serif text-5xl">{symbol}{price}</span>
                     <span className="text-sm text-muted-foreground">/month</span>
                   </div>
                   {yearly && (
                     <p className="mt-1 text-xs text-muted-foreground font-sans">
-                      Billed ${price * 12}/year
+                      Billed {symbol}{price * 12}/year
                     </p>
                   )}
                   <ul className="mt-6 flex-1 space-y-3">
@@ -486,8 +522,9 @@ export function LandingPageClient() {
 
           <p className="mt-10 text-center text-sm text-muted-foreground">
             Pay-per-use option available —{" "}
-            <span className="font-semibold text-foreground">$0.10/page</span>, credits
-            never expire.{" "}
+            <span className="font-semibold text-foreground">
+              {currency === "INR" ? "₹5" : "$0.10"}/page
+            </span>, credits never expire.{" "}
             <a href={`${dashboardUrl}/pricing`} className="text-primary underline hover:text-primary/80">
               See credit packs
             </a>
