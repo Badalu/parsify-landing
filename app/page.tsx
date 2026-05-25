@@ -73,6 +73,8 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
+
   const webAppSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -562,8 +564,8 @@ export default function HomePage() {
           </div>
           
           <div className="nav-right">
-              <a href="#" className="login-link">Login</a>
-              <a href="#" className="btn-dashboard">Dashboard</a>
+              <a href={`${DASHBOARD_URL}/login`} className="login-link">Login</a>
+              <a href={`${DASHBOARD_URL}/signup`} className="btn-dashboard">Signup</a>
           </div>
         </nav>
 
@@ -591,7 +593,7 @@ export default function HomePage() {
                   Upload any PDF — HDFC, SBI, ICICI, Axis — get clean, categorized Excel data in seconds.
               </p>
               
-              <a href="#" className="btn-primary">Try it free</a>
+              <a href={`${DASHBOARD_URL}/signup`} className="btn-primary">Try it free</a>
               
               <div className="upload-container">
                   <div className="upload-box">
