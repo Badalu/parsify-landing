@@ -908,8 +908,8 @@ export default function HomePage() {
               </div>
 
               {/* Right — Hand-drawn SVG illustration */}
-              <div className="hero-illustration" aria-hidden="true">
-                <svg viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%', maxWidth:'520px'}}>
+              <div className="hero-illustration" aria-hidden="true" style={{ width: '120%', maxWidth: '640px' }}>
+                <svg viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg" style={{width:'100%'}}>
                   {/* PDF Document panel */}
                   <rect x="18" y="30" width="168" height="210" rx="5" fill="#1C1914" stroke="#3A3228" strokeWidth="1"/>
                   {/* PDF header bar */}
