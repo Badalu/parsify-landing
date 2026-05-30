@@ -873,7 +873,7 @@ export default function HomePage() {
               <li><a href="#docs">Docs</a></li>
               <li><a href="#blog">Blog</a></li>
             </ul>
-            <a href={`${DASHBOARD_URL}/register`} className="btn-start" id="nav-cta">Start Free</a>
+            <a href={`${DASHBOARD_URL}/dashboard/convert`} className="btn-start" id="nav-cta">Start Free</a>
           </div>
         </nav>
 
@@ -893,7 +893,7 @@ export default function HomePage() {
                   Upload any bank statement PDF. Our engine parses every row, handles every Indian bank format, and delivers structured Excel or CSV in seconds.
                 </p>
                 <div className="hero-cta-row reveal reveal-delay-3">
-                  <a href={`${DASHBOARD_URL}/register`} className="btn-hero-primary" id="hero-cta">
+                  <a href={`${DASHBOARD_URL}/dashboard/convert`} className="btn-hero-primary" id="hero-cta">
                     Start for free
                     <span className="btn-arrow-box">
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -1281,7 +1281,7 @@ export default function HomePage() {
                   <li><span className="check-dim">—</span> API access</li>
                   <li><span className="check-dim">—</span> Priority support</li>
                 </ul>
-                <a href={`${DASHBOARD_URL}/register`} className="btn-pricing-outline" id="pricing-starter">Start Free</a>
+                <a href={`${DASHBOARD_URL}/dashboard/convert`} className="btn-pricing-outline" id="pricing-starter">Start Free</a>
               </div>
 
               {/* Pro */}
@@ -1299,7 +1299,7 @@ export default function HomePage() {
                   <li><span className="check-dim">—</span> API access</li>
                   <li><span className="check-dim">—</span> Team seats</li>
                 </ul>
-                <a href={`${DASHBOARD_URL}/register`} className="btn-pricing-primary" id="pricing-pro">Get Pro</a>
+                <a href={`${DASHBOARD_URL}/signup`} className="btn-pricing-primary" id="pricing-pro">Get Pro</a>
               </div>
 
               {/* Business */}
@@ -1428,7 +1428,7 @@ export default function HomePage() {
             <p className="final-sub">
               Join 2,400+ finance professionals who converted to clean, structured data — for free. No setup, no credit card required.
             </p>
-            <a href={`${DASHBOARD_URL}/register`} className="btn-hero-primary" id="final-cta" style={{display:'inline-flex', margin:'0 auto'}}>
+            <a href={`${DASHBOARD_URL}/dashboard/convert`} className="btn-hero-primary" id="final-cta" style={{display:'inline-flex', margin:'0 auto'}}>
               Convert your first statement free
               <span className="btn-arrow-box">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
