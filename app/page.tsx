@@ -234,27 +234,6 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
       </section>
 
-      {/* ══ 7. FOOTER ══ */}
-      <footer className="bg-card py-16 border-t-2 border-shadow-color">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary border-2 border-shadow-color brutal-shadow flex items-center justify-center">
-              <span className="text-white font-black leading-none">P</span>
-            </div>
-            <span className="text-xl font-black uppercase tracking-widest text-shadow-color ml-2 font-serif">Parsify</span>
-          </div>
-          <div className="flex gap-6">
-            {['Terms', 'Privacy', 'Refund', 'Contact'].map(link => (
-              <a key={link} href={`/${link.toLowerCase()}`} className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
-                {link}
-              </a>
-            ))}
-          </div>
-          <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-            © {new Date().getFullYear()} Parsify Inc.
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }
