@@ -19,14 +19,14 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border transition-colors">
+    <header className="sticky top-0 z-50 w-full bg-background border-b-2 border-shadow-color transition-colors">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground">
-            <ArrowDownUp className="h-4 w-4" />
+          <span className="grid h-8 w-8 place-items-center bg-primary text-primary-foreground border-2 border-shadow-color brutal-shadow" style={{ borderRadius: 0 }}>
+            <ArrowDownUp className="h-4 w-4" strokeWidth={3} />
           </span>
-          <span className="text-lg font-bold tracking-tight">Parsify</span>
+          <span className="text-xl font-bold tracking-tight font-serif uppercase tracking-widest text-shadow-color ml-2">Parsify</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -35,7 +35,7 @@ export function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-bold uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
             >
               {link.label}
             </Link>
@@ -46,13 +46,13 @@ export function Navbar() {
         <div className="hidden items-center gap-4 md:flex">
           <a
             href={`${DASHBOARD_URL}/login`}
-            className="text-sm font-medium text-foreground transition-colors hover:text-foreground/80"
+            className="text-sm font-bold uppercase tracking-wider text-shadow-color transition-colors hover:text-primary"
           >
             Log in
           </a>
           <a
             href={`${DASHBOARD_URL}/signup`}
-            className="inline-flex h-9 items-center justify-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="brutal-btn-primary uppercase tracking-wider text-sm"
           >
             Sign up
           </a>
@@ -61,7 +61,7 @@ export function Navbar() {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setOpen((prev) => !prev)}
-          className="grid h-9 w-9 place-items-center rounded-lg md:hidden"
+          className="grid h-9 w-9 place-items-center md:hidden brutal-border-dark brutal-shadow bg-card"
           aria-label={open ? "Close menu" : "Open menu"}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -70,33 +70,34 @@ export function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       {open && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md">
-          <nav className="flex flex-col px-4 py-4 gap-1">
+        <div className="md:hidden border-t-2 border-shadow-color bg-background">
+          <nav className="flex flex-col px-4 py-4 gap-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="px-3 py-3 text-sm font-bold uppercase tracking-wider text-muted-foreground transition-colors hover:bg-card hover:text-shadow-color border-b border-border"
               >
                 {link.label}
               </Link>
             ))}
-            <hr className="my-2 border-border" />
-            <a
-              href={`${DASHBOARD_URL}/login`}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              Log in
-            </a>
-            <a
-              href={`${DASHBOARD_URL}/signup`}
-              onClick={() => setOpen(false)}
-              className="mt-1 inline-flex h-10 items-center justify-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              Sign up free
-            </a>
+            <div className="mt-4 flex flex-col gap-3">
+              <a
+                href={`${DASHBOARD_URL}/login`}
+                onClick={() => setOpen(false)}
+                className="brutal-btn-secondary w-full uppercase tracking-wider"
+              >
+                Log in
+              </a>
+              <a
+                href={`${DASHBOARD_URL}/signup`}
+                onClick={() => setOpen(false)}
+                className="brutal-btn-primary w-full uppercase tracking-wider"
+              >
+                Sign up free
+              </a>
+            </div>
           </nav>
         </div>
       )}

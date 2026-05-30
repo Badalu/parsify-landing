@@ -8,21 +8,21 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background py-16 sm:py-24 font-sans">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+    <div className="min-h-screen bg-background py-24 font-sans bg-grid-pattern">
+      <div className="mx-auto max-w-5xl px-6 relative z-10">
+        <div className="text-center mb-20 brutal-card p-12 bg-card">
+          <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-6 brutal-shadow">
             Our Mission
-          </p>
-          <h1 className="mt-3 font-serif text-4xl sm:text-5xl">
-            Streamlining finance data entry
+          </div>
+          <h1 className="text-5xl lg:text-7xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
+            Streamlining <span className="bg-secondary text-white px-2 border-2 border-shadow-color inline-block -rotate-1 brutal-shadow">Data Entry</span>
           </h1>
-          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl font-medium text-muted-foreground max-w-2xl mx-auto leading-relaxed mt-8">
             Parsify was born out of a simple frustration: financial professionals wasting thousands of hours copying data from PDF statements into Excel. We built a layout-aware AI engine to automate it once and for all.
           </p>
         </div>
 
-        <div className="mt-16 space-y-12">
+        <div className="mt-16 space-y-16">
           <div className="grid gap-8 sm:grid-cols-3">
             {[
               {
@@ -41,24 +41,26 @@ export default function AboutPage() {
                 desc: "Combining the speed of Python with layout-understanding LLMs allows us to convert multi-page complex statements with near-100% accuracy."
               }
             ].map((v) => (
-              <div key={v.title} className="rounded-2xl border border-border bg-card p-6">
-                <div className="grid h-10 w-10 place-items-center rounded-lg bg-accent text-primary">
-                  <v.icon className="h-5 w-5" />
+              <div key={v.title} className="brutal-card p-8 bg-background flex flex-col items-center text-center">
+                <div className="grid h-16 w-16 place-items-center bg-card border-2 border-shadow-color brutal-shadow text-primary mb-6">
+                  <v.icon className="h-8 w-8 text-primary" strokeWidth={2.5} />
                 </div>
-                <h3 className="mt-5 text-base font-semibold">{v.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.desc}</p>
+                <h3 className="text-xl font-black uppercase tracking-widest text-shadow-color mb-4">{v.title}</h3>
+                <p className="text-sm font-medium leading-relaxed text-muted-foreground">{v.desc}</p>
               </div>
             ))}
           </div>
 
-          <article className="prose prose-neutral dark:prose-invert mt-12 max-w-none prose-headings:font-serif leading-relaxed text-muted-foreground">
-            <h2 className="text-foreground">Why CAs across India trust Parsify</h2>
-            <p>
-              Every month, tax professionals, accountants, and business owners receive thousands of bank statements. Most statements are locked in secure PDF documents. In the past, matching transaction descriptions, splitting out GST calculations, and cleaning currency values took hours of tedious, error-prone manual labor.
-            </p>
-            <p className="mt-4">
-              Parsify automates this entire pipeline. Our backend uses layout extraction tools to preserve the visual flow of PDF pages, and uses Google Gemini models to extract structured dates, descriptions, categories, and tax fields. The result is a clean, standard, highly formatted Excel sheet that you can hand straight to your auditor or upload to software like Tally, Zoho Books, or QuickBooks.
-            </p>
+          <article className="brutal-card p-12 bg-card text-muted-foreground leading-relaxed">
+            <h2 className="text-3xl font-black uppercase text-shadow-color mb-8 pb-4 border-b-2 border-shadow-color">Why CAs across India trust Parsify</h2>
+            <div className="text-lg font-medium space-y-6">
+              <p>
+                Every month, tax professionals, accountants, and business owners receive thousands of bank statements. Most statements are locked in secure PDF documents. In the past, matching transaction descriptions, splitting out GST calculations, and cleaning currency values took hours of tedious, error-prone manual labor.
+              </p>
+              <p>
+                Parsify automates this entire pipeline. Our backend uses layout extraction tools to preserve the visual flow of PDF pages, and uses Google Gemini models to extract structured dates, descriptions, categories, and tax fields. The result is a clean, standard, highly formatted Excel sheet that you can hand straight to your auditor or upload to software like Tally, Zoho Books, or QuickBooks.
+              </p>
+            </div>
           </article>
         </div>
       </div>
