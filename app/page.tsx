@@ -33,7 +33,7 @@ export default function HomePage() {
               </p>
               
               <div className="flex flex-wrap items-center gap-6">
-                <a href={`${DASHBOARD_URL}/signup`} className="brutal-btn-primary text-lg px-8 py-4 uppercase tracking-wider">
+                <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary text-lg px-8 py-4 uppercase tracking-wider">
                   Start for free
                   <ArrowRight className="ml-2 w-5 h-5" strokeWidth={3} />
                 </a>
@@ -227,8 +227,8 @@ export default function HomePage() {
           <p className="text-xl font-bold mb-12 max-w-2xl mx-auto">
             Join 2,400+ finance teams automating their bank statement reconciliation today.
           </p>
-          <a href={`${DASHBOARD_URL}/signup`} className="brutal-btn-primary bg-secondary text-white border-shadow-color shadow-[6px_6px_0px_0px_#1a1c1d] hover:shadow-[2px_2px_0px_0px_#1a1c1d] hover:translate-x-1 hover:translate-y-1 text-xl px-12 py-6 uppercase tracking-widest">
-            Create Free Account
+          <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary bg-secondary text-white border-shadow-color shadow-[6px_6px_0px_0px_#1a1c1d] hover:shadow-[2px_2px_0px_0px_#1a1c1d] hover:translate-x-1 hover:translate-y-1 text-xl px-12 py-6 uppercase tracking-widest">
+            Start Converting
           </a>
         </div>
         
