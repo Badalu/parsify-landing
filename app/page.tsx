@@ -163,53 +163,55 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
-              Simple Pricing. <span className="text-secondary">No surprises.</span>
+              Simple Plans. <span className="text-secondary">No surprises.</span>
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            {/* Starter */}
+            {/* Anonymous */}
             <div className="brutal-card p-8 bg-card flex flex-col">
-              <div className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-4">Starter</div>
-              <div className="text-5xl font-black mb-2 text-shadow-color">₹0</div>
-              <div className="text-sm font-bold text-muted-foreground mb-8">free forever</div>
+              <div className="text-xl font-black uppercase tracking-widest text-shadow-color mb-4">Anonymous</div>
+              <p className="text-muted-foreground font-medium mb-8">
+                Anonymous conversions with no need to sign up
+              </p>
               <ul className="space-y-4 mb-12 flex-1">
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> 10 conversions / month</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> Up to 50 pages per file</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> Excel + CSV output</li>
-                <li className="flex items-center gap-3 font-medium text-muted-foreground line-through opacity-50"><XIcon /> Duplicate detection</li>
+                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> 5 pages every 24 hours</li>
               </ul>
-              <a href={`${DASHBOARD_URL}/signup`} className="brutal-btn-secondary w-full text-center uppercase tracking-wider py-4">Start Free</a>
+              <div className="flex items-end justify-between mt-auto">
+                <div className="text-4xl font-black text-shadow-color">Free</div>
+              </div>
             </div>
 
-            {/* Pro */}
+            {/* Registered */}
+            <div className="brutal-card p-8 bg-card flex flex-col">
+              <div className="text-xl font-black uppercase tracking-widest text-shadow-color mb-4">Registered</div>
+              <p className="text-muted-foreground font-medium mb-8">
+                Registration is free
+              </p>
+              <ul className="space-y-4 mb-12 flex-1">
+                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> 10 pages every 24 hours</li>
+              </ul>
+              <div className="flex items-end justify-between mt-auto">
+                <div className="text-4xl font-black text-shadow-color">Free</div>
+                <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold uppercase tracking-wider hover:underline">Register</a>
+              </div>
+            </div>
+
+            {/* Subscribe */}
             <div className="brutal-card p-8 bg-background border-4 border-primary relative flex flex-col scale-105 z-10 shadow-[8px_8px_0px_0px_#5b21b6]">
               <div className="absolute top-0 right-0 bg-primary text-white text-xs font-black uppercase tracking-widest px-3 py-1 border-b-4 border-l-4 border-shadow-color">Popular</div>
-              <div className="text-sm font-black uppercase tracking-widest text-primary mb-4">Pro</div>
-              <div className="text-5xl font-black mb-2 text-shadow-color">₹999</div>
-              <div className="text-sm font-bold text-muted-foreground mb-8">per month</div>
+              <div className="text-xl font-black uppercase tracking-widest text-primary mb-4">Subscribe</div>
+              <p className="text-muted-foreground font-medium mb-8">
+                Subscribe to convert more documents
+              </p>
               <ul className="space-y-4 mb-12 flex-1">
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-secondary" strokeWidth={3} /> 500 conversions / month</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-secondary" strokeWidth={3} /> Unlimited page count</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-secondary" strokeWidth={3} /> Duplicate detection</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-secondary" strokeWidth={3} /> Priority Support</li>
+                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-secondary" strokeWidth={3} /> Unlimited pages</li>
+                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-secondary" strokeWidth={3} /> Priority processing</li>
               </ul>
-              <a href={`${DASHBOARD_URL}/signup`} className="brutal-btn-primary w-full text-center uppercase tracking-wider py-4 bg-primary text-white">Upgrade to Pro</a>
-            </div>
-
-            {/* Business */}
-            <div className="brutal-card p-8 bg-card flex flex-col">
-              <div className="text-sm font-black uppercase tracking-widest text-muted-foreground mb-4">Business</div>
-              <div className="text-5xl font-black mb-2 text-shadow-color">₹3499</div>
-              <div className="text-sm font-bold text-muted-foreground mb-8">per month</div>
-              <ul className="space-y-4 mb-12 flex-1">
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> 5000 conversions / month</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> API Access</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> Team seats</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> 24/7 Dedicated Support</li>
-              </ul>
-              <a href={`${DASHBOARD_URL}/signup`} className="brutal-btn-secondary w-full text-center uppercase tracking-wider py-4">Contact Sales</a>
+              <div className="flex items-end justify-between mt-auto pt-4 border-t-2 border-shadow-color border-dashed">
+                <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold uppercase tracking-wider hover:underline">Register / Upgrade</a>
+              </div>
             </div>
 
           </div>

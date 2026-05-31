@@ -1,58 +1,46 @@
-import React from "react";
+import React from 'react';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: "Terms & Conditions — StatementConvert",
-  description: "Read our terms of service and conditions for utilizing our automated PDF to Excel statement conversion SaaS.",
+export const metadata: Metadata = {
+  title: 'Terms of Service | Parsify',
+  description: 'Terms of service and user agreement for Parsify.',
 };
 
 export default function TermsPage() {
   return (
-    <>
-      <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-
-      <div className="min-h-screen py-24" style={{ background: "#0E0C09", color: "#F0E8D8", fontFamily: "'DM Sans', sans-serif" }}>
-        <article className="mx-auto max-w-3xl px-6 leading-relaxed" style={{ color: "#C8B99A" }}>
-          <span style={{ fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#E8913A", border: "1px solid rgba(200,185,154,0.18)", padding: "4px 10px", borderRadius: "2px" }}>LEGAL</span>
-          <h1 className="mt-6 mb-4" style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 300, color: "#F0E8D8", letterSpacing: "-0.02em" }}>Terms &amp; Conditions</h1>
-          <p className="text-xs font-mono" style={{ color: "#7A6E5F" }}>Last updated: May 22, 2026</p>
-
-          <div style={{ height: "1px", background: "rgba(200,185,154,0.08)", margin: "32px 0" }} />
-
-          <p style={{ fontSize: "15px", lineHeight: "1.75", marginBottom: "24px" }}>
-            Welcome to Parsify. By accessing or using our website, services, and backend conversion APIs, you agree to comply with and be bound by the following Terms & Conditions.
-          </p>
-
-          <h2 className="mt-12 mb-4" style={{ fontFamily: "'Fraunces', serif", fontSize: "24px", fontWeight: 300, color: "#F0E8D8", letterSpacing: "-0.01em" }}>1. Account Terms &amp; Billing</h2>
-          <p style={{ fontSize: "14px", lineHeight: "1.7", marginBottom: "16px" }}>
-            You must provide accurate, complete registrations when signing up for an account.
-          </p>
-          <ul style={{ paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px", fontSize: "14px" }}>
-            <li><strong>Credit Expiry:</strong> Any standalone pay-per-use credits purchased do not expire. They remain in your account history until consumed.</li>
-            <li><strong>SaaS Subscriptions:</strong> Standard monthly/yearly subscriptions provide credit quotas that reset at the end of each billing cycle. Unused subscription-tier credits do not roll over to subsequent months.</li>
-            <li><strong>Refunds:</strong> We provide a 14-day money-back guarantee for subscriptions if you have processed fewer than 10 pages and are unsatisfied with the conversion quality.</li>
-          </ul>
-
-          <h2 className="mt-12 mb-4" style={{ fontFamily: "'Fraunces', serif", fontSize: "24px", fontWeight: 300, color: "#F0E8D8", letterSpacing: "-0.01em" }}>2. Permitted Use</h2>
-          <p style={{ fontSize: "14px", lineHeight: "1.7", marginBottom: "16px" }}>
-            You represent that you have the legal right, ownership, or explicit permission to parse and convert the bank statements uploaded to our servers. You may not utilize our platform or REST APIs to process stolen documents, engage in automated scraping of third-party portals, or run malicious payload stress tests.
-          </p>
-
-          <h2 className="mt-12 mb-4" style={{ fontFamily: "'Fraunces', serif", fontSize: "24px", fontWeight: 300, color: "#F0E8D8", letterSpacing: "-0.01em" }}>3. Limitation of Liability</h2>
-          <p style={{ fontSize: "14px", lineHeight: "1.7", marginBottom: "16px" }}>
-            Parsify utilizes layout-aware algorithms and language learning models to structure bank records. While we strive for near-100% precision, you are responsible for auditing the resulting spreadsheets before submitting them to official tax registers, corporate databases, or regulatory bodies. Parsify is not liable for errors in tax filings or corporate ledger entries.
-          </p>
-
-          <div style={{ height: "1px", background: "rgba(200,185,154,0.08)", margin: "48px 0" }} />
-
-          <div style={{ display: "flex", gap: "16px", fontSize: "12px", color: "#7A6E5F" }}>
-            <a href="/privacy" style={{ color: "#7A6E5F", textDecoration: "none" }}>Privacy Policy</a>
-            <span>·</span>
-            <a href="/refund" style={{ color: "#7A6E5F", textDecoration: "none" }}>Refund Policy</a>
-            <span>·</span>
-            <a href="/" style={{ color: "#E8913A", textDecoration: "none" }}>← Back to Home</a>
+    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="brutal-card p-8 md:p-12 bg-card relative">
+          <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
+            Legal Information
           </div>
-        </article>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-10 text-shadow-color uppercase font-sans">
+            Terms of <span className="text-secondary">Service</span>
+          </h1>
+          
+          <div className="prose prose-lg max-w-none text-muted-foreground font-medium space-y-6">
+            <p>
+              Welcome to Parsify. By using our website and services, you agree to comply with and be bound by the following terms and conditions.
+            </p>
+            <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">1. Acceptance of Terms</h2>
+            <p>
+              By accessing and using our document conversion services, you accept and agree to be bound by the terms and provision of this agreement.
+            </p>
+            <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">2. Description of Service</h2>
+            <p>
+              Parsify provides an automated tool to convert bank statement PDFs into Excel and CSV formats. We do not store any of your financial data once the conversion is completed and delivered to you.
+            </p>
+            <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">3. User Responsibilities</h2>
+            <p>
+              You are responsible for the documents you upload. Ensure that you have the right to process the data contained within those documents. You must not use our service for any illegal or unauthorized purpose.
+            </p>
+            <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">4. Limitation of Liability</h2>
+            <p>
+              In no event shall Parsify be liable for any indirect, incidental, special, or consequential damages arising out of or in any way connected with the use of our services.
+            </p>
+          </div>
+        </div>
       </div>
-    </>
+    </main>
   );
 }

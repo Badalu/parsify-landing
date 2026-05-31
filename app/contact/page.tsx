@@ -1,94 +1,64 @@
-"use client";
+import React from 'react';
+import type { Metadata } from 'next';
 
-import React from "react";
-import { Receipt, Building2, Lock } from "lucide-react";
+export const metadata: Metadata = {
+  title: 'Contact Us | Parsify',
+  description: 'Get in touch with the Parsify team for support or inquiries.',
+};
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background py-16 sm:py-24 font-sans">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-              Contact us
-            </p>
-            <h1 className="mt-3 font-serif text-4xl sm:text-5xl">
-              Talk to a real human — based in India
-            </h1>
-            <p className="mt-5 text-muted-foreground leading-relaxed">
-              Questions about statement formats, CA firm licenses, custom payment integrations or api endpoints?
-              Our team answers within 4 business hours, Monday to Saturday.
-            </p>
-            <ul className="mt-8 space-y-5 text-sm">
-              <li className="flex items-start gap-3">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-primary">
-                  <Receipt className="h-4 w-4" />
-                </span>
-                <div>
-                  <p className="font-semibold text-foreground">support@parsify.in</p>
-                  <p className="text-muted-foreground mt-0.5">For product help, statement formatting bugs, billing & refunds</p>
+    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="brutal-card p-8 md:p-12 bg-card relative">
+          <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
+            Get in touch
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-10 text-shadow-color uppercase font-sans">
+            Contact <span className="text-secondary">Us</span>
+          </h1>
+          
+          <div className="grid md:grid-cols-2 gap-12 mt-10">
+            <div className="space-y-6">
+              <h2 className="text-2xl font-black uppercase text-shadow-color">We're here to help</h2>
+              <p className="text-muted-foreground font-medium">
+                Have questions about our service, need technical support, or want to explore an enterprise plan? Reach out to our team and we'll get back to you as soon as possible.
+              </p>
+              
+              <div className="mt-8 space-y-4">
+                <div className="brutal-card p-4 bg-background">
+                  <div className="text-sm font-bold uppercase tracking-widest text-primary mb-1">Email Support</div>
+                  <a href="mailto:support@parsify.in" className="text-lg font-bold text-shadow-color hover:text-secondary">support@parsify.in</a>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-primary">
-                  <Building2 className="h-4 w-4" />
-                </span>
-                <div>
-                  <p className="font-semibold text-foreground">sales@parsify.in</p>
-                  <p className="text-muted-foreground mt-0.5">Bulk CA firm packages, tax-firm API accesses & corporate invoices</p>
+                <div className="brutal-card p-4 bg-background">
+                  <div className="text-sm font-bold uppercase tracking-widest text-primary mb-1">Business Inquiries</div>
+                  <a href="mailto:business@parsify.in" className="text-lg font-bold text-shadow-color hover:text-secondary">business@parsify.in</a>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent text-primary">
-                  <Lock className="h-4 w-4" />
-                </span>
+              </div>
+            </div>
+            
+            <div className="brutal-card p-6 bg-background">
+              <form className="space-y-4">
                 <div>
-                  <p className="font-semibold text-foreground">SOC 2 · ISO 27001 in progress</p>
-                  <p className="text-muted-foreground mt-0.5">All files are securely auto-deleted within 24 hours of uploading</p>
+                  <label className="block text-sm font-bold uppercase tracking-widest text-shadow-color mb-2">Name</label>
+                  <input type="text" className="w-full border-2 border-shadow-color p-3 bg-card font-medium focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Your name" />
                 </div>
-              </li>
-            </ul>
-            <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-border pt-6 text-xs text-muted-foreground font-sans">
-              <span>🇮🇳 Made in Bengaluru</span>
-              <span>·</span>
-              <span>GSTIN invoices provided</span>
-              <span>·</span>
-              <span>12,000+ happy customers</span>
+                <div>
+                  <label className="block text-sm font-bold uppercase tracking-widest text-shadow-color mb-2">Email</label>
+                  <input type="email" className="w-full border-2 border-shadow-color p-3 bg-card font-medium focus:outline-none focus:ring-2 focus:ring-primary" placeholder="your@email.com" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold uppercase tracking-widest text-shadow-color mb-2">Message</label>
+                  <textarea className="w-full border-2 border-shadow-color p-3 bg-card font-medium h-32 resize-none focus:outline-none focus:ring-2 focus:ring-primary" placeholder="How can we help?"></textarea>
+                </div>
+                <button type="button" className="brutal-btn-primary w-full py-4 uppercase tracking-wider mt-4">
+                  Send Message
+                </button>
+              </form>
             </div>
           </div>
-
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Message sent! We'll reply within 4 business hours.");
-              (e.currentTarget as HTMLFormElement).reset();
-            }}
-            className="rounded-2xl border border-border bg-card p-7 shadow-sm"
-          >
-            <h3 className="font-serif text-2xl text-foreground">Send us a message</h3>
-            <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-              Drop us your questions and we will respond directly to your inbox.
-            </p>
-            <div className="mt-6 grid gap-4">
-              <div className="grid gap-2">
-                <label className="text-sm font-medium" htmlFor="cname">Name</label>
-                <input id="cname" required className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 text-sm" placeholder="Rajesh Kumar" />
-              </div>
-              <div className="grid gap-2">
-                <label className="text-sm font-medium" htmlFor="cemail">Email</label>
-                <input id="cemail" type="email" required className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 text-sm" placeholder="you@example.com" />
-              </div>
-              <div className="grid gap-2">
-                <label className="text-sm font-medium" htmlFor="cmsg">Message</label>
-                <textarea id="cmsg" required rows={4} className="flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm" placeholder="Tell us how we can help..." />
-              </div>
-              <button type="submit" className="inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 w-full">
-                Send Message
-              </button>
-            </div>
-          </form>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
