@@ -137,11 +137,13 @@
   box-shadow: 0px 0px 0px 0px var(--shadow-color);
 }
 
-.brutal-card {
-  background: var(--card);
-  border: 1px solid var(--shadow-color);
-  box-shadow: 4px 4px 0px 0px var(--shadow-color);
-  border-radius: 0;
+@layer components {
+  .brutal-card {
+    background: var(--card);
+    border: 1px solid var(--shadow-color);
+    box-shadow: 4px 4px 0px 0px var(--shadow-color);
+    border-radius: 0;
+  }
 }
 
 .brutal-btn-primary {
