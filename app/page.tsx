@@ -14,7 +14,7 @@ export default function HomePage() {
     <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
       
       {/* ══ 1. HERO ══ */}
-      <section className="relative pt-10 sm:pt-20 lg:pt-32 pb-16 sm:pb-24 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
+      <section className="relative pt-6 sm:pt-10 lg:pt-16 pb-12 sm:pb-20 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             
