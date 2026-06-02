@@ -23,7 +23,7 @@ export default function HomePage() {
               <div className="inline-block border-2 border-shadow-color bg-card px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
                 Bank Statement Intelligence
               </div>
-              <h1 className="text-5xl lg:text-7xl font-black tracking-tight leading-none mb-6 text-shadow-color uppercase font-sans">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-tight sm:leading-none mb-6 text-shadow-color uppercase font-sans">
                 PDFs into <br/>
                 <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2">clean data</span><br/>
                 effortlessly.
@@ -32,36 +32,36 @@ export default function HomePage() {
                 Upload any bank statement PDF. Our engine parses every row, handles every Indian bank format, and delivers structured Excel or CSV in seconds.
               </p>
               
-              <div className="flex flex-wrap items-center gap-6">
-                <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary text-lg px-8 py-4 uppercase tracking-wider">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mt-8">
+                <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary w-full sm:w-auto justify-center text-lg px-8 py-4 uppercase tracking-wider">
                   Start for free
-                  <ArrowRight className="ml-2 w-5 h-5" strokeWidth={3} />
+                  <ArrowRight className="ml-2 w-5 h-5 inline-block" strokeWidth={3} />
                 </a>
-                <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-                  No credit card <span className="mx-2">•</span> 50+ Banks
+                <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground w-full sm:w-auto text-center sm:text-left mt-2 sm:mt-0">
+                  No credit card <span className="mx-2 hidden sm:inline-block">•</span><br className="sm:hidden" /> 50+ Banks
                 </p>
               </div>
             </div>
 
             {/* Hero Right - Brutalist Graphic */}
-            <div className="relative">
-              <div className="brutal-card p-8 bg-card relative z-10 rotate-1">
+            <div className="relative mt-12 lg:mt-0 hidden sm:block">
+              <div className="brutal-card p-4 sm:p-8 bg-card relative z-10 rotate-1">
                 <div className="flex justify-between items-center mb-6 border-b-2 border-shadow-color pb-4">
-                  <span className="font-mono text-sm font-bold uppercase tracking-wider text-muted-foreground">statement.pdf</span>
-                  <span className="bg-primary text-white text-xs font-bold uppercase px-2 py-1 border border-shadow-color">Processing</span>
+                  <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-muted-foreground break-all">statement.pdf</span>
+                  <span className="bg-primary text-white text-[10px] sm:text-xs font-bold uppercase px-2 py-1 border border-shadow-color whitespace-nowrap ml-2">Processing</span>
                 </div>
                 <div className="space-y-4 mb-8">
                   {[...Array(4)].map((_, i) => (
                     <div key={i} className="flex gap-4 opacity-50">
-                      <div className="h-4 bg-shadow-color w-16 border border-shadow-color" />
-                      <div className="h-4 bg-shadow-color w-48 border border-shadow-color" />
-                      <div className="h-4 bg-shadow-color w-24 border border-shadow-color" />
+                      <div className="h-4 bg-shadow-color w-12 sm:w-16 border border-shadow-color" />
+                      <div className="h-4 bg-shadow-color w-32 sm:w-48 border border-shadow-color" />
+                      <div className="h-4 bg-shadow-color w-16 sm:w-24 border border-shadow-color" />
                     </div>
                   ))}
                 </div>
-                <div className="absolute -right-6 -bottom-6 bg-secondary text-white p-6 border-2 border-shadow-color brutal-shadow rotate-3">
-                  <div className="text-4xl font-black font-sans">4.2s</div>
-                  <div className="text-sm font-bold uppercase tracking-widest mt-1">Average Parse Time</div>
+                <div className="absolute -right-2 sm:-right-6 -bottom-2 sm:-bottom-6 bg-secondary text-white p-4 sm:p-6 border-2 border-shadow-color brutal-shadow rotate-3 scale-75 sm:scale-100 origin-bottom-right">
+                  <div className="text-3xl sm:text-4xl font-black font-sans">4.2s</div>
+                  <div className="text-xs sm:text-sm font-bold uppercase tracking-widest mt-1">Average Parse Time</div>
                 </div>
               </div>
             </div>
@@ -91,8 +91,8 @@ export default function HomePage() {
       <section id="how" className="py-32 border-b-2 border-shadow-color bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-24">
-            <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
-              Three Steps. <span className="text-primary bg-primary/10 px-2 border-2 border-primary">Zero Headaches.</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4 leading-tight">
+              Three Steps. <span className="text-primary bg-primary/10 px-2 border-2 border-primary inline-block mt-2 sm:mt-0">Zero Headaches.</span>
             </h2>
           </div>
 
@@ -139,8 +139,8 @@ export default function HomePage() {
             </div>
 
             <div className="order-1 lg:order-2">
-              <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6 leading-tight">
-                Built for the <span className="bg-secondary text-white px-2 border-2 border-shadow-color inline-block rotate-2">messy reality</span> of Indian banks.
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6 leading-tight">
+                Built for the <span className="bg-secondary text-white px-2 border-2 border-shadow-color inline-block rotate-2 mt-2 lg:mt-0">messy reality</span> of Indian banks.
               </h2>
               <p className="text-lg text-muted-foreground font-medium mb-10">
                 Merged cells, split transactions, rotated text, multi-page statements — our engine handles every edge case that breaks other tools. 99.3% accuracy, every time.
@@ -162,8 +162,8 @@ export default function HomePage() {
       <section id="pricing" className="py-32 border-b-2 border-shadow-color bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
-              Simple Plans. <span className="text-secondary">No surprises.</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4 leading-tight">
+              Simple Plans. <span className="text-secondary inline-block mt-2 sm:mt-0">No surprises.</span>
             </h2>
           </div>
 
@@ -221,13 +221,13 @@ export default function HomePage() {
       {/* ══ 6. CTA ══ */}
       <section className="py-32 bg-primary text-primary-foreground border-b-2 border-shadow-color relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-5xl lg:text-7xl font-black uppercase tracking-tight mb-8">
-            Ready to stop <span className="text-secondary bg-white px-2 border-4 border-shadow-color inline-block rotate-2 brutal-shadow">typing</span>?
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase tracking-tight mb-8 leading-tight">
+            Ready to stop <span className="text-secondary bg-white px-2 border-4 border-shadow-color inline-block rotate-2 brutal-shadow mt-2 md:mt-0">typing</span>?
           </h2>
           <p className="text-xl font-bold mb-12 max-w-2xl mx-auto">
             Join 2,400+ finance teams automating their bank statement reconciliation today.
           </p>
-          <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary bg-secondary text-white border-shadow-color shadow-[6px_6px_0px_0px_#1a1c1d] hover:shadow-[2px_2px_0px_0px_#1a1c1d] hover:translate-x-1 hover:translate-y-1 text-xl px-12 py-6 uppercase tracking-widest">
+          <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary bg-secondary text-white border-shadow-color shadow-[6px_6px_0px_0px_#1a1c1d] hover:shadow-[2px_2px_0px_0px_#1a1c1d] hover:translate-x-1 hover:translate-y-1 text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 uppercase tracking-widest w-full sm:w-auto text-center block sm:inline-block">
             Start Converting
           </a>
         </div>
