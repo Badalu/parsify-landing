@@ -190,3 +190,33 @@
     linear-gradient(to right, var(--border) 1px, transparent 1px),
     linear-gradient(to bottom, var(--border) 1px, transparent 1px);
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(1deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+}
+@keyframes float-sub {
+  0%, 100% { transform: translateY(0) rotate(3deg); }
+  50% { transform: translateY(-8px) rotate(5deg); }
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-float-sub {
+  animation: float-sub 5s ease-in-out infinite alternate;
+}
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+.animate-blink {
+  animation: blink 1.2s infinite;
+}
