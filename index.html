@@ -338,6 +338,188 @@
         .bg-light { background-color: var(--light); }
         .bg-white { background-color: #FFFFFF; }
 
+        /* Parse Graphic Animation */
+        .parse-graphic-container {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 380px;
+            z-index: 3;
+        }
+
+        @media (max-width: 1250px) {
+            .parse-graphic-container {
+                right: 2%;
+                transform: translateY(-50%) scale(0.85);
+                transform-origin: right center;
+            }
+        }
+        @media (max-width: 1100px) {
+            .parse-graphic-container {
+                display: none;
+            }
+        }
+
+        .main-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+            padding: 1.75rem;
+            transform: rotate(-2deg);
+            animation: floatMain 6s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .parse-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .file-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .file-icon {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .status-badge {
+            background: rgba(26, 107, 74, 0.08);
+            color: var(--primary);
+            border: 1px solid rgba(26, 107, 74, 0.15);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.35rem 0.7rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: blink 1.2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .skeleton-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+        }
+
+        .skeleton-item {
+            height: 8px;
+            background: var(--light);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton-item.w-half { width: 60%; }
+        .skeleton-item.w-full { width: 100%; }
+
+        .skeleton-item::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: -20px;
+            right: -25px;
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            transform: rotate(4deg);
+            animation: floatSub 5s ease-in-out infinite alternate;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .floating-card.primary-theme {
+            background: var(--primary);
+            color: #FFFFFF;
+            box-shadow: 0 16px 32px rgba(26, 107, 74, 0.3);
+        }
+
+        .time-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+            letter-spacing: -1px;
+        }
+
+        .time-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+        }
+
+        @keyframes floatMain {
+            0%, 100% { transform: rotate(-2deg) translateY(0); }
+            50% { transform: rotate(-1deg) translateY(-10px); }
+        }
+
+        @keyframes floatSub {
+            0%, 100% { transform: rotate(4deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(-12px); }
+        }
+
+        .decorative-circle {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--sage);
+            opacity: 0.3;
+            top: -20px;
+            left: -20px;
+            z-index: 0;
+            animation: pulseCircle 4s infinite alternate;
+        }
+        
+        @keyframes pulseCircle {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.15); opacity: 0.5; }
+        }
+
         /* Bottom Stats Strip */
         .stats-strip {
             border-top: 1px solid var(--border-color);
@@ -473,20 +655,42 @@
             </div>
         </div>
 
-        <!-- Right Tile Grid -->
-        <div class="tile-grid right">
-            <!-- Row 1 -->
-            <div class="tile bg-white" style="animation-delay: 0.9s"><i class="ti ti-file-spreadsheet"></i></div>
-            <div class="tile bg-red" style="animation-delay: 1.0s"><i class="ti ti-dots"></i></div>
-            <!-- Row 2 -->
-            <div class="tile bg-sage" style="animation-delay: 1.1s"><i class="ti ti-circle"></i></div>
-            <div class="tile bg-light" style="animation-delay: 1.2s"><i class="ti ti-arrow-up-left"></i></div>
-            <!-- Row 3 -->
-            <div class="tile bg-white" style="animation-delay: 1.3s"><i class="ti ti-clock"></i></div>
-            <div class="tile bg-peach" style="animation-delay: 1.4s"><i class="ti ti-percentage"></i></div>
-            <!-- Row 4 -->
-            <div class="tile bg-dark" style="animation-delay: 1.5s"><i class="ti ti-settings"></i></div>
-            <div class="tile bg-light" style="animation-delay: 1.6s"><i class="ti ti-chevron-right"></i></div>
+        <!-- Right Animated Graphic -->
+        <div class="parse-graphic-container">
+            <div class="decorative-circle"></div>
+            <div class="main-card">
+                <div class="parse-header">
+                    <div class="file-name">
+                        <i class="ti ti-file-text file-icon"></i>
+                        STATEMENT.PDF
+                    </div>
+                    <div class="status-badge">
+                        <span class="dot"></span>
+                        PROCESSING
+                    </div>
+                </div>
+                <div class="skeleton-grid">
+                    <div class="skeleton-item w-full"></div>
+                    <div class="skeleton-item w-full"></div>
+                    <div class="skeleton-item w-full"></div>
+                    
+                    <div class="skeleton-item w-half"></div>
+                    <div class="skeleton-item w-full"></div>
+                    <div class="skeleton-item w-half"></div>
+                    
+                    <div class="skeleton-item w-full"></div>
+                    <div class="skeleton-item w-half"></div>
+                    <div class="skeleton-item w-full"></div>
+
+                    <div class="skeleton-item w-half"></div>
+                    <div class="skeleton-item w-full"></div>
+                    <div class="skeleton-item w-half"></div>
+                </div>
+            </div>
+            <div class="floating-card primary-theme">
+                <div class="time-value">4.2s</div>
+                <div class="time-label">AVERAGE PARSE TIME</div>
+            </div>
         </div>
 
     </main>
