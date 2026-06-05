@@ -176,6 +176,171 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══ 4.5. INTELLIGENT DATA ENRICHMENT ══ */}
+      <section id="enrichment" className="py-32 border-b-2 border-shadow-color bg-background">
+         <div className="max-w-7xl mx-auto px-6">
+            <div className="mb-16 text-center lg:text-left flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+               <div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4 leading-tight">
+                     Not Just Extraction. <br/><span className="text-primary bg-primary/10 px-2 border-2 border-primary inline-block mt-2">Intelligent Enrichment.</span>
+                  </h2>
+                  <p className="text-lg text-muted-foreground font-medium max-w-2xl">
+                     Parsify goes beyond raw text. It understands the context of every transaction, automatically tagging and categorizing data for your accounting software.
+                  </p>
+               </div>
+               <div className="hidden lg:block text-right">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 border-2 border-shadow-color bg-card text-xs font-bold uppercase tracking-widest brutal-shadow">
+                     <span className="w-2 h-2 rounded-full bg-success animate-pulse"></span> 6 ACTIVE MODULES
+                  </div>
+               </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+               
+               {/* Feature 1: GST Tagging */}
+               <div className="group brutal-card p-0 bg-card hover:-translate-y-1 transition-transform flex flex-col overflow-hidden cursor-crosshair">
+                  <div className="h-48 bg-background border-b-2 border-shadow-color relative flex items-center justify-center overflow-hidden p-4">
+                     <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
+                     <div className="relative w-full max-w-[220px] bg-card border-2 border-shadow-color brutal-shadow p-3 font-mono text-[10px] text-muted-foreground">
+                        <div>UPI/SWIGGY/12345...</div>
+                        <div className="mt-2 text-foreground font-bold">NEFT/AMAZON SELLER...</div>
+                        <div className="mt-1 h-5 w-full bg-muted border border-dashed border-shadow-color relative overflow-hidden flex items-center">
+                           <div className="absolute top-0 left-0 h-full bg-success/20 w-0 group-hover:w-full transition-all duration-700 ease-out"></div>
+                           <span className="absolute left-2 text-success font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">GSTIN: 27AACB...</span>
+                        </div>
+                     </div>
+                     <div className="absolute top-4 right-4 bg-success text-white text-[9px] font-bold uppercase tracking-widest px-2 py-1 transform translate-x-10 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 delay-200 border-2 border-shadow-color brutal-shadow">
+                       VERIFIED
+                     </div>
+                  </div>
+                  <div className="p-8 flex-1">
+                     <h4 className="text-xl font-black uppercase text-shadow-color mb-3">Auto GST Identification</h4>
+                     <p className="text-muted-foreground font-medium text-sm leading-relaxed">Instantly identifies and extracts GSTINs hidden within messy transaction descriptions for seamless reconciliation.</p>
+                  </div>
+               </div>
+
+               {/* Feature 2: Category Tagging */}
+               <div className="group brutal-card p-0 bg-card hover:-translate-y-1 transition-transform flex flex-col overflow-hidden cursor-crosshair">
+                  <div className="h-48 bg-background border-b-2 border-shadow-color relative flex items-center justify-center overflow-hidden">
+                     <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
+                     
+                     <div className="relative flex flex-col gap-3 z-10 w-full px-8">
+                        <div className="flex items-center justify-between bg-card border-2 border-shadow-color p-2 brutal-shadow transform group-hover:-translate-y-1 transition-transform duration-300">
+                           <span className="text-[10px] font-bold font-mono">AWS CLOUD SRV</span>
+                           <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-1 bg-primary text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 border-2 border-shadow-color brutal-shadow">SOFTWARE</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-card border-2 border-shadow-color p-2 brutal-shadow transform group-hover:translate-x-2 transition-transform duration-300">
+                           <span className="text-[10px] font-bold font-mono">INDIGO AIRLINES</span>
+                           <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-1 bg-secondary text-secondary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300 border-2 border-shadow-color brutal-shadow">TRAVEL</span>
+                        </div>
+                        <div className="flex items-center justify-between bg-card border-2 border-shadow-color p-2 brutal-shadow transform group-hover:translate-y-1 transition-transform duration-300">
+                           <span className="text-[10px] font-bold font-mono">RELIANCE DIGITAL</span>
+                           <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-1 bg-success text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-500 border-2 border-shadow-color brutal-shadow">ASSET</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div className="p-8 flex-1">
+                     <h4 className="text-xl font-black uppercase text-shadow-color mb-3">Smart Category Tagging</h4>
+                     <p className="text-muted-foreground font-medium text-sm leading-relaxed">Automatically assigns the correct accounting ledger categories to transactions using pattern matching and AI.</p>
+                  </div>
+               </div>
+
+               {/* Feature 3: Party Name Extraction */}
+               <div className="group brutal-card p-0 bg-card hover:-translate-y-1 transition-transform flex flex-col overflow-hidden cursor-crosshair">
+                  <div className="h-48 bg-background border-b-2 border-shadow-color relative flex items-center justify-center overflow-hidden">
+                     <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
+                     
+                     <div className="relative z-10 w-full px-6 text-center font-mono">
+                        <div className="bg-card border-2 border-shadow-color p-3 brutal-shadow inline-block w-full overflow-hidden whitespace-nowrap text-ellipsis">
+                           <span className="text-[10px] text-muted-foreground">IMPS-</span>
+                           <span className="text-[10px] font-bold text-foreground group-hover:bg-secondary group-hover:text-white transition-colors duration-300 px-1">ZOMATO LTD</span>
+                           <span className="text-[10px] text-muted-foreground">-XX1234-NEW DELHI</span>
+                        </div>
+                        <div className="mt-4 flex justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
+                           <div className="bg-card text-foreground px-4 py-2 border-2 border-shadow-color brutal-shadow flex items-center gap-2">
+                              <Zap className="w-4 h-4 text-secondary" strokeWidth={3} />
+                              <span className="text-sm font-bold uppercase">ZOMATO LTD</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div className="p-8 flex-1">
+                     <h4 className="text-xl font-black uppercase text-shadow-color mb-3">Party Name Extraction</h4>
+                     <p className="text-muted-foreground font-medium text-sm leading-relaxed">Strips out noise, bank jargon, and UTR numbers to give you the clean, exact party name for direct Tally import.</p>
+                  </div>
+               </div>
+
+               {/* Feature 4: Voucher Type Mapping */}
+               <div className="group brutal-card p-0 bg-card hover:-translate-y-1 transition-transform flex flex-col overflow-hidden cursor-crosshair">
+                  <div className="h-48 bg-background border-b-2 border-shadow-color relative flex items-center justify-center overflow-hidden">
+                     <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
+                     <div className="relative z-10 w-full flex flex-col items-center gap-4">
+                        <div className="flex gap-4 items-center w-full px-8">
+                           <div className="flex-1 p-2 bg-card border-2 border-destructive/20 text-center text-[10px] font-bold text-destructive brutal-shadow">-₹500.00</div>
+                           <div className="text-muted-foreground">➔</div>
+                           <div className="flex-1 p-2 bg-destructive text-white border-2 border-shadow-color text-center text-[10px] font-bold uppercase brutal-shadow scale-90 group-hover:scale-100 transition-transform">PAYMENT</div>
+                        </div>
+                        <div className="flex gap-4 items-center w-full px-8">
+                           <div className="flex-1 p-2 bg-card border-2 border-success/20 text-center text-[10px] font-bold text-success brutal-shadow">+₹2,000.00</div>
+                           <div className="text-muted-foreground">➔</div>
+                           <div className="flex-1 p-2 bg-success text-white border-2 border-shadow-color text-center text-[10px] font-bold uppercase brutal-shadow scale-90 group-hover:scale-100 transition-transform delay-100">RECEIPT</div>
+                        </div>
+                     </div>
+                  </div>
+                  <div className="p-8 flex-1">
+                     <h4 className="text-xl font-black uppercase text-shadow-color mb-3">Tally Voucher Mapping</h4>
+                     <p className="text-muted-foreground font-medium text-sm leading-relaxed">Automatically flags transactions as Receipt, Payment, or Contra based on debit/credit flow and context.</p>
+                  </div>
+               </div>
+
+               {/* Feature 5: Bank Template Detection */}
+               <div className="group brutal-card p-0 bg-card hover:-translate-y-1 transition-transform flex flex-col overflow-hidden cursor-crosshair">
+                  <div className="h-48 bg-background border-b-2 border-shadow-color relative flex items-center justify-center overflow-hidden">
+                     <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
+                     <div className="relative z-10 w-full px-8 flex justify-center">
+                        <div className="relative w-32 h-24 border-2 border-dashed border-shadow-color flex items-center justify-center bg-card group-hover:border-primary transition-colors brutal-shadow overflow-hidden">
+                           <span className="text-muted-foreground font-bold text-[10px] group-hover:opacity-0 transition-opacity">UNKNOWN PDF</span>
+                           <div className="absolute inset-0 bg-primary flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <span className="text-white font-black text-sm mb-1 uppercase tracking-widest">HDFC</span>
+                              <span className="bg-white text-primary text-[8px] px-2 py-0.5 font-bold uppercase">DETECTED</span>
+                           </div>
+                           {/* Scanner line */}
+                           <div className="absolute top-0 left-0 w-full h-0.5 bg-white shadow-[0_0_8px_white] -translate-y-full group-hover:translate-y-[96px] transition-all duration-[1200ms] ease-in-out opacity-0 group-hover:opacity-100"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div className="p-8 flex-1">
+                     <h4 className="text-xl font-black uppercase text-shadow-color mb-3">Auto Bank Detection</h4>
+                     <p className="text-muted-foreground font-medium text-sm leading-relaxed">No manual format selection required. Our engine instantly recognizes layouts from 100+ Indian and global banks.</p>
+                  </div>
+               </div>
+
+               {/* Feature 6: Smudge Reconstruction */}
+               <div className="group brutal-card p-0 bg-card hover:-translate-y-1 transition-transform flex flex-col overflow-hidden cursor-crosshair">
+                  <div className="h-48 bg-background border-b-2 border-shadow-color relative flex items-center justify-center overflow-hidden">
+                     <div className="absolute inset-0 opacity-10 bg-grid-pattern"></div>
+                     <div className="relative z-10 w-full flex justify-center items-center gap-4 px-4 font-mono">
+                        <div className="text-xl font-bold text-muted-foreground blur-[1px] group-hover:blur-[2px] transition-all duration-500 border-2 border-shadow-color bg-card p-2 brutal-shadow">
+                           ₹45<span className="opacity-50">.</span>0<span className="opacity-20">0</span>
+                        </div>
+                        <div className="w-8 h-8 bg-shadow-color flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110 brutal-shadow">
+                           <Zap className="w-4 h-4 text-success" strokeWidth={3} />
+                        </div>
+                        <div className="text-xl font-black text-white bg-success p-2 border-2 border-shadow-color opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500 delay-100 brutal-shadow">
+                           ₹45.00
+                        </div>
+                     </div>
+                  </div>
+                  <div className="p-8 flex-1">
+                     <h4 className="text-xl font-black uppercase text-shadow-color mb-3">AI Text Reconstruction</h4>
+                     <p className="text-muted-foreground font-medium text-sm leading-relaxed">Uses contextual computer vision to fix smudged decimals, faded numbers, and broken text in low-quality scans.</p>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+      </section>
+
       {/* ══ 5. PRICING ══ */}
       <section id="pricing" className="py-32 border-b-2 border-shadow-color bg-background">
         <div className="max-w-7xl mx-auto px-6">
