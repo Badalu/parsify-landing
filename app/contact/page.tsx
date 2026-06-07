@@ -28,12 +28,8 @@ export default function ContactPage() {
               
               <div className="mt-8 space-y-4">
                 <div className="brutal-card p-4 bg-background">
-                  <div className="text-sm font-bold uppercase tracking-widest text-primary mb-1">Email Support</div>
-                  <a href="mailto:support@parsify.in" className="text-lg font-bold text-shadow-color hover:text-secondary">support@parsify.in</a>
-                </div>
-                <div className="brutal-card p-4 bg-background">
-                  <div className="text-sm font-bold uppercase tracking-widest text-primary mb-1">Business Inquiries</div>
-                  <a href="mailto:business@parsify.in" className="text-lg font-bold text-shadow-color hover:text-secondary">business@parsify.in</a>
+                  <div className="text-sm font-bold uppercase tracking-widest text-primary mb-1">Email Us</div>
+                  <a href="mailto:team@parsify.in" className="text-lg font-bold text-shadow-color hover:text-secondary">team@parsify.in</a>
                 </div>
               </div>
             </div>
