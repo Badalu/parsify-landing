@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import ContactForm from '../components/ContactForm';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Parsify',
@@ -37,25 +38,7 @@ export default function ContactPage() {
               </div>
             </div>
             
-            <div className="brutal-card p-6 bg-background">
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-shadow-color mb-2">Name</label>
-                  <input type="text" className="w-full border-2 border-shadow-color p-3 bg-card font-medium focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Your name" />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-shadow-color mb-2">Email</label>
-                  <input type="email" className="w-full border-2 border-shadow-color p-3 bg-card font-medium focus:outline-none focus:ring-2 focus:ring-primary" placeholder="your@email.com" />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold uppercase tracking-widest text-shadow-color mb-2">Message</label>
-                  <textarea className="w-full border-2 border-shadow-color p-3 bg-card font-medium h-32 resize-none focus:outline-none focus:ring-2 focus:ring-primary" placeholder="How can we help?"></textarea>
-                </div>
-                <button type="button" className="brutal-btn-primary w-full py-4 uppercase tracking-wider mt-4">
-                  Send Message
-                </button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </div>
