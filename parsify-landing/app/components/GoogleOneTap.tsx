@@ -30,24 +30,24 @@ export function GoogleOneTap() {
       };
 
       const initializeGoogleOneTap = () => {
-        if (!window.google) return;
+        if (!(window as any).google) return;
         
         // Use your Google Client ID here
         const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "282237923154-mlkrui9qo45odd8vv0q56cps40d4ecjk.apps.googleusercontent.com";
         
-        window.google.accounts.id.initialize({
+        (window as any).google.accounts.id.initialize({
           client_id: clientId,
           callback: handleCredentialResponse,
         });
 
-        window.google.accounts.id.prompt((notification: any) => {
+        (window as any).google.accounts.id.prompt((notification: any) => {
           if (notification.isNotDisplayed()) {
             console.log("One Tap is not displayed:", notification.getNotDisplayedReason());
           }
         });
       };
 
-      if (window.google) {
+      if ((window as any).google) {
         initializeGoogleOneTap();
       } else {
         const script = document.createElement("script");
