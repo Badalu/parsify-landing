@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 export default function PricingPage() {
   const [yearly, setYearly] = useState(false);
@@ -13,11 +13,12 @@ export default function PricingPage() {
       monthly: 15,
       desc: "For individuals filing personal returns.",
       features: ["100 pages/month", "Excel + CSV export", "All 200+ banks supported", "Email support"],
+      missing: ["GST split tagging", "REST API access"],
       cta: "Get Started",
       popular: false,
     },
     {
-      name: "Professional",
+      name: "Pro",
       monthly: 39,
       desc: "For practising CAs and freelancers.",
       features: [
@@ -27,6 +28,7 @@ export default function PricingPage() {
         "Bulk processing",
         "Priority AI support",
       ],
+      missing: ["REST API access"],
       cta: "Get Started",
       popular: true,
     },
@@ -35,91 +37,111 @@ export default function PricingPage() {
       monthly: 99,
       desc: "For firms and high-volume teams.",
       features: ["Unlimited pages", "REST API access", "Custom integrations", "Dedicated key manager"],
+      missing: [],
       cta: "Contact Sales",
       popular: false,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background py-16 sm:py-24 font-sans">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+    <div className="min-h-screen bg-background py-24 bg-grid-pattern">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-2xl text-center mb-16 relative z-10">
+          <div className="inline-block border-2 border-shadow-color bg-card px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-6 brutal-shadow">
             Pricing Plans
-          </p>
-          <h1 className="mt-3 font-serif text-4xl sm:text-5xl">
-            Simple USD pricing
+          </div>
+          <h1 className="text-5xl lg:text-7xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
+            Simple <span className="bg-secondary text-white px-2 border-2 border-shadow-color inline-block rotate-1 brutal-shadow">Pricing</span>
           </h1>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Choose the subscription that fits your volume, or top up with one-time credit packs.
+          <p className="text-xl font-medium text-muted-foreground leading-relaxed mb-8">
+            Choose the subscription that fits your volume.
           </p>
 
-          <div className="mt-8 inline-flex items-center gap-1 rounded-full border border-border bg-card p-1">
+          <div className="inline-flex items-center bg-card border-2 border-shadow-color brutal-shadow p-1">
             <button
               onClick={() => setYearly(false)}
-              className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
-                !yearly ? "bg-foreground text-background" : "text-muted-foreground"
+              className={`px-6 py-2 text-sm font-bold uppercase tracking-widest transition-colors ${
+                !yearly ? "bg-primary text-white border-2 border-shadow-color shadow-[2px_2px_0px_0px_#1a1c1d]" : "text-muted-foreground hover:text-shadow-color"
               }`}
             >
               Monthly
             </button>
             <button
               onClick={() => setYearly(true)}
-              className={`flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
-                yearly ? "bg-foreground text-background" : "text-muted-foreground"
+              className={`flex items-center gap-2 px-6 py-2 text-sm font-bold uppercase tracking-widest transition-colors ${
+                yearly ? "bg-primary text-white border-2 border-shadow-color shadow-[2px_2px_0px_0px_#1a1c1d]" : "text-muted-foreground hover:text-shadow-color"
               }`}
             >
               Yearly
-              <span className="rounded-full bg-success/15 px-1.5 py-0.5 text-[10px] font-semibold text-success">
-                −20%
+              <span className="bg-success text-white px-1.5 py-0.5 text-xs font-black border border-shadow-color">
+                -20%
               </span>
             </button>
           </div>
         </div>
 
         {/* Pricing Cards */}
-        <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3 relative z-10">
           {plans.map((p) => {
             const price = yearly ? Math.round(p.monthly * 0.8) : p.monthly;
             return (
               <div
                 key={p.name}
-                className={`relative flex flex-col rounded-2xl border bg-card p-7 ${
+                className={`brutal-card p-8 flex flex-col ${
                   p.popular
-                    ? "border-primary shadow-lg shadow-primary/10"
-                    : "border-border"
+                    ? "bg-primary text-white border-4 scale-105 shadow-[8px_8px_0px_0px_#1a1c1d]"
+                    : "bg-card"
                 }`}
               >
                 {p.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground">
+                  <span className="absolute -top-4 -right-4 bg-secondary text-white border-2 border-shadow-color px-4 py-1 text-sm font-black uppercase tracking-widest brutal-shadow rotate-3">
                     Most Popular
                   </span>
                 )}
-                <h3 className="text-lg font-semibold">{p.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="font-serif text-5xl">${price}</span>
-                  <span className="text-sm text-muted-foreground">/month</span>
+                
+                <h3 className={`text-xl font-black uppercase tracking-widest mb-2 ${p.popular ? "text-white" : "text-shadow-color"}`}>
+                  {p.name}
+                </h3>
+                <p className={`text-sm font-medium h-10 ${p.popular ? "text-white/80" : "text-muted-foreground"}`}>
+                  {p.desc}
+                </p>
+                
+                <div className="mt-8 mb-4 flex items-baseline gap-1 border-b-2 border-shadow-color/20 pb-8">
+                  <span className={`text-6xl font-black ${p.popular ? "text-white" : "text-shadow-color"}`}>
+                    ${price}
+                  </span>
+                  <span className={`text-sm font-bold uppercase ${p.popular ? "text-white/80" : "text-muted-foreground"}`}>
+                    /mo
+                  </span>
                 </div>
+                
                 {yearly && (
-                  <p className="mt-1 text-xs text-muted-foreground">
+                  <p className={`text-xs font-bold uppercase tracking-widest -mt-2 mb-8 ${p.popular ? "text-success bg-white border border-shadow-color px-2 py-1 inline-block" : "text-success"}`}>
                     Billed ${price * 12}/year
                   </p>
                 )}
-                <ul className="mt-6 flex-1 space-y-3">
+                
+                <ul className="flex-1 space-y-4 mb-8">
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-foreground/90">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                      {f}
+                    <li key={f} className="flex items-start gap-3">
+                      <Check className={`mt-0.5 h-5 w-5 shrink-0 ${p.popular ? "text-white" : "text-success"}`} strokeWidth={3} />
+                      <span className={`font-bold ${p.popular ? "text-white" : "text-shadow-color"}`}>{f}</span>
+                    </li>
+                  ))}
+                  {p.missing.map((f) => (
+                    <li key={f} className="flex items-start gap-3 opacity-50">
+                      <X className={`mt-0.5 h-5 w-5 shrink-0 ${p.popular ? "text-white" : "text-muted-foreground"}`} strokeWidth={3} />
+                      <span className={`font-medium line-through ${p.popular ? "text-white" : "text-muted-foreground"}`}>{f}</span>
                     </li>
                   ))}
                 </ul>
+                
                 <a
                   href={`${dashboardUrl}/login?plan=${p.name}`}
-                  className={`mt-8 inline-flex h-10 items-center justify-center rounded-lg text-sm font-semibold transition-colors w-full text-center ${
+                  className={`w-full text-center py-4 uppercase tracking-wider font-black text-sm border-2 border-shadow-color shadow-[4px_4px_0px_0px_#1a1c1d] hover:translate-x-1 hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_#1a1c1d] transition-all ${
                     p.popular 
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90" 
-                      : "bg-foreground text-background hover:bg-foreground/90"
+                      ? "bg-secondary text-white" 
+                      : "bg-primary text-white"
                   }`}
                 >
                   {p.cta}
@@ -130,30 +152,32 @@ export default function PricingPage() {
         </div>
 
         {/* Credit Packs */}
-        <div className="mx-auto mt-20 max-w-4xl rounded-2xl border border-border bg-card p-8 sm:p-10 shadow-sm">
-          <div className="text-center sm:text-left">
-            <h2 className="font-serif text-3xl">Need credits occasionally? Try Pay-Per-Page</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
+        <div className="mx-auto mt-24 max-w-4xl brutal-card bg-background p-10 relative z-10">
+          <div className="text-center mb-10 border-b-2 border-shadow-color pb-8">
+            <h2 className="text-3xl font-black uppercase tracking-tight text-shadow-color mb-4">Pay-Per-Page Credits</h2>
+            <p className="font-medium text-muted-foreground max-w-xl mx-auto">
               Credits never expire. Top up anytime and use them whenever you need to process financial statements.
             </p>
           </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { title: "Standard Pack", pages: "100 Pages", price: "$10", rate: "$0.10/page" },
-              { title: "Premium Pack", pages: "500 Pages", price: "$40", rate: "$0.08/page" },
-              { title: "Enterprise Pack", pages: "2,000 Pages", price: "$120", rate: "$0.06/page" },
+              { title: "Standard", pages: "100", price: "$10", rate: "$0.10/pg" },
+              { title: "Premium", pages: "500", price: "$40", rate: "$0.08/pg" },
+              { title: "Enterprise", pages: "2000", price: "$120", rate: "$0.06/pg" },
             ].map((pack) => (
-              <div key={pack.title} className="rounded-xl border border-border bg-secondary/25 p-5 text-center flex flex-col justify-between">
-                <div>
-                  <h4 className="text-sm font-semibold text-muted-foreground">{pack.title}</h4>
-                  <p className="mt-3 font-serif text-3xl text-foreground font-semibold">{pack.pages}</p>
-                </div>
-                <div className="mt-5 pt-4 border-t border-border/80">
-                  <p className="text-2xl font-bold font-serif">{pack.price}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{pack.rate}</p>
+              <div key={pack.title} className="bg-card border-2 border-shadow-color p-6 text-center shadow-[4px_4px_0px_0px_#1a1c1d]">
+                <h4 className="text-xs font-black uppercase tracking-widest text-primary mb-2">{pack.title}</h4>
+                <div className="text-3xl font-black text-shadow-color mb-1">{pack.pages}</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-6">Pages</div>
+                
+                <div className="pt-6 border-t-2 border-shadow-color/20">
+                  <div className="text-2xl font-black text-shadow-color mb-1">{pack.price}</div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-success mb-6">{pack.rate}</div>
+                  
                   <a
                     href={`${dashboardUrl}/login?topup=true`}
-                    className="mt-4 inline-flex h-9 items-center justify-center rounded-lg bg-foreground text-background text-xs font-semibold px-4 w-full transition-colors hover:bg-foreground/90"
+                    className="block w-full bg-background border-2 border-shadow-color py-2 text-xs font-black uppercase tracking-widest text-shadow-color hover:bg-shadow-color hover:text-white transition-colors"
                   >
                     Buy Pack
                   </a>
