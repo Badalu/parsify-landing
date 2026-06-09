@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { ArrowRight, FileText, CheckCircle2, Shield, Zap, Check } from 'lucide-react';
+import { Pricing } from './components/pricing';
 
 export const metadata: Metadata = {
   title: 'Free Bank Statement Converter — PDF to Excel & CSV | Parsify',
@@ -342,64 +343,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ 5. PRICING ══ */}
-      <section id="pricing" className="py-32 border-b-2 border-shadow-color bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4 leading-tight">
-              Simple Plans. <span className="text-secondary inline-block mt-2 sm:mt-0">No surprises.</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            {/* Anonymous */}
-            <div className="brutal-card p-8 bg-card flex flex-col">
-              <div className="text-xl font-black uppercase tracking-widest text-shadow-color mb-4">Anonymous</div>
-              <p className="text-muted-foreground font-medium mb-8">
-                Anonymous conversions with no need to sign up
-              </p>
-              <ul className="space-y-4 mb-12 flex-1">
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> 5 pages every 24 hours</li>
-              </ul>
-              <div className="flex items-end justify-between mt-auto">
-                <div className="text-4xl font-black text-shadow-color">Free</div>
-              </div>
-            </div>
-
-            {/* Registered */}
-            <div className="brutal-card p-8 bg-card flex flex-col">
-              <div className="text-xl font-black uppercase tracking-widest text-shadow-color mb-4">Registered</div>
-              <p className="text-muted-foreground font-medium mb-8">
-                Registration is free
-              </p>
-              <ul className="space-y-4 mb-12 flex-1">
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-primary" strokeWidth={3} /> 10 pages every 24 hours</li>
-              </ul>
-              <div className="flex items-end justify-between mt-auto">
-                <div className="text-4xl font-black text-shadow-color">Free</div>
-                <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold uppercase tracking-wider hover:underline">Register</a>
-              </div>
-            </div>
-
-            {/* Subscribe */}
-            <div className="brutal-card p-8 bg-background border-4 border-primary relative flex flex-col scale-105 z-10 shadow-[8px_8px_0px_0px_#5b21b6]">
-              <div className="absolute top-0 right-0 bg-primary text-white text-xs font-black uppercase tracking-widest px-3 py-1 border-b-4 border-l-4 border-shadow-color">Popular</div>
-              <div className="text-xl font-black uppercase tracking-widest text-primary mb-4">Subscribe</div>
-              <p className="text-muted-foreground font-medium mb-8">
-                Subscribe to convert more documents
-              </p>
-              <ul className="space-y-4 mb-12 flex-1">
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-secondary" strokeWidth={3} /> Unlimited pages</li>
-                <li className="flex items-center gap-3 font-medium text-shadow-color"><Check className="w-5 h-5 text-secondary" strokeWidth={3} /> Priority processing</li>
-              </ul>
-              <div className="flex items-end justify-between mt-auto pt-4 border-t-2 border-shadow-color border-dashed">
-                <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold uppercase tracking-wider hover:underline">Register / Upgrade</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      <Pricing DASHBOARD_URL={DASHBOARD_URL} />
 
       {/* ══ 6. CTA ══ */}
       <section className="py-32 bg-primary text-primary-foreground border-b-2 border-shadow-color relative overflow-hidden">
