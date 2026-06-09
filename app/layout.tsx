@@ -6,7 +6,6 @@ import type { Metadata, Viewport } from "next";
 
 // Import the client Navbar we extracted
 import { Navbar } from "./components/navbar";
-import { GoogleOneTap } from "./components/GoogleOneTap";
 
 const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
 
@@ -72,7 +71,6 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-background text-foreground">
-        <GoogleOneTap />
         <Navbar />
 
         {/* PAGE CONTENT */}
