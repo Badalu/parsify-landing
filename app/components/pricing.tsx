@@ -13,25 +13,25 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       inr: 999, 
       usd: 12, 
       credits: 500, 
-      features: ["500 pages / month", "Standard AI parsing", "Email support"], 
+      features: ["~40 statements / month (500 pages)", "Starter — solo CA ke liye", "Standard AI parsing", "Email support"], 
       popular: false 
     },
     { 
       id: "professional_plan", 
-      name: "Professional", 
+      name: "Growth", 
       inr: 1999, 
       usd: 25, 
       credits: 1500, 
-      features: ["1500 pages / month", "Priority Gemini AI parsing", "Priority support"], 
+      features: ["~120 statements / month (1500 pages)", "Growth — small firm", "Priority Gemini AI parsing", "Priority support"], 
       popular: true 
     },
     { 
       id: "business_plan", 
-      name: "Business", 
-      inr: 3499, 
+      name: "Pro", 
+      inr: 3400, 
       usd: 45, 
       credits: 5000, 
-      features: ["5000 pages / month", "API Access & Webhooks", "24/7 Dedicated Support"], 
+      features: ["~400 statements / month (5000 pages)", "Pro — busy season ready", "API Access & Webhooks", "24/7 Dedicated Support"], 
       popular: false 
     },
   ];
@@ -46,7 +46,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
           <p className="text-muted-foreground font-medium mb-8">
             Credits never expire. Top up anytime.
           </p>
-
+ 
           {/* Currency Toggle */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex bg-card border-2 border-shadow-color brutal-shadow p-1">
@@ -66,7 +66,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
             </div>
           </div>
         </div>
-
+ 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {plans.map((plan) => (
             <div key={plan.id} className={`brutal-card p-8 bg-card flex flex-col ${plan.popular ? 'border-4 border-primary scale-105 z-10 shadow-[8px_8px_0px_0px_#5b21b6] relative' : ''}`}>
@@ -85,12 +85,12 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
                   {currency === "INR" ? `₹${plan.inr}` : `$${plan.usd}`}
                 </span>
               </div>
-
+ 
               <div className="mb-6 inline-flex items-center gap-2 bg-primary/10 text-primary border-2 border-primary/20 px-3 py-1 rounded-full text-xs font-bold w-max">
                 <Zap className="w-3 h-3" />
                 <span>{plan.credits.toLocaleString("en-IN")} credits</span>
               </div>
-
+ 
               <ul className="space-y-4 mb-12 flex-1">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3 font-medium text-shadow-color">
@@ -112,7 +112,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
         {/* Free Tier Mention */}
         <div className="mt-16 text-center">
            <p className="text-muted-foreground font-medium">
-             Looking for free conversions? <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold hover:underline">Register</a> to get 10 free pages every 24 hours. No credit card required.
+             Looking for free conversions? <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold hover:underline">Register</a> to get 50 free pages every month. No credit card required.
            </p>
         </div>
       </div>
