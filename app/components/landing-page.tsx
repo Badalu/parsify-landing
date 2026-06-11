@@ -113,7 +113,7 @@ export function LandingPageClient() {
     },
     {
       q: "Kitne pages free mein process hote hain?",
-      a: "Parsify par registration ke baad har mahine 50 pages free in process hote hain, jo har month ki 1st date (1 tarik) ko automatically reset ho jaate hain.",
+      a: "Parsify par registration ke baad har mahine 50 pages free mein process hote hain, jo har month ki 1st date (1 tarik) ko automatically reset ho jaate hain.",
     },
   ];
 
