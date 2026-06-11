@@ -8,6 +8,16 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
 
   const plans = [
     { 
+      id: "free_plan", 
+      name: "Free", 
+      inr: 0, 
+      usd: 0, 
+      credits: 50, 
+      features: ["50 free pages every month", "Resets on 1st of every month", "All banks supported", "Realtime history"], 
+      popular: false,
+      isFree: true
+    },
+    { 
       id: "starter_plan", 
       name: "Starter", 
       inr: 999, 
@@ -44,7 +54,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
             Simple Plans. <span className="text-secondary inline-block mt-2 sm:mt-0">No surprises.</span>
           </h2>
           <p className="text-muted-foreground font-medium mb-8">
-            Credits never expire. Top up anytime.
+            Pages never expire for paid plans. Top up anytime.
           </p>
  
           {/* Currency Toggle */}
@@ -67,7 +77,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
           </div>
         </div>
  
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {plans.map((plan) => (
             <div key={plan.id} className={`brutal-card p-8 bg-card flex flex-col ${plan.popular ? 'border-4 border-primary scale-105 z-10 shadow-[8px_8px_0px_0px_#5b21b6] relative' : ''}`}>
               {plan.popular && (
@@ -82,13 +92,14 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
               
               <div className="mb-6">
                 <span className="text-4xl font-black text-shadow-color">
-                  {currency === "INR" ? `₹${plan.inr}` : `$${plan.usd}`}
+                  {plan.isFree ? "Free" : (currency === "INR" ? `₹${plan.inr}` : `$${plan.usd}`)}
                 </span>
+                {!plan.isFree && <span className="text-sm font-bold text-muted-foreground">/ month</span>}
               </div>
  
               <div className="mb-6 inline-flex items-center gap-2 bg-primary/10 text-primary border-2 border-primary/20 px-3 py-1 rounded-full text-xs font-bold w-max">
                 <Zap className="w-3 h-3" />
-                <span>{plan.credits.toLocaleString("en-IN")} credits</span>
+                <span>{plan.credits.toLocaleString("en-IN")} pages</span>
               </div>
  
               <ul className="space-y-4 mb-12 flex-1">
@@ -102,7 +113,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
               
               <div className={`mt-auto pt-4 ${plan.popular ? 'border-t-2 border-shadow-color border-dashed' : ''}`}>
                 <a href={`${DASHBOARD_URL}/signup`} className={`brutal-btn-primary w-full text-center block py-3 text-sm uppercase tracking-wider ${plan.popular ? 'bg-secondary text-white border-shadow-color' : ''}`}>
-                  Get Started
+                  {plan.isFree ? "Register Free" : "Get Started"}
                 </a>
               </div>
             </div>

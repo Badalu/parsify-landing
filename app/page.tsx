@@ -22,7 +22,7 @@ export default function HomePage() {
             {/* Hero Left */}
             <div className="max-w-2xl">
               <div className="inline-block border-2 border-shadow-color bg-card px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
-                Bank Statement Intelligence
+                50 Pages Free Monthly
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-tight sm:leading-none mb-6 text-shadow-color uppercase font-sans">
                 PDFs into <br/>
@@ -39,7 +39,7 @@ export default function HomePage() {
                   <ArrowRight className="ml-2 w-5 h-5 inline-block" strokeWidth={3} />
                 </a>
                 <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground w-full sm:w-auto text-center sm:text-left mt-2 sm:mt-0">
-                  No credit card <span className="mx-2 hidden sm:inline-block">•</span><br className="sm:hidden" /> 50+ Banks
+                  No credit card <span className="mx-2 hidden sm:inline-block">•</span><br className="sm:hidden" /> Resets on 1st of every month
                 </p>
               </div>
             </div>
