@@ -96,46 +96,42 @@ export function LandingPageClient() {
 
   const faqs = [
     {
-      q: "Which Indian banks are supported?",
-      a: "We support 200+ Indian banks including SBI, HDFC, ICICI, Axis, Kotak, Yes Bank, PNB, Bank of Baroda, Canara, Union, IDFC First, IndusInd, RBL, AU Small Finance, plus most cooperative and regional banks.",
+      q: "Bank statement PDF to Excel kaise convert karein?",
+      a: "Parsify par login karein, apna bank statement PDF drag and drop karein, aur software automatically read karke perfect Excel (.xlsx) ya CSV sheet taiyar kar dega jise aap download kar sakte hain.",
     },
     {
-      q: "Is my data secure? Are statements stored?",
-      a: "All uploads are encrypted in transit and at rest. Files are auto-deleted within 24 hours of conversion. We're SOC 2 compliant and never share data with third parties.",
+      q: "CA ke liye best bank statement analyzer tool kaunsa hai?",
+      a: "CAs ke liye Parsify best bank statement analyzer tool hai kyunki ye HDFC, SBI, ICICI, Axis samet 200+ Indian banks ke statement formats support karta hai aur bad format multi-page tables ko perfectly clean Excel tables mein convert kar deta hai.",
     },
     {
-      q: "What formats can I export to?",
-      a: "Excel (.xlsx), CSV (.csv) and a single combined CSV when you bulk-upload multiple statements. Tally-ready format is on the roadmap.",
+      q: "GST statement converter India mein kaunsa use karein?",
+      a: "India mein GST data aur portal statement conversions ke liye Parsify ekdam reliable converter hai jo GST data files ko structured and audit-ready Excel formats mein extract karke reconcile karne mein madad karta hai.",
     },
     {
-      q: "Do credits expire?",
-      a: "Never. Any credits you buy stay in your account forever — pause and resume usage anytime.",
+      q: "Parsify free mein use kar sakte hain?",
+      a: "Haan! Bina kisi credit card ke aap Parsify par sign up karke 50 pages free monthly convert kar sakte hain.",
     },
     {
-      q: "Can I convert password-protected PDFs?",
-      a: "Yes. Just enter the password when prompted. The PDF is decrypted in-memory and never stored unlocked.",
-    },
-    {
-      q: "Is there an API available?",
-      a: "Yes — included on the Business plan. REST endpoints with webhooks, sample code in Node, Python, PHP and a dashboard for managing keys.",
+      q: "Kitne pages free mein process hote hain?",
+      a: "Parsify par registration ke baad har mahine 50 pages free mein process hote hain, jo har month ki 1st date (1 tarik) ko automatically reset ho jaate hain.",
     },
   ];
 
   const plans = [
     {
       name: "Starter",
-      monthly: { INR: 499, USD: 8 },
-      desc: "For individuals filing personal returns.",
-      features: ["100 pages/month", "Excel + CSV export", "All banks supported", "Email support"],
+      monthly: { INR: 999, USD: 12 },
+      desc: "Starter — solo CA ke liye",
+      features: ["~40 statements/month (500 pages)", "Excel + CSV export", "All banks supported", "Email support"],
       cta: "Get Started",
       popular: false,
     },
     {
-      name: "Professional",
-      monthly: { INR: 999, USD: 12 },
-      desc: "For practising CAs and freelancers.",
+      name: "Growth",
+      monthly: { INR: 1999, USD: 25 },
+      desc: "Growth — small firm",
       features: [
-        "500 pages/month",
+        "~120 statements/month (1500 pages)",
         "All banks supported",
         "GST tagging",
         "Bulk processing",
@@ -145,11 +141,11 @@ export function LandingPageClient() {
       popular: true,
     },
     {
-      name: "Business",
-      monthly: { INR: 3999, USD: 49 },
-      desc: "For firms and high-volume teams.",
-      features: ["Unlimited pages", "API access", "Custom integrations", "Dedicated support"],
-      cta: "Contact Sales",
+      name: "Pro",
+      monthly: { INR: 3400, USD: 45 },
+      desc: "Pro — busy season ready",
+      features: ["~400 statements/month (5000 pages)", "API access & webhooks", "Custom integrations", "Dedicated support"],
+      cta: "Get Started",
       popular: false,
     },
   ];
@@ -288,24 +284,16 @@ export function LandingPageClient() {
               Pick the access level that fits you
             </h2>
             <p className="mt-4 text-base text-muted-foreground">
-              Start instantly without signup, or register free to convert more every day.
+              Register free to convert statements, or subscribe to get more volume.
             </p>
           </div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-14 grid gap-6 md:grid-cols-2 max-w-4xl mx-auto">
             {[
-              {
-                name: "Anonymous",
-                desc: "Anonymous conversions with no need to sign up",
-                features: ["1 page every 24 hours", "No account required", "No history saved"],
-                price: "Free",
-                cta: null,
-                highlight: false,
-              },
               {
                 name: "Registered",
                 desc: "Registration is free",
-                features: ["5 pages every 24 hours", "Realtime conversion history", "Categories & GST tagging"],
+                features: ["50 pages every month", "Realtime conversion history", "Categories & GST tagging"],
                 price: "Free",
                 cta: { label: "Register", to: `${dashboardUrl}/signup` },
                 highlight: false,

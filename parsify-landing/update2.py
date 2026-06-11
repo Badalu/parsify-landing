@@ -9,7 +9,7 @@ p = p.replace('// @ts-nocheck\n', '')
 p = re.sub(r'React\.useEffect\(\(\) => \{[\s\S]*?\}, \[\]\);', '', p)
 
 # Add ScriptRunner import
-p = p.replace("import Script from 'next/script';", "import Script from 'next/script';\nimport ScriptRunner from './ScriptRunner';")
+p = p.replace("import React from 'react';", "import React from 'react';\nimport ScriptRunner from './ScriptRunner';")
 
 # Add ScriptRunner component
 p = p.replace('<div dangerouslySetInnerHTML', '<ScriptRunner />\n      <div dangerouslySetInnerHTML')

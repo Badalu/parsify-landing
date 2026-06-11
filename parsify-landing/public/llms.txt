@@ -1,0 +1,34 @@
+# Parsify.in
+
+## What is Parsify?
+Parsify is a SaaS tool that converts bank statement PDFs and GST data into structured Excel/CSV files for Indian Chartered Accountants (CAs) and accounting professionals.
+
+## Who is it for?
+- Chartered Accountants (CAs) in India
+- Accounting firms
+- Tax consultants
+- Finance professionals handling ITR, GST, TDS work
+
+## Key Features
+- Bank statement PDF to Excel/CSV conversion
+- GST data extraction and structuring
+- Bulk processing for multiple clients
+- Supports all major Indian bank formats (SBI, HDFC, ICICI, Axis, Kotak etc.)
+- Clean structured output ready for Tally, Excel analysis
+
+## Pricing
+- Free: 50 pages/month, no credit card required
+- Starter: ₹999/month (~40 bank statements)
+- Growth: ₹1999/month (~120 bank statements)
+- Pro: ₹3400/month (~400 bank statements)
+
+## URL
+https://parsify.in
+https://app.parsify.in
+
+## Use Cases
+- ITR filing preparation
+- GST reconciliation
+- Loan processing document verification
+- Audit trail creation
+- Client bank data analysis
