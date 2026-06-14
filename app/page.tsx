@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { ArrowRight, FileText, CheckCircle2, Shield, Zap, Check } from 'lucide-react';
 import { Pricing } from './components/pricing';
+import { AnonUpload } from './components/AnonUpload';
 
 export const metadata: Metadata = {
   title: 'Free Bank Statement Converter — PDF to Excel & CSV | Parsify',
@@ -35,54 +36,18 @@ export default function HomePage() {
               
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mt-8">
                 <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary w-full sm:w-auto justify-center text-lg px-8 py-4 uppercase tracking-wider">
-                  Start for free
+                  Go to Dashboard
                   <ArrowRight className="ml-2 w-5 h-5 inline-block" strokeWidth={3} />
                 </a>
-                <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground w-full sm:w-auto text-center sm:text-left mt-2 sm:mt-0">
-                  No credit card <span className="mx-2 hidden sm:inline-block">•</span><br className="sm:hidden" /> Resets on 1st of every month
-                </p>
               </div>
             </div>
 
-            {/* Hero Right - Animated Brutalist Graphic */}
-            <div className="relative mt-12 lg:mt-0 hidden sm:block">
+            {/* Hero Right - Anonymous Upload Box */}
+            <div className="relative mt-12 lg:mt-0">
               {/* Decorative background element */}
-              <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-secondary/20 animate-pulse"></div>
+              <div className="absolute -top-6 -left-6 w-20 h-20 rounded-full bg-secondary/20 animate-pulse hidden sm:block"></div>
               
-              <div className="brutal-card p-4 sm:p-8 bg-card relative z-10 animate-float shadow-[8px_8px_0px_0px_#1a1c1d]">
-                <div className="flex justify-between items-center mb-6 border-b-2 border-shadow-color pb-4 border-dashed">
-                  <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-primary" />
-                    STATEMENT.PDF
-                  </span>
-                  <span className="bg-primary/10 text-primary border border-primary/20 text-[10px] sm:text-xs font-bold uppercase px-3 py-1 whitespace-nowrap ml-2 flex items-center gap-2 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-blink"></span>
-                    Processing
-                  </span>
-                </div>
-                
-                <div className="space-y-4 mb-8">
-                  {[...Array(4)].map((_, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="h-3 bg-muted-foreground/20 w-12 sm:w-16 relative overflow-hidden rounded-sm">
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-full h-full animate-shimmer"></div>
-                      </div>
-                      <div className="h-3 bg-muted-foreground/20 w-32 sm:w-48 relative overflow-hidden rounded-sm">
-                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-full h-full animate-shimmer" style={{ animationDelay: '0.2s' }}></div>
-                      </div>
-                      <div className="h-3 bg-muted-foreground/20 w-16 sm:w-24 relative overflow-hidden rounded-sm">
-                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent w-full h-full animate-shimmer" style={{ animationDelay: '0.4s' }}></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="absolute -right-2 sm:-right-6 -bottom-2 sm:-bottom-6 scale-75 sm:scale-100 origin-bottom-right">
-                  <div className="bg-secondary text-white p-4 sm:p-6 border-2 border-shadow-color brutal-shadow animate-float-sub">
-                    <div className="text-3xl sm:text-4xl font-black font-sans tracking-tight">4.2s</div>
-                    <div className="text-xs sm:text-sm font-bold uppercase tracking-widest mt-1 text-white/90">Average Parse Time</div>
-                  </div>
-                </div>
-              </div>
+              <AnonUpload />
             </div>
 
           </div>
