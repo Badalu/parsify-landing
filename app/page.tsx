@@ -5,8 +5,11 @@ import { Pricing } from './components/pricing';
 import { AnonUpload } from './components/AnonUpload';
 
 export const metadata: Metadata = {
-  title: 'Free Bank Statement Converter — PDF to Excel & CSV | Parsify',
-  description: 'Convert PDF bank statements to Excel or CSV instantly. Free, secure, and supports all major Indian banks.',
+  title: 'Bank Statement PDF to Excel & CSV Converter — Free for Indian CAs | Parsify',
+  description: 'Convert bank statement PDF to Excel instantly. India\'s #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis & 200+ banks. Auto GST tagging, Tally-ready output. Free 2 statements daily, no signup needed.',
+  alternates: {
+    canonical: 'https://parsify.in',
+  },
 };
 
 export default function HomePage() {
@@ -23,15 +26,15 @@ export default function HomePage() {
             {/* Hero Left */}
             <div className="max-w-2xl">
               <div className="inline-block border-2 border-shadow-color bg-card px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
-                50 Pages Free Monthly
+                #1 Bank Statement Converter for Indian CAs
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-tight sm:leading-none mb-6 text-shadow-color uppercase font-sans">
-                PDFs into <br/>
-                <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2">clean data</span><br/>
-                effortlessly.
+                Bank Statement<br/>
+                <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2">PDF to Excel</span><br/>
+                Converter.
               </h1>
               <p className="text-lg text-muted-foreground font-medium mb-10 max-w-lg leading-relaxed">
-                Upload any bank statement PDF. Our engine parses every row, handles every Indian bank format, and delivers structured Excel or CSV in seconds.
+                Upload any bank statement PDF — HDFC, SBI, ICICI, Axis, Kotak or 200+ banks. Get clean, Tally-ready Excel or CSV in seconds. Built for Indian CAs and accounting teams.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mt-8">
