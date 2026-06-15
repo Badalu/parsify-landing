@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import pdfParse from "pdf-parse";
+const pdfParse = require("pdf-parse");
 
 // Run on Node.js to support pdf-parse
 export const runtime = "nodejs";
