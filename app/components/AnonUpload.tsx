@@ -46,7 +46,7 @@ export function AnonUpload() {
       formData.append("categorize", "true");
       formData.append("gst", "true");
 
-      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://parsify-api.vercel.app";
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
 
       // 1. Convert
       const convertRes = await fetch(`${API_BASE}/api/convert`, {

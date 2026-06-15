@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
 };
 
-const sbiFaqSchema = {
+const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -60,7 +60,7 @@ const sbiFaqSchema = {
 
 const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
 
-const SBI_FORMATS = [
+const BANK_FORMATS = [
   { name: 'SBI Savings Account', desc: 'Standard savings account statements from NetBanking or branch' },
   { name: 'SBI Current Account', desc: 'Business current account statements with high transaction volumes' },
   { name: 'SBI Credit Card', desc: 'Credit card statements with merchant details and reward points' },
@@ -120,7 +120,7 @@ export default function SbiConverterPage() {
         {/* JSON-LD for SBI FAQs */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(sbiFaqSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </section>
 
@@ -154,7 +154,7 @@ export default function SbiConverterPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SBI_FORMATS.map((format, i) => (
+            {BANK_FORMATS.map((format, i) => (
               <div key={i} className="brutal-card p-6 bg-card hover:-translate-y-1 transition-transform duration-300">
                 <div className="flex items-start gap-3 mb-4">
                   <div className="p-2 bg-primary/10 border-2 border-primary/20">
