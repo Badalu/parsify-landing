@@ -1,119 +1,71 @@
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel
-import pdfplumber
-import google.generativeai as genai
 import os
 import json
-import re
+from .detector import PDFDetector
+from .validator import Validator
+from .exporter import Exporter
+
+from .parsers.hdfc import HDFCParser
+from .parsers.generic import GenericParser
 
 app = FastAPI()
 
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY", ""))
-
-def clean_amount(val):
-    if not val:
-        return 0.0
-    val = str(val).replace(",", "").replace("₹", "").replace("Rs", "").strip()
-    try:
-        return float(val)
-    except:
-        return 0.0
-
-def validate_transactions(transactions):
-    valid_txns = []
-    for t in transactions:
-        # Basic validation
-        if not t.get("date") or not t.get("description"):
-            continue
-        valid_txns.append(t)
-    return valid_txns
+def get_parser(bank_name: str):
+    if bank_name == "HDFC":
+        return HDFCParser()
+    # Add other banks as they are implemented
+    # elif bank_name == "SBI": return SBIParser()
+    else:
+        return GenericParser()
 
 @app.post("/api/py-convert")
 async def convert_pdf(
     file: UploadFile = File(...),
-    categorize: str = Form("true"),
-    gst: str = Form("true")
+    password: str = Form(None),
+    output_format: str = Form("json") # json, csv, excel
 ):
     try:
         pdf_bytes = await file.read()
-        
-        # Save temp
         temp_path = f"/tmp/{file.filename}"
         with open(temp_path, "wb") as f:
             f.write(pdf_bytes)
 
-        extracted_text_blocks = []
-        is_scanned = True
+        # 1. Detector
+        is_text, bank_name = PDFDetector.analyze(temp_path, password)
         
-        # Stage 1: Local Extraction via pdfplumber
-        with pdfplumber.open(temp_path) as pdf:
-            for page in pdf.pages:
-                tables = page.extract_tables()
-                text = page.extract_text()
-                
-                if text and len(text.strip()) > 50:
-                    is_scanned = False
-                
-                if tables:
-                    for table in tables:
-                        # Clean table rows
-                        cleaned_table = [" | ".join([str(c).replace("\n", " ").strip() if c else "" for c in row]) for row in table if any(row)]
-                        extracted_text_blocks.append("\n".join(cleaned_table))
-                elif text:
-                    extracted_text_blocks.append(text)
+        if not is_text:
+            os.remove(temp_path)
+            return JSONResponse(status_code=400, content={"detail": "Scanned PDFs not supported. Please upload a text-based bank statement."})
+
+        # 2. Extract
+        parser = get_parser(bank_name)
+        raw_transactions = parser.parse(temp_path, password)
         
-        # Cleanup
         os.remove(temp_path)
-        
-        if is_scanned and not extracted_text_blocks:
-            return JSONResponse(status_code=400, content={"detail": "This appears to be a scanned PDF. Text-based PDFs are supported."})
-            
-        combined_text = "\n\n---PAGE BREAK---\n\n".join(extracted_text_blocks)
-        
-        # Stage 2: Minimal Gemini Call
-        # Instead of sending pure raw unstructured text, we send the table structure we extracted locally.
-        system_instruction = """You are a bank statement parser. Extract transactions from the provided raw table/text data into JSON.
-CRITICAL RULES:
-- Only extract transactions.
-- Format: {"transactions": [{"date": "...", "value_date": "...", "description": "...", "debit": "...", "credit": "...", "balance": "...", "category": "...", "gst": "..."}]}
-- Normalize numbers (remove currency symbols but keep commas).
-"""
-        if categorize.lower() == "true":
-            system_instruction += "- Assign exactly ONE category: Salary, Food, Fuel, Rent, Utilities, Shopping, Groceries, Transfer, Subscription, GST, Tax, Investment, EMI, Refund, Other.\n"
-        else:
-            system_instruction += "- Set category to 'Other'.\n"
-            
-        if gst.lower() == "true":
-            system_instruction += "- If GST is mentioned, extract it (e.g. 'CGST+SGST'). Else leave empty.\n"
 
-        model = genai.GenerativeModel(
-            model_name="gemini-2.5-flash", # Fallback to 2.5-flash if 3 isn't available
-            system_instruction=system_instruction,
-            generation_config={"response_mime_type": "application/json"}
-        )
+        # 3. Validate
+        validation_result = Validator.validate(raw_transactions)
         
-        prompt = f"Extract all transactions from this structured data:\n\n{combined_text[:50000]}" # Limit to 50k chars for safety
+        # 4. Output
+        if output_format == "csv":
+            csv_data = Exporter.to_csv(validation_result["valid_transactions"])
+            return Response(content=csv_data, media_type="text/csv", headers={"Content-Disposition": f"attachment; filename={file.filename}.csv"})
+        elif output_format == "excel":
+            excel_data = Exporter.to_excel(validation_result["valid_transactions"])
+            return Response(content=excel_data, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", headers={"Content-Disposition": f"attachment; filename={file.filename}.xlsx"})
         
-        response = model.generate_content(prompt)
-        
-        try:
-            data = json.loads(response.text)
-            transactions = data.get("transactions", [])
-        except Exception as e:
-            print("Failed to parse JSON:", response.text)
-            transactions = []
-
-        # Stage 3: Validation
-        final_txns = validate_transactions(transactions)
-
+        # Default JSON
         return JSONResponse(content={
             "filename": file.filename.replace(".pdf", ""),
-            "transactions": final_txns
+            "bank_detected": bank_name,
+            "quality_score": validation_result["score"],
+            "flagged_count": validation_result["flagged_count"],
+            "transactions": validation_result["valid_transactions"]
         })
 
     except Exception as e:
-        print("Error:", e)
+        if "password" in str(e).lower() or "encrypt" in str(e).lower():
+            return JSONResponse(status_code=400, content={"detail": "PDF is password protected or incorrect password provided.", "needs_password": True})
         return JSONResponse(status_code=500, content={"detail": str(e)})
-
-# Vercel requires the app to be available.
