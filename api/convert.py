@@ -3,12 +3,12 @@ from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel
 import os
 import json
-from .detector import PDFDetector
-from .validator import Validator
-from .exporter import Exporter
+from detector import PDFDetector
+from validator import Validator
+from exporter import Exporter
 
-from .parsers.hdfc import HDFCParser
-from .parsers.generic import GenericParser
+from parsers.hdfc import HDFCParser
+from parsers.generic import GenericParser
 
 app = FastAPI()
 

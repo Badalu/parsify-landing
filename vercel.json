@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/py-convert",
-      "destination": "/api/convert.py"
+      "destination": "/api/convert"
     }
   ]
 }
