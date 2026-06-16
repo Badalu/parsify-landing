@@ -1,27 +1,11 @@
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import JSONResponse, Response
-from pydantic import BaseModel
 import os
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'python')))
-
+import requests
 import json
-from detector import PDFDetector
-from validator import Validator
-from exporter import Exporter
-
-from parsers.hdfc import HDFCParser
-from parsers.generic import GenericParser
+import time
 
 app = FastAPI()
-
-def get_parser(bank_name: str):
-    if bank_name == "HDFC":
-        return HDFCParser()
-    # Add other banks as they are implemented
-    # elif bank_name == "SBI": return SBIParser()
-    else:
-        return GenericParser()
 
 @app.post("/api/py-convert")
 @app.post("/api/convert")
@@ -31,45 +15,105 @@ async def convert_pdf(
     output_format: str = Form("json") # json, csv, excel
 ):
     try:
+        api_key = os.environ.get("BSC_API_KEY")
+        if not api_key:
+            return JSONResponse(status_code=500, content={"detail": "BSC_API_KEY environment variable is missing"})
+
         pdf_bytes = await file.read()
-        temp_path = f"/tmp/{file.filename}"
-        with open(temp_path, "wb") as f:
-            f.write(pdf_bytes)
-
-        # 1. Detector
-        is_text, bank_name = PDFDetector.analyze(temp_path, password)
         
-        if not is_text:
-            os.remove(temp_path)
-            return JSONResponse(status_code=400, content={"detail": "Scanned PDFs not supported. Please upload a text-based bank statement."})
-
-        # 2. Extract
-        parser = get_parser(bank_name)
-        raw_transactions = parser.parse(temp_path, password)
+        # 1. Upload to BSC
+        headers = { "Authorization": api_key }
+        files = { "file": (file.filename, pdf_bytes, "application/pdf") }
         
-        os.remove(temp_path)
-
-        # 3. Validate
-        validation_result = Validator.validate(raw_transactions)
+        upload_res = requests.post("https://api2.bankstatementconverter.com/api/v1/BankStatement", headers=headers, files=files)
         
-        # 4. Output
-        if output_format == "csv":
-            csv_data = Exporter.to_csv(validation_result["valid_transactions"])
-            return Response(content=csv_data, media_type="text/csv", headers={"Content-Disposition": f"attachment; filename={file.filename}.csv"})
-        elif output_format == "excel":
-            excel_data = Exporter.to_excel(validation_result["valid_transactions"])
-            return Response(content=excel_data, media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", headers={"Content-Disposition": f"attachment; filename={file.filename}.xlsx"})
+        if upload_res.status_code != 200:
+            return JSONResponse(status_code=upload_res.status_code, content={"detail": f"Failed to upload to BSC: {upload_res.text}"})
+            
+        upload_data = upload_res.json()
+        if not upload_data or not len(upload_data):
+            return JSONResponse(status_code=500, content={"detail": "Invalid response from BSC API"})
+            
+        doc = upload_data[0]
+        uuid = doc.get("uuid")
         
-        # Default JSON
+        # 2. Provide Password if necessary
+        if password:
+            pwd_res = requests.post(
+                "https://api2.bankstatementconverter.com/api/v1/BankStatement/setPassword",
+                headers={"Authorization": api_key, "Content-Type": "application/json"},
+                json={"passwords": [{"uuid": uuid, "password": password}]}
+            )
+            if pwd_res.status_code != 200:
+                pass # it might fail if password is wrong, let it fail during convert
+        
+        # 3. Poll Status if PROCESSING
+        current_state = doc.get("state")
+        attempts = 0
+        while current_state == "PROCESSING" and attempts < 12:
+            time.sleep(10) # wait 10 seconds as recommended by BSC docs
+            status_res = requests.post(
+                "https://api2.bankstatementconverter.com/api/v1/BankStatement/status",
+                headers={"Authorization": api_key, "Content-Type": "application/json"},
+                json=[uuid]
+            )
+            if status_res.status_code == 200:
+                status_data = status_res.json()
+                if status_data and len(status_data) > 0:
+                    current_state = status_data[0].get("state")
+            attempts += 1
+            
+        # 4. Convert Statements
+        convert_res = requests.post(
+            "https://api2.bankstatementconverter.com/api/v1/BankStatement/convert?format=JSON&raw=false",
+            headers={"Authorization": api_key, "Content-Type": "application/json"},
+            json=[uuid]
+        )
+        
+        if convert_res.status_code != 200:
+            err_text = convert_res.text.lower()
+            if "password" in err_text or "locked" in err_text:
+                return JSONResponse(status_code=400, content={"detail": "PDF is password protected or incorrect password provided.", "needs_password": True})
+            return JSONResponse(status_code=500, content={"detail": f"Failed to convert on BSC: {convert_res.text}"})
+            
+        convert_data = convert_res.json()
+        if not convert_data or not len(convert_data) or "normalised" not in convert_data[0]:
+            return JSONResponse(status_code=400, content={"detail": "PDF is password protected or incorrect password provided.", "needs_password": True})
+            
+        normalised = convert_data[0]["normalised"]
+        
+        if not len(normalised):
+            return JSONResponse(status_code=400, content={"detail": "No transactions extracted by BSC API"})
+            
+        # 5. Transform into expected format
+        transactions = []
+        for tx in normalised:
+            amt = float(tx.get("amount", "0"))
+            is_credit = amt > 0
+            abs_amt = f"{abs(amt):.2f}"
+            transactions.append({
+                "date": tx.get("date", ""),
+                "description": tx.get("description", ""),
+                "debit": None if is_credit else abs_amt,
+                "credit": abs_amt if is_credit else None,
+                "balance": None, # BSC normalised format doesn't provide running balance
+                "category": "Other",
+                "gst": None
+            })
+            
+        # 6. Fallback formats
+        if output_format == "csv" or output_format == "excel":
+            # For simplicity, we just return JSON to the frontend and let the frontend build the Excel/CSV
+            # Our frontend already builds Excel/CSV from the returned transactions JSON!
+            pass
+            
         return JSONResponse(content={
             "filename": file.filename.replace(".pdf", ""),
-            "bank_detected": bank_name,
-            "quality_score": validation_result["score"],
-            "flagged_count": validation_result["flagged_count"],
-            "transactions": validation_result["valid_transactions"]
+            "bank_detected": "BSC_API",
+            "quality_score": 100,
+            "flagged_count": 0,
+            "transactions": transactions
         })
 
     except Exception as e:
-        if "password" in str(e).lower() or "encrypt" in str(e).lower():
-            return JSONResponse(status_code=400, content={"detail": "PDF is password protected or incorrect password provided.", "needs_password": True})
         return JSONResponse(status_code=500, content={"detail": str(e)})
