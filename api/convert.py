@@ -24,6 +24,7 @@ def get_parser(bank_name: str):
         return GenericParser()
 
 @app.post("/api/py-convert")
+@app.post("/api/convert")
 async def convert_pdf(
     file: UploadFile = File(...),
     password: str = Form(None),
