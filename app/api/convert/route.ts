@@ -67,79 +67,129 @@ If the transaction description explicitly mentions GST components, set: 'CGST+SG
       systemInstruction += `\n=== GST FIELD ===\nSet gst to '' (empty string) for all rows.\n`;
     }
 
-    const payload = {
-      systemInstruction: {
-        parts: [{ text: systemInstruction }]
-      },
-      contents: [{
-        role: "user",
-        parts: [{ text: `Extract ALL transactions from this bank statement text. Return every transaction row.\n\nBANK STATEMENT TEXT:\n=================\n${text}` }]
-      }],
-      tools: [{
-        functionDeclarations: [{
-          name: "return_transactions",
-          description: "Return parsed transactions",
-          parameters: {
-            type: "OBJECT",
-            properties: {
-              transactions: {
-                type: "ARRAY",
-                items: {
-                  type: "OBJECT",
-                  properties: {
-                    date: { type: "STRING" },
-                    value_date: { type: "STRING" },
-                    description: { type: "STRING" },
-                    debit: { type: "STRING" },
-                    credit: { type: "STRING" },
-                    balance: { type: "STRING" },
-                    category: { type: "STRING" },
-                    gst: { type: "STRING" }
+    const lines = text.split("\n");
+    const chunks: string[] = [];
+    let currentChunk = "";
+    for (const line of lines) {
+      if (currentChunk.length + line.length > 8000) {
+        chunks.push(currentChunk);
+        currentChunk = line + "\n";
+      } else {
+        currentChunk += line + "\n";
+      }
+    }
+    if (currentChunk.trim().length > 0) chunks.push(currentChunk);
+
+    let allTransactions: any[] = [];
+    const CONCURRENCY = 20;
+    const chunkResults: any[] = new Array(chunks.length);
+    let currentIndex = 0;
+
+    const worker = async () => {
+      while (currentIndex < chunks.length) {
+        const index = currentIndex++;
+        const chunkText = chunks[index];
+
+        const payload = {
+          systemInstruction: {
+            parts: [{ text: systemInstruction }]
+          },
+          contents: [{
+            role: "user",
+            parts: [{ text: `Extract ALL transactions from this bank statement text. Return every transaction row.\n\nBANK STATEMENT TEXT:\n=================\n${chunkText}` }]
+          }],
+          tools: [{
+            functionDeclarations: [{
+              name: "return_transactions",
+              description: "Return parsed transactions",
+              parameters: {
+                type: "OBJECT",
+                properties: {
+                  transactions: {
+                    type: "ARRAY",
+                    items: {
+                      type: "OBJECT",
+                      properties: {
+                        date: { type: "STRING" },
+                        value_date: { type: "STRING" },
+                        description: { type: "STRING" },
+                        debit: { type: "STRING" },
+                        credit: { type: "STRING" },
+                        balance: { type: "STRING" },
+                        category: { type: "STRING" },
+                        gst: { type: "STRING" }
+                      }
+                    }
                   }
                 }
               }
+            }]
+          }],
+          toolConfig: {
+            functionCallingConfig: {
+              mode: "ANY",
+              allowedFunctionNames: ["return_transactions"]
             }
           }
-        }]
-      }],
-      toolConfig: {
-        functionCallingConfig: {
-          mode: "ANY",
-          allowedFunctionNames: ["return_transactions"]
+        };
+
+        let chunkRetries = 3;
+        let resultTxns: any[] = [];
+        let errorMsg = null;
+
+        while (chunkRetries > 0) {
+          try {
+            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) {
+              chunkRetries--;
+              if (chunkRetries === 0) {
+                errorMsg = `Extraction failed (${res.status})`;
+                break;
+              }
+              await new Promise(r => setTimeout(r, (4 - chunkRetries) * 2000));
+              continue;
+            }
+
+            const geminiData = await res.json();
+            const call = geminiData.candidates?.[0]?.content?.parts?.[0]?.functionCall;
+            if (call && call.name === "return_transactions") {
+              resultTxns = call.args.transactions || [];
+            }
+            break;
+          } catch (e: any) {
+            chunkRetries--;
+            if (chunkRetries === 0) {
+              errorMsg = e.message;
+              break;
+            }
+            await new Promise(r => setTimeout(r, (4 - chunkRetries) * 2000));
+          }
         }
+
+        chunkResults[index] = { transactions: resultTxns, error: errorMsg };
       }
     };
 
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+    const workers = Array.from({ length: Math.min(CONCURRENCY, chunks.length) }, () => worker());
+    await Promise.all(workers);
 
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error("Gemini Error:", errText);
-      return NextResponse.json({ detail: "Failed to parse bank statement with AI model" }, { status: 500 });
-    }
-
-    const geminiData = await res.json();
-    
-    // Extract the function call arguments
-    let transactions = [];
-    try {
-      const call = geminiData.candidates[0].content.parts[0].functionCall;
-      if (call && call.name === "return_transactions") {
-        transactions = call.args.transactions || [];
+    for (const result of chunkResults) {
+      if (result.error) {
+        console.error("Chunk failed:", result.error);
       }
-    } catch (e) {
-      console.error("Failed to parse Gemini response", e);
+      if (result.transactions) {
+        allTransactions.push(...result.transactions);
+      }
     }
 
     return NextResponse.json({
       filename: file.name.replace(/\.[^/.]+$/, ""),
-      transactions
+      transactions: allTransactions
     });
   } catch (error: any) {
     console.error("Convert API Error:", error);
