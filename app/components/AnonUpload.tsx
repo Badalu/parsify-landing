@@ -49,7 +49,7 @@ export function AnonUpload() {
       const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
 
       // 1. Convert
-      const convertRes = await fetch(`${API_BASE}/api/convert`, {
+      const convertRes = await fetch(`${API_BASE}/api/py-convert`, {
         method: "POST",
         headers: {
           "X-Anon-Id": anonId,
