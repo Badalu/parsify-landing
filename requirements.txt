@@ -1,6 +1,6 @@
-fastapi==0.110.0
-pdfplumber==0.11.0
-pydantic==2.6.4
-python-multipart==0.0.9
-pandas==2.2.1
-openpyxl==3.1.2
+fastapi
+pdfplumber
+pydantic
+python-multipart
+pandas
+openpyxl
