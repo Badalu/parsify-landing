@@ -15,7 +15,7 @@ class GenericParser(BaseParser):
                 lines = text.split('\n')
                 for line in lines:
                     # Look for date at the start or anywhere in the line
-                    date_match = re.search(r'\d{1,2}[-/]\d{1,2}[-/]\d{2,4}', line)
+                    date_match = re.search(r'\d{1,2}[-/\s](?:\d{1,2}|[A-Za-z]{3})[-/\s]\d{2,4}', line)
                     
                     if date_match:
                         date = date_match.group(0)
