@@ -2,6 +2,9 @@ from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel
 import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'python')))
+
 import json
 from detector import PDFDetector
 from validator import Validator
