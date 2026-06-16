@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ detail: "No file provided" }, { status: 400 });
     }
 
-    const API_KEY = process.env.BSC_API_KEY;
+    const API_KEY = process.env.BSC_API_KEY || "api-HplgS3/e/8MT0bmLQ7jWlGyuE/eMb0awI4TfvEEPxHapV82ZQBuBHHCklX0cjCBU";
     if (!API_KEY) {
       return NextResponse.json({ detail: "BSC_API_KEY is not configured on the server." }, { status: 500 });
     }
