@@ -1,0 +1,7 @@
+fastapi
+pdfplumber
+pydantic
+python-multipart
+pandas
+openpyxl
+requests
