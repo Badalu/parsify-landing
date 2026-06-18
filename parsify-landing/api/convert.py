@@ -30,7 +30,7 @@ async def convert_pdf(
             
         pdf_bytes = await file.read()
         files = {
-            "file": (file.filename, pdf_bytes, "application/pdf")
+            "file": (file.filename, pdf_bytes, file.content_type or "application/pdf")
         }
         data = {
             "bank": bank,
