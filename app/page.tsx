@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ArrowRight, FileText, CheckCircle2, Shield, Zap, Check } from 'lucide-react';
 import { Pricing } from './components/pricing';
 import { AnonUpload } from './components/AnonUpload';
+import { TypewriterHeading } from './components/TypewriterHeading';
 
 export const metadata: Metadata = {
   title: 'Bank Statement PDF to Excel & CSV Converter — Free for Indian CAs | Parsify',
@@ -30,7 +31,7 @@ export default function HomePage() {
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-tight sm:leading-none mb-6 text-shadow-color uppercase font-sans">
                 Bank Statement<br/>
-                <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2">PDF to Excel</span><br/>
+                <TypewriterHeading /><br/>
                 Converter.
               </h1>
               <p className="text-lg text-muted-foreground font-medium mb-10 max-w-lg leading-relaxed">

@@ -23,10 +23,10 @@ export function AnonUpload() {
         {/* Title */}
         <div className="mb-6">
           <h3 className="font-black uppercase tracking-tight text-2xl text-shadow-color leading-tight mb-2">
-            CONVERT PDF TO EXCEL
+            CONVERT PDF & IMAGES TO EXCEL
           </h3>
           <p className="text-sm font-medium text-muted-foreground leading-relaxed">
-            Convert any bank statement instantly. Get structured, Tally-ready spreadsheets in 5 seconds.
+            Convert any bank statement or screenshot instantly. Get structured, Tally-ready spreadsheets in 5 seconds.
           </p>
         </div>
 
