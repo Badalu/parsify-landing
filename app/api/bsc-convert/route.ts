@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
 
     // Proxy request directly to the dedicated Python backend on Vercel
     // This completely replaces the third-party BSC API integration
-    const backendUrl = "https://parsify-api.vercel.app/api/convert";
+    const backendUrl = "https://parsify-api-1vh0.onrender.com/api/convert";
     
     const uploadFormData = new FormData();
     uploadFormData.append("file", file);
