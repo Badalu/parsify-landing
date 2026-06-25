@@ -13,12 +13,12 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       inr: 0,
       usd: 0,
       // Free plan: PAGE-based
-      quota: "2 statements",
-      quotaNote: "Per day",
+      quota: "50 pages",
+      quotaNote: "Per month",
       isPageBased: true,
       features: [
-        "2 free statements every day",
-        "1 free statement without signup",
+        "50 free pages every month",
+        "1 free conversion without signup",
         "All Indian banks supported",
         "Realtime conversion history",
       ],
@@ -181,7 +181,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
         {/* Bottom note */}
         <div className="mt-16 text-center space-y-2">
           <p className="text-muted-foreground font-medium">
-             Looking for free conversions? <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold hover:underline">Register</a> to get 2 free bank statement conversions every day. No credit card required.
+             Looking for free conversions? <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold hover:underline">Register</a> to get 50 free pages every month. No credit card required.
           </p>
           <p className="text-sm text-muted-foreground">
             Paid plans: each uploaded PDF = 1 statement. No page limits per statement.

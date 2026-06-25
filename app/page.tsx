@@ -7,7 +7,7 @@ import { TypewriterHeading } from './components/TypewriterHeading';
 
 export const metadata: Metadata = {
   title: 'Bank Statement PDF to Excel & CSV Converter — Free for Indian CAs | Parsify',
-  description: 'Convert bank statement PDF to Excel instantly. India\'s #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis & 200+ banks. Auto GST tagging, Tally-ready output. Free 2 statements daily, no signup needed.',
+  description: 'Convert bank statement PDF to Excel instantly. India\'s #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis & 200+ banks. Auto GST tagging, Tally-ready output. 50 pages free monthly, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in',
   },
