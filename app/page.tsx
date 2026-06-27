@@ -5,6 +5,7 @@ import { ArrowRight, FileText, CheckCircle2, Shield, Zap, Check } from 'lucide-r
 import { Pricing } from './components/pricing';
 import { AnonUpload } from './components/AnonUpload';
 import { TypewriterHeading } from './components/TypewriterHeading';
+import { Testimonials } from './components/Testimonials';
 
 export const metadata: Metadata = {
   title: 'Bank Statement Converter — Convert PDF to Excel & CSV | Parsify',
@@ -443,6 +444,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ══ 4.9. TESTIMONIALS ══ */}
+      <Testimonials />
 
       {/* ══ 5. PRICING ══ */}
       <Pricing DASHBOARD_URL={DASHBOARD_URL} />

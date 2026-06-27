@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
   title: 'How to Import PDF Bank Statement in Tally Prime | Parsify',
@@ -12,7 +13,7 @@ export default function BlogPost1() {
     "@type": "Article",
     "headline": "How to Import PDF Bank Statement in Tally Prime",
     "description": "Learn the exact steps to convert and import your PDF bank statements directly into Tally Prime using Parsify for automated bank reconciliation.",
-    "author": { "@type": "Organization", "name": "Parsify" },
+    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
     "publisher": { "@type": "Organization", "name": "Parsify" }
   };
 

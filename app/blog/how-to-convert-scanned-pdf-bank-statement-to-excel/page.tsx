@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
   title: 'How to Convert Scanned PDF Bank Statement to Excel | Parsify',
@@ -12,7 +13,7 @@ export default function BlogPost2() {
     "@type": "Article",
     "headline": "How to Convert Scanned PDF Bank Statement to Excel",
     "description": "A comprehensive guide on using OCR technology and AI to convert non-searchable, scanned bank statement PDFs into editable Excel sheets.",
-    "author": { "@type": "Organization", "name": "Parsify" },
+    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
     "publisher": { "@type": "Organization", "name": "Parsify" }
   };
 

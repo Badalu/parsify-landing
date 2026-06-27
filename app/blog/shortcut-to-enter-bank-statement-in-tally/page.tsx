@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
   title: 'Shortcut to Enter Bank Statement in Tally | Parsify',
@@ -12,7 +13,7 @@ export default function BlogPost4() {
     "@type": "Article",
     "headline": "Shortcut to Enter Bank Statement in Tally",
     "description": "Discover the quickest shortcuts and methods to enter and import bank statement data into Tally seamlessly without manual typing.",
-    "author": { "@type": "Organization", "name": "Parsify" },
+    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
     "publisher": { "@type": "Organization", "name": "Parsify" }
   };
 

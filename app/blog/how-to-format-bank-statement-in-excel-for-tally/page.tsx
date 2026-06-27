@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
   title: 'How to Format Bank Statement in Excel for Tally | Parsify',
@@ -12,7 +13,7 @@ export default function BlogPost5() {
     "@type": "Article",
     "headline": "How to Format Bank Statement in Excel for Tally",
     "description": "Learn the exact Excel column formats and templates required to successfully import your bank statement data into Tally without errors.",
-    "author": { "@type": "Organization", "name": "Parsify" },
+    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
     "publisher": { "@type": "Organization", "name": "Parsify" }
   };
 

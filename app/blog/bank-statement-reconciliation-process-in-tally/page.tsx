@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
   title: 'Bank Statement Reconciliation Process in Tally | Parsify',
@@ -12,7 +13,7 @@ export default function BlogPost3() {
     "@type": "Article",
     "headline": "Bank Statement Reconciliation Process in Tally",
     "description": "Understand the end-to-end bank statement reconciliation process in Tally Prime, and learn how automated parsing tools can save you hours of work.",
-    "author": { "@type": "Organization", "name": "Parsify" },
+    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
     "publisher": { "@type": "Organization", "name": "Parsify" }
   };
 

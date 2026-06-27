@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
   title: 'How to convert bank statement PDF to Tally XML — step by step [2025]',
@@ -12,7 +13,7 @@ export default function BankToTallyXML() {
     "@type": "Article",
     "headline": "How to convert bank statement PDF to Tally XML — step by step [2025]",
     "description": "Learn how to directly convert your PDF bank statements to Tally XML format for instant import into Tally Prime.",
-    "author": { "@type": "Organization", "name": "Parsify" },
+    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
     "publisher": { "@type": "Organization", "name": "Parsify" }
   };
 
