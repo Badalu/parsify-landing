@@ -103,45 +103,26 @@ export default async function BlogPostPage({ params }: PageProps) {
       />
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1 text-sm font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground mb-6 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4" strokeWidth={3} /> Back to blog
-        </Link>
+        <div className="brutal-card p-8 md:p-12 bg-card relative">
+          <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
+            {post.tags?.length ? post.tags[0] : "Blog Post"}
+          </div>
 
-        <article className="brutal-card p-8 md:p-12 bg-card relative">
-          <header>
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-              {post.tags?.length ? (
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((t: string) => (
-                    <span key={t} className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary brutal-shadow">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              ) : (
-                <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary brutal-shadow">
-                  Blog Post
-                </div>
-              )}
-              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-                <Calendar className="h-4 w-4" strokeWidth={3} />
-                {post.published_at ? new Date(post.published_at).toLocaleDateString() : ""}
-              </div>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-6 text-shadow-color uppercase font-sans">
-              {post.title}
-            </h1>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-10 text-shadow-color uppercase font-sans">
+            {post.title.includes('*') ? (
+              post.title.split('*').map((part: string, i: number) => (
+                i % 2 === 1 ? <span key={i} className="text-secondary">{part}</span> : part
+              ))
+            ) : (
+              post.title
+            )}
+          </h1>
             
-            {post.excerpt ? (
-              <p className="text-xl text-muted-foreground font-medium mb-10 leading-relaxed">
-                {post.excerpt}
-              </p>
-            ) : null}
-          </header>
+          {post.excerpt ? (
+            <p className="text-xl text-muted-foreground font-medium mb-10 leading-relaxed">
+              {post.excerpt}
+            </p>
+          ) : null}
 
           {post.cover_image ? (
             <img
@@ -156,7 +137,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           <AuthorBio />
-        </article>
+        </div>
       </div>
     </main>
   );
