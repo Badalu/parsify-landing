@@ -109,11 +109,11 @@ export function LandingPageClient() {
     },
     {
       q: "Parsify free mein use kar sakte hain?",
-      a: "Haan! Bina kisi credit card ke aap Parsify par sign up karke 50 pages free monthly convert kar sakte hain.",
+      a: "Haan! Bina kisi credit card ya sign up ke aap Parsify par 1 statement daily free convert kar sakte hain. Free account create karne par aapko daily 2 free statements milte hain.",
     },
     {
-      q: "Kitne pages free mein process hote hain?",
-      a: "Parsify par registration ke baad har mahine 50 pages free mein process hote hain, jo har month ki 1st date (1 tarik) ko automatically reset ho jaate hain.",
+      q: "Kitne statements free mein process hote hain?",
+      a: "Bina account ke aap 1 statement per day convert kar sakte hain, aur free account ke sath 2 statements daily convert kar sakte hain.",
     },
   ];
 
@@ -122,7 +122,7 @@ export function LandingPageClient() {
       name: "Starter",
       monthly: { INR: 999, USD: 12 },
       desc: "Starter — solo CA ke liye",
-      features: ["~40 statements/month (500 pages)", "Excel + CSV export", "All banks supported", "Email support"],
+      features: ["~40 statements/month", "Excel + CSV export", "All banks supported", "Email support"],
       cta: "Get Started",
       popular: false,
     },
@@ -131,7 +131,7 @@ export function LandingPageClient() {
       monthly: { INR: 1999, USD: 25 },
       desc: "Growth — small firm",
       features: [
-        "~120 statements/month (1500 pages)",
+        "~120 statements/month",
         "All banks supported",
         "GST tagging",
         "Bulk processing",
@@ -142,9 +142,9 @@ export function LandingPageClient() {
     },
     {
       name: "Pro",
-      monthly: { INR: 3400, USD: 45 },
+      monthly: { INR: 3499, USD: 45 },
       desc: "Pro — busy season ready",
-      features: ["~400 statements/month (5000 pages)", "API access & webhooks", "Custom integrations", "Dedicated support"],
+      features: ["~400 statements/month", "API access & webhooks", "Custom integrations", "Dedicated support"],
       cta: "Get Started",
       popular: false,
     },
@@ -293,7 +293,7 @@ export function LandingPageClient() {
               {
                 name: "Registered",
                 desc: "Registration is free",
-                features: ["50 pages every month", "Realtime conversion history", "Categories & GST tagging"],
+                features: ["2 free statements daily", "Realtime conversion history", "Categories & GST tagging"],
                 price: "Free",
                 cta: { label: "Register", to: `${dashboardUrl}/signup` },
                 highlight: false,

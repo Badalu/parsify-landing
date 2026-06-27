@@ -149,7 +149,7 @@ const softwareAppSchema = {
     },
     {
       "@type": "Offer",
-      "price": "3400",
+      "price": "3499",
       "priceCurrency": "INR",
       "name": "Pro Plan",
       "description": "400 statements per month"

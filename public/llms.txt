@@ -17,10 +17,10 @@ Parsify is a SaaS tool that converts bank statement PDFs and GST data into struc
 - Clean structured output ready for Tally, Excel analysis
 
 ## Pricing
-- Free: 50 pages/month, no credit card required
-- Starter: ₹999/month (~40 bank statements)
-- Growth: ₹1999/month (~120 bank statements)
-- Pro: ₹3400/month (~400 bank statements)
+- Free: 1 statement/day (no signup), 2/day (free account)
+- Starter: ₹999/month — 40 statements
+- Growth: ₹1,999/month — 120 statements
+- Pro: ₹3,499/month — 400 statements
 
 ## URL
 https://parsify.in

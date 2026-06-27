@@ -52,7 +52,7 @@ const faqSchema = {
       "name": "Is the Indian Bank statement converter free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, you can convert 1 Indian Bank statement per day completely free without signing up. Create a free account for 50 free pages monthly. Paid plans start at ₹999/month for 40 statements."
+        "text": "Yes, you can convert 1 Indian Bank statement per day completely free without signing up. Create a free account for 2 statements daily. Paid plans start at ₹999/month for 40 statements."
       }
     }
   ]
@@ -289,7 +289,7 @@ export default function IndianBankConverterPage() {
               },
               {
                 q: "Is the Indian Bank statement converter free?",
-                a: "You can convert 1 Indian Bank statement daily completely free — no signup needed. Create a free account for 50 pages per month. Paid plans for CA firms start at ₹999/month for 40 statements."
+                a: "You can convert 1 Indian Bank statement daily completely free — no signup needed. Create a free account for 2 statements per day. Paid plans for CA firms start at ₹999/month for 40 statements."
               }
             ].map((faq, i) => (
               <div key={i} className="brutal-card p-6 bg-background">

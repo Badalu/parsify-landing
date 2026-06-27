@@ -28,7 +28,7 @@ export default function RefundPage() {
             </p>
             <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">2. Non-Refundable Cases</h2>
             <p>
-              Refunds are not granted for recurring subscription charges after the initial 7-day period. Additionally, if you have heavily utilized the service (e.g., converted more than 50 pages), a refund may not be applicable.
+              Refunds are not granted for recurring subscription charges after the initial 7-day period. Additionally, if you have heavily utilized the service (e.g., converted more than 4 statements), a refund may not be applicable.
             </p>
             <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">3. How to Request</h2>
             <p>

@@ -12,13 +12,14 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       name: "Free",
       inr: 0,
       usd: 0,
-      // Free plan: PAGE-based
-      quota: "50 pages",
-      quotaNote: "Per month",
-      isPageBased: true,
+      // Free plan: STATEMENT-based
+      quota: "2 statements",
+      quotaNote: "Per day · no signup required for 1",
+      isPageBased: false,
+      isDaily: true,
       features: [
-        "50 free pages every month",
-        "1 free conversion without signup",
+        "2 free statements every day",
+        "1 free statement without signup",
         "All Indian banks supported",
         "Realtime conversion history",
       ],
@@ -88,7 +89,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
             Paid plans are <strong className="text-foreground">statement-based</strong> — convert any size PDF, pay per statement.
           </p>
           <p className="text-sm text-muted-foreground mb-8">
-            Free plan is page-based (50 pages/month). Paid plans count each uploaded file as 1 statement, regardless of pages.
+            Free plan: 1 statement/day (no signup), 2/day (free account). Paid plans count each uploaded file as 1 statement, regardless of pages.
           </p>
 
           {/* Currency Toggle */}
@@ -138,14 +139,14 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
 
               {/* Quota badge */}
               <div className={`mb-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold w-max border-2 ${
-                plan.isPageBased
+                plan.isFree
                   ? "bg-muted/50 border-shadow-color/30 text-muted-foreground"
                   : "bg-secondary/10 border-secondary/30 text-secondary"
               }`}>
-                {plan.isPageBased ? <FileText className="w-3 h-3" /> : <Zap className="w-3 h-3" />}
+                {plan.isFree ? <FileText className="w-3 h-3" /> : <Zap className="w-3 h-3" />}
                 <div>
                   <span className="font-black">{plan.quota}</span>
-                  <span className="font-normal ml-1 opacity-70">{plan.isPageBased ? "/ day" : "/ month"}</span>
+                  <span className="font-normal ml-1 opacity-70">{(plan as any).isDaily ? "/ day" : "/ month"}</span>
                 </div>
               </div>
 
@@ -181,7 +182,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
         {/* Bottom note */}
         <div className="mt-16 text-center space-y-2">
           <p className="text-muted-foreground font-medium">
-             Looking for free conversions? <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold hover:underline">Register</a> to get 50 free pages every month. No credit card required.
+             Looking for free conversions? <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold hover:underline">Register</a> to get 2 free bank statement conversions every day. No credit card required.
           </p>
           <p className="text-sm text-muted-foreground">
             Paid plans: each uploaded PDF = 1 statement. No page limits per statement.
