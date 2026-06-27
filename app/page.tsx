@@ -1,17 +1,36 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { ArrowRight, FileText, CheckCircle2, Shield, Zap, Check } from 'lucide-react';
 import { Pricing } from './components/pricing';
 import { AnonUpload } from './components/AnonUpload';
 import { TypewriterHeading } from './components/TypewriterHeading';
 
 export const metadata: Metadata = {
-  title: 'Bank Statement PDF to Excel & CSV Converter — Free for Indian CAs | Parsify',
-  description: 'Convert bank statement PDF to Excel instantly. India\'s #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis & 200+ banks. Auto GST tagging, Tally-ready output. 50 pages free monthly, no signup needed.',
+  title: 'Bank Statement Converter — Convert PDF to Excel & CSV | Parsify',
+  description: 'Convert bank statements instantly with the best AI-powered bank statement converter. Convert PDF bank statements to clean Excel, CSV & Tally in seconds. 99.3% accuracy.',
   alternates: {
     canonical: 'https://parsify.in',
   },
 };
+
+const BANK_LINKS = [
+  { name: "HDFC Bank Statement Converter", slug: "hdfc-bank-statement-converter" },
+  { name: "SBI Bank Statement Converter", slug: "sbi-bank-statement-converter" },
+  { name: "ICICI Bank Statement Converter", slug: "icici-bank-statement-converter" },
+  { name: "Axis Bank Statement Converter", slug: "axis-bank-statement-converter" },
+  { name: "Kotak Bank Statement Converter", slug: "kotak-bank-statement-converter" },
+  { name: "PNB Bank Statement Converter", slug: "pnb-bank-statement-converter" },
+  { name: "Bank of Baroda Converter", slug: "bank-of-baroda-statement-converter" },
+  { name: "IndusInd Bank Converter", slug: "indusind-bank-statement-converter" },
+  { name: "Yes Bank Converter", slug: "yes-bank-statement-converter" },
+  { name: "Canara Bank Converter", slug: "canara-bank-statement-converter" },
+  { name: "IDBI Bank Converter", slug: "idbi-bank-statement-converter" },
+  { name: "Union Bank Converter", slug: "union-bank-statement-converter" },
+  { name: "BOB Bank Converter", slug: "bob-bank-statement-converter" },
+  { name: "Indian Bank Converter", slug: "indian-bank-statement-converter" },
+  { name: "Federal Bank Converter", slug: "federal-bank-statement-converter" }
+];
 
 export default function HomePage() {
   const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
@@ -30,10 +49,12 @@ export default function HomePage() {
                 #1 Bank Statement Converter for Indian CAs
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-tight sm:leading-none mb-6 text-shadow-color uppercase font-sans">
-                Bank Statement<br/>
-                <TypewriterHeading /><br/>
-                Converter.
+                Bank Statement <br/>
+                <span className="text-primary bg-primary/10 px-4 py-1 border-2 border-primary inline-block transform -rotate-1 brutal-shadow my-2">Converter</span>
               </h1>
+              <div className="mb-8">
+                <TypewriterHeading />
+              </div>
               <p className="text-lg text-muted-foreground font-medium mb-10 max-w-lg leading-relaxed">
                 Upload any bank statement PDF — HDFC, SBI, ICICI, Axis, Kotak or 200+ banks. Get clean, Tally-ready Excel or CSV in seconds. Built for Indian CAs and accounting teams.
               </p>
@@ -305,16 +326,70 @@ export default function HomePage() {
                      <h4 className="text-xl font-black uppercase text-shadow-color mb-3">AI Text Reconstruction</h4>
                      <p className="text-muted-foreground font-medium text-sm leading-relaxed">Uses contextual computer vision to fix smudged decimals, faded numbers, and broken text in low-quality scans.</p>
                   </div>
-               </div>
+                </div>
 
+             </div>
+          </div>
+       </section>
+
+      {/* ══ 4.6. SEO CONTENT SECTION ══ */}
+      <section className="py-24 border-b-2 border-shadow-color bg-card bg-grid-pattern">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
+                The Ultimate <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block rotate-1">Bank Statement Converter</span>
+              </h2>
+              <p className="text-muted-foreground font-medium mb-6 leading-relaxed">
+                Manually entering transaction data from PDF statements into Excel or accounting platforms like Tally is time-consuming and error-prone. Our AI-powered bank statement converter automates this workflow, processing multi-page bank statements in under 5 seconds with 99.3% accuracy.
+              </p>
+              <p className="text-muted-foreground font-medium leading-relaxed">
+                Whether you need an HDFC, SBI, ICICI, or Axis bank statement converter, our tool automatically detects the bank format, parses rows, splits GST, and provides a perfectly structured Excel/CSV output ready for audits and reconciliation.
+              </p>
             </div>
-         </div>
+            
+            <div className="space-y-6">
+              <div className="brutal-card p-6 bg-background">
+                <h3 className="text-lg font-black uppercase text-shadow-color mb-2">Automated PDF Parsing</h3>
+                <p className="text-sm text-muted-foreground font-medium">Extract transaction dates, description details, debit/credit fields, and calculate running balances automatically without template configurations.</p>
+              </div>
+              <div className="brutal-card p-6 bg-background">
+                <h3 className="text-lg font-black uppercase text-shadow-color mb-2">Audit-Ready Excel Output</h3>
+                <p className="text-sm text-muted-foreground font-medium">Download standardized sheets mapped with correct Tally voucher types, cleaned transaction party names, and formatted dates.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 4.8. SUPPORTED BANKS SEO LINKS ══ */}
+      <section className="py-24 border-b-2 border-shadow-color bg-background">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+             <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
+               Supported <span className="text-primary bg-primary/10 px-2 border-2 border-primary inline-block">Bank Converters</span>
+             </h2>
+             <p className="text-muted-foreground font-medium max-w-xl mx-auto">
+               Instantly convert PDF bank statements from any major Indian bank using our specialized bank statement converter tools.
+             </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {BANK_LINKS.map((bank, i) => (
+              <Link
+                key={i}
+                href={`/${bank.slug}`}
+                className="px-4 py-2 border-2 border-shadow-color bg-card font-bold text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:translate-x-0.5 brutal-shadow hover:shadow-[2px_2px_0px_0px_#1a1c1d] transition-all"
+              >
+                {bank.name}
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ══ 5. PRICING ══ */}
       <Pricing DASHBOARD_URL={DASHBOARD_URL} />
-
-      {/* ══ 5.5. FAQ ══ */}
       <section id="faq" className="py-32 border-b-2 border-shadow-color bg-card">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-20">
