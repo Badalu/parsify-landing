@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 export function TypewriterHeading() {
   const words = ["Excel", "CSV", "Tally XML"];
   const [wordIndex, setWordIndex] = useState(0);
-  const [currentText, setCurrentText] = useState("");
+  const [currentText, setCurrentText] = useState("Excel");
   const [isDeleting, setIsDeleting] = useState(false);
   const [delay, setDelay] = useState(100);
   const [mounted, setMounted] = useState(false);
