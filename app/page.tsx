@@ -388,6 +388,62 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ══ 4.6. SEO CONTENT SECTION ══ */}
+      <section className="py-24 border-b-2 border-shadow-color bg-card bg-grid-pattern">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
+                The Ultimate <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block rotate-1">Bank Statement Converter</span>
+              </h2>
+              <p className="text-muted-foreground font-medium mb-6 leading-relaxed">
+                Manually entering transaction data from PDF statements into Excel or accounting platforms like Tally is time-consuming and error-prone. Our AI-powered bank statement converter automates this workflow, processing multi-page bank statements in under 5 seconds with 99.3% accuracy.
+              </p>
+              <p className="text-muted-foreground font-medium leading-relaxed">
+                Whether you need an HDFC, SBI, ICICI, or Axis bank statement converter, our tool automatically detects the bank format, parses rows, splits GST, and provides a perfectly structured Excel/CSV output ready for audits and reconciliation.
+              </p>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="brutal-card p-6 bg-background">
+                <h3 className="text-lg font-black uppercase text-shadow-color mb-2">Automated PDF Parsing</h3>
+                <p className="text-sm text-muted-foreground font-medium">Extract transaction dates, description details, debit/credit fields, and calculate running balances automatically without template configurations.</p>
+              </div>
+              <div className="brutal-card p-6 bg-background">
+                <h3 className="text-lg font-black uppercase text-shadow-color mb-2">Audit-Ready Excel Output</h3>
+                <p className="text-sm text-muted-foreground font-medium">Download standardized sheets mapped with correct Tally voucher types, cleaned transaction party names, and formatted dates.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 4.8. SUPPORTED BANKS SEO LINKS ══ */}
+      <section className="py-24 border-b-2 border-shadow-color bg-background">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+             <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
+               Supported <span className="text-primary bg-primary/10 px-2 border-2 border-primary inline-block">Bank Converters</span>
+             </h2>
+             <p className="text-muted-foreground font-medium max-w-xl mx-auto">
+               Instantly convert PDF bank statements from any major Indian bank using our specialized bank statement converter tools.
+             </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {BANK_LINKS.map((bank, i) => (
+              <Link
+                key={i}
+                href={`/${bank.slug}`}
+                className="px-4 py-2 border-2 border-shadow-color bg-card font-bold text-sm uppercase tracking-wider hover:-translate-y-0.5 hover:translate-x-0.5 brutal-shadow hover:shadow-[2px_2px_0px_0px_#1a1c1d] transition-all"
+              >
+                {bank.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══ 5. PRICING ══ */}
       <Pricing DASHBOARD_URL={DASHBOARD_URL} />
       <section id="faq" className="py-32 border-b-2 border-shadow-color bg-card">
