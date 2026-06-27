@@ -13,13 +13,13 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       inr: 0,
       usd: 0,
       // Free plan: STATEMENT-based
-      quota: "2 statements",
-      quotaNote: "Per day · no signup required for 1",
+      quota: "25 pages",
+      quotaNote: "Per day · no signup required for 10 pages",
       isPageBased: false,
       isDaily: true,
       features: [
-        "2 free statements every day",
-        "1 free statement without signup",
+        "25 free pages every day",
+        "15 free pages without signup",
         "All Indian banks supported",
         "Realtime conversion history",
       ],
@@ -89,7 +89,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
             Paid plans are <strong className="text-foreground">statement-based</strong> — convert any size PDF, pay per statement.
           </p>
           <p className="text-sm text-muted-foreground mb-8">
-            Free plan: 1 statement/day (no signup), 2/day (free account). Paid plans count each uploaded file as 1 statement, regardless of pages.
+            Free plan: 15 pages/day (no signup), 25 pages/day (free account). Paid plans count each uploaded file as 1 statement, regardless of pages.
           </p>
 
           {/* Currency Toggle */}
@@ -182,7 +182,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
         {/* Bottom note */}
         <div className="mt-16 text-center space-y-2">
           <p className="text-muted-foreground font-medium">
-             Looking for free conversions? <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold hover:underline">Register</a> to get 2 free bank statement conversions every day. No credit card required.
+             Looking for free conversions? <a href={`${DASHBOARD_URL}/signup`} className="text-primary font-bold hover:underline">Register</a> to get 25 free pages converted every day. No credit card required.
           </p>
           <p className="text-sm text-muted-foreground">
             Paid plans: each uploaded PDF = 1 statement. No page limits per statement.

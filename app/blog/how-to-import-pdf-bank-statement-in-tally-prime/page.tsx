@@ -71,6 +71,8 @@ export default function BlogPost1() {
               By converting your PDFs to Excel with Parsify, you eliminate manual data entry entirely. Import thousands of transactions into Tally Prime in seconds and keep your books reconciled with zero headache.
             </p>
           </div>
+
+          <AuthorBio />
         </div>
       </div>
     </main>

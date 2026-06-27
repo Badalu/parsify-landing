@@ -62,6 +62,8 @@ export default function BlogPost5() {
               Once formatted, simply go to Tally Prime &gt; Banking &gt; Bank Reconciliation &gt; Import, and map your pristine columns for a flawless import.
             </p>
           </div>
+
+          <AuthorBio />
         </div>
       </div>
     </main>

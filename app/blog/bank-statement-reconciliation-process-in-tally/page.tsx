@@ -61,6 +61,8 @@ export default function BlogPost3() {
               To maintain healthy financials, perform bank reconciliations at least monthly. With automated tools, many businesses have moved to weekly or even daily reconciliations, ensuring real-time visibility into cash flow.
             </p>
           </div>
+
+          <AuthorBio />
         </div>
       </div>
     </main>

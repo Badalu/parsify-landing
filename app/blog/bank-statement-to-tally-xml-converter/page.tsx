@@ -84,6 +84,8 @@ export default function BankToTallyXML() {
               While Excel is great for analysis, importing Excel into Tally requires custom macros or third-party utilities. Tally XML is the native language of Tally. By generating XML directly, you skip the middleman, ensuring 100% data integrity and saving hours of mapping time.
             </p>
           </div>
+
+          <AuthorBio />
         </div>
       </div>
     </main>

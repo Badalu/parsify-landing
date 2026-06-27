@@ -58,6 +58,8 @@ export default function BlogPost2() {
               Converting scanned statements manually could take hours of tedious data entry. By leveraging modern OCR and AI, you can transform paper statements into structured Excel data in mere minutes, ready for your accounting software.
             </p>
           </div>
+
+          <AuthorBio />
         </div>
       </div>
     </main>

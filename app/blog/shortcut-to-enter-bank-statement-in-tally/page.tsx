@@ -70,6 +70,8 @@ export default function BlogPost4() {
               <li>Type the bank dates rapidly and press Enter to move down the list.</li>
             </ul>
           </div>
+
+          <AuthorBio />
         </div>
       </div>
     </main>
