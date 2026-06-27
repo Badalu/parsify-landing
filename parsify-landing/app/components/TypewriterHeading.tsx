@@ -48,7 +48,7 @@ export function TypewriterHeading() {
   }, [currentText, isDeleting, wordIndex, delay, mounted]);
 
   return (
-    <span className="text-secondary bg-secondary/10 px-4 py-1.5 border-2 border-shadow-color brutal-shadow inline-flex items-center transform -rotate-1 mt-2 select-none min-w-[270px] sm:min-w-[340px] text-left justify-start">
+    <span className="text-secondary bg-secondary/10 px-4 py-1.5 border-2 border-secondary inline-flex items-center transform -rotate-1 mt-2 select-none min-w-[210px] xs:min-w-[250px] sm:min-w-[340px] max-w-full text-left justify-start whitespace-nowrap text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
       <span className="text-foreground font-bold mr-1.5">PDF to</span>
       <span className="text-secondary font-extrabold">{currentText}</span>
       <span className="ml-0.5 text-secondary font-bold select-none animate-blink">

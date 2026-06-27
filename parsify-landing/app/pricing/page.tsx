@@ -37,7 +37,7 @@ export default function PricingPage() {
     },
     {
       name: "Pro",
-      inr: 3400,
+      inr: 3499,
       usd: 45,
       desc: "Pro — busy season ready",
       features: ["~400 statements/month (5000 pages)", "API Access & Webhooks", "Custom integrations", "24/7 Dedicated Support"],

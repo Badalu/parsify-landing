@@ -7,7 +7,7 @@ import { TypewriterHeading } from './components/TypewriterHeading';
 
 export const metadata: Metadata = {
   title: 'Bank Statement PDF to Excel & CSV Converter — Free for Indian CAs | Parsify',
-  description: 'Convert bank statement PDF to Excel instantly. India\'s #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis & 200+ banks. Auto GST tagging, Tally-ready output. Free 2 statements daily, no signup needed.',
+  description: 'Convert bank statement PDF to Excel instantly. India\'s #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis & 200+ banks. Auto GST tagging, Tally-ready output. 50 pages free monthly, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in',
   },
@@ -338,11 +338,11 @@ export default function HomePage() {
               },
               {
                 q: "Parsify free mein use kar sakte hain?",
-                a: "Haan! Bina kisi credit card ke aap Parsify par sign up karke 50 pages free monthly convert kar sakte hain."
+                a: "Haan! Bina kisi credit card ya sign up ke aap Parsify par 1 statement daily free convert kar sakte hain. Free account create karne par aapko daily 2 free statements milte hain."
               },
               {
-                q: "Kitne pages free mein process hote hain?",
-                a: "Parsify par registration ke baad har mahine 50 pages free mein process hote hain, jo har month ki 1st date (1 tarik) ko automatically reset ho jaate hain."
+                q: "Kitne statements free mein process hote hain?",
+                a: "Bina account ke aap 1 statement per day convert kar sakte hain, aur free account ke sath 2 statements daily convert kar sakte hain."
               }
             ].map((faq, i) => (
               <div key={i} className="brutal-card p-6 bg-background">

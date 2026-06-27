@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     default: "Bank Statement PDF to Excel & CSV Converter — Free for Indian CAs | Parsify",
   },
   description:
-    "Convert bank statement PDF to Excel & CSV instantly. India's #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis, Kotak & 200+ banks. Auto GST tagging, Tally-ready output, 99.3% accuracy. Free 2 statements daily.",
+    "Convert bank statement PDF to Excel & CSV instantly. India's #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis, Kotak & 200+ banks. Auto GST tagging, Tally-ready output, 99.3% accuracy. 50 pages free monthly.",
   applicationName: "Parsify",
   authors: [{ name: "Parsify", url: "https://parsify.in" }],
   creator: "Parsify",
@@ -149,7 +149,7 @@ const softwareAppSchema = {
     },
     {
       "@type": "Offer",
-      "price": "3400",
+      "price": "3499",
       "priceCurrency": "INR",
       "name": "Pro Plan",
       "description": "400 statements per month"
@@ -189,7 +189,7 @@ const faqPageSchema = {
       "name": "Is Parsify free to use?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! You can convert 1 statement per day without signing up. Create a free account to get 2 statements daily. Paid plans start at ₹999/month for 40 statements."
+        "text": "Yes! You can convert 1 statement per day without signing up. Create a free account to get 50 free pages every month. Paid plans start at ₹999/month for 40 statements."
       }
     },
     {
@@ -283,6 +283,17 @@ export default function RootLayout({
               gtag('js', new Date());
               gtag('config', 'G-4ZTPN4PH1M');
               gtag('config', 'AW-18169246685');
+
+              // PostHog Tracking snippet
+              ${process.env.NEXT_PUBLIC_POSTHOG_KEY ? `
+                !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r),var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessQueue getActiveMatchingSurveys getSurveyResponse getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+                posthog.init('${process.env.NEXT_PUBLIC_POSTHOG_KEY}', {
+                  api_host: '${process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com"}',
+                  person_profiles: 'identified_only',
+                  capture_pageview: true,
+                  capture_pageleave: true
+                });
+              ` : ''}
             `,
           }}
         />
