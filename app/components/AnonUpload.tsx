@@ -50,7 +50,8 @@ export function AnonUpload() {
       const getAnonId = () => {
         if (typeof window === 'undefined') return '00000000-0000-0000-0000-000000000000';
         let id = localStorage.getItem("parsify_anon_id");
-        if (!id) {
+        const isValidUUID = (str: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str);
+        if (!id || !isValidUUID(id)) {
           try {
             id = crypto.randomUUID();
           } catch (e) {
