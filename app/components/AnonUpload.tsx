@@ -47,9 +47,24 @@ export function AnonUpload() {
       if (pwd) {
         formData.append("password", pwd);
       }
+      const getAnonId = () => {
+        if (typeof window === 'undefined') return '00000000-0000-0000-0000-000000000000';
+        let id = localStorage.getItem("parsify_anon_id");
+        if (!id) {
+          try {
+            id = crypto.randomUUID();
+          } catch (e) {
+            id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+              const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+              return v.toString(16);
+            });
+          }
+          localStorage.setItem("parsify_anon_id", id);
+        }
+        return id;
+      };
 
-      const anonId = typeof window !== 'undefined' ? (localStorage.getItem("parsify_anon_id") || `anon_${Math.random().toString(36).substring(2, 15)}`) : `anon_fallback`;
-      if (typeof window !== 'undefined') localStorage.setItem("parsify_anon_id", anonId);
+      const anonId = getAnonId();
 
       const API_URL = "https://parsify-api-1vh0.onrender.com";
       const res = await fetch(`${API_URL}/api/convert`, {
