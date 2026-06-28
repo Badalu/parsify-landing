@@ -162,7 +162,7 @@ export function AnonUpload() {
         {error && (
           <div className="border-2 border-destructive bg-destructive/10 p-4 mb-6 brutal-shadow text-destructive text-sm font-bold text-center">
             {error}
-            <button onClick={() => {setError(null); setFile(null);}} className="block mx-auto mt-2 underline text-xs">Try again</button>
+            <button onClick={() => {setError(null); setFile(null); setIsPasswordProtected(false);}} className="block mx-auto mt-2 underline text-xs">Try again</button>
           </div>
         )}
 
