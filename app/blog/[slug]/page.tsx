@@ -102,8 +102,8 @@ export default async function BlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="brutal-card p-8 md:p-12 bg-card relative">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="brutal-card p-5 md:p-12 bg-card relative">
           <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
             {post.tags?.length ? post.tags[0] : "Blog Post"}
           </div>
@@ -118,19 +118,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             )}
           </h1>
             
-          {post.excerpt ? (
-            <p className="text-xl text-muted-foreground font-medium mb-10 leading-relaxed">
-              {post.excerpt}
-            </p>
-          ) : null}
 
-          {post.cover_image ? (
-            <img
-              src={post.cover_image}
-              alt={post.title}
-              className="mt-4 mb-10 w-full border-2 border-shadow-color brutal-shadow object-cover"
-            />
-          ) : null}
 
           <div className="prose prose-lg max-w-none text-muted-foreground font-medium space-y-6">
             <ReactMarkdown 
