@@ -149,9 +149,52 @@ export default async function BlogPostPage({ params }: PageProps) {
             </ReactMarkdown>
           </div>
 
+          <hr className="my-12 border-2 border-shadow-color" />
+          
+          <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">Try It Now: Direct Demo</h2>
+          <p className="text-muted-foreground font-medium mb-6">
+            Upload your bank statement below to instantly extract data and export it as Tally XML. No credit card required.
+          </p>
+          
+          {/* Embedded Parsify Demo */}
+          <div className="w-full my-8 border-4 border-shadow-color brutal-shadow rounded-sm overflow-hidden bg-background">
+            <iframe 
+              src={`${process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://app.parsify.in"}/dashboard/convert?embed=true`} 
+              className="w-full h-[600px] md:h-[700px] border-none"
+              title="Parsify Bank Statement Converter Demo"
+              allow="clipboard-read; clipboard-write"
+            />
+          </div>
+
           <AuthorBio />
         </div>
       </div>
+
+      {/* ══ OTHER BANKS CTA ══ */}
+      <section className="py-16 mt-16 border-t-2 border-shadow-color bg-background relative z-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl font-black uppercase tracking-tight text-shadow-color font-sans mb-8 text-center">
+            Also supports <span className="text-primary">200+ other banks</span>
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              { name: 'SBI', href: '/sbi-bank-statement-converter' },
+              { name: 'ICICI', href: '/icici-bank-statement-converter' },
+              { name: 'Axis', href: '/axis-bank-statement-converter' },
+              { name: 'Kotak', href: '/kotak-bank-statement-converter' },
+              { name: 'PNB', href: '/pnb-bank-statement-converter' },
+              { name: 'Bank of Baroda', href: '/bank-of-baroda-statement-converter' },
+              { name: 'IndusInd', href: '/indusind-bank-statement-converter' },
+              { name: 'Yes Bank', href: '/yes-bank-statement-converter' },
+              { name: 'Canara Bank', href: '/canara-bank-statement-converter' },
+            ].map((bank) => (
+              <Link key={bank.name} href={bank.href} className="border-2 border-shadow-color bg-card px-4 py-2 text-sm font-bold uppercase tracking-wider hover:bg-primary hover:text-white transition-colors brutal-shadow">
+                {bank.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
