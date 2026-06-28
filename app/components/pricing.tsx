@@ -38,6 +38,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       features: [
         "40 statements / month",
         "Unlimited pages per statement",
+        "Excel, CSV & Tally XML",
         "Standard AI parsing",
         "Email support",
       ],
@@ -54,6 +55,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       features: [
         "120 statements / month",
         "Unlimited pages per statement",
+        "Direct Tally XML Export",
         "Priority Gemini AI parsing",
         "Bulk upload support",
         "Priority support",
@@ -71,6 +73,7 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       features: [
         "400 statements / month",
         "Unlimited pages per statement",
+        "Direct Tally XML Export",
         "API Access & Webhooks",
         "24/7 Dedicated Support",
       ],
