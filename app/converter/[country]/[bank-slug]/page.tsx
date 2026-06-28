@@ -108,6 +108,24 @@ export default async function ProgrammaticBankConverterPage({ params }: PageProp
     ]
   };
 
+  // Dynamic SoftwareApplication Schema
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": `Parsify — ${bankName} Bank Statement Converter`,
+    "operatingSystem": "Web (All platforms)",
+    "applicationCategory": "BusinessApplication",
+    "applicationSubCategory": "Accounting Software",
+    "description": `Convert PDF bank statements from ${bankName} (${countryName}) to Excel/CSV automatically. Handles merged cells and passwords.`,
+    "screenshot": "https://parsify.in/og-image.png",
+    "featureList": "PDF to Excel, PDF to CSV, Auto bank detection, GST tagging, Transaction category tagging",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  };
+
   const BANK_FORMATS = [
     { name: `${bankName} Savings Account`, desc: 'Standard savings account statements' },
     { name: `${bankName} Current Account`, desc: 'Business current account statements with high transaction volumes' },
@@ -156,6 +174,11 @@ export default async function ProgrammaticBankConverterPage({ params }: PageProp
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        {/* JSON-LD for Software Application */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
         />
       </section>
 
