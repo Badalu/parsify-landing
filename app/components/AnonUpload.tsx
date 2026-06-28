@@ -56,8 +56,11 @@ export function AnonUpload() {
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
-        if (res.status === 401 || errData.needs_password || errData.error === "password_required") {
+        if (res.status === 401 || errData.needs_password || errData.error === "password_required" || errData.detail === "password_required") {
           setIsPasswordProtected(true);
+          if (pwd) {
+            throw new Error("Incorrect Password");
+          }
           throw new Error("Password Protected");
         }
         throw new Error(errData.detail || `Server error ${res.status}`);
@@ -70,7 +73,9 @@ export function AnonUpload() {
         throw new Error("No transactions detected in this statement.");
       }
     } catch (e: any) {
-      if (e.message !== "Password Protected") {
+      if (e.message === "Incorrect Password") {
+        setError("Incorrect password. Please try again.");
+      } else if (e.message !== "Password Protected") {
         setError(e.message || "Failed to process the statement");
       }
     } finally {
