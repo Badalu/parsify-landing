@@ -48,9 +48,15 @@ export function AnonUpload() {
         formData.append("password", pwd);
       }
 
+      const anonId = typeof window !== 'undefined' ? (localStorage.getItem("parsify_anon_id") || `anon_${Math.random().toString(36).substring(2, 15)}`) : `anon_fallback`;
+      if (typeof window !== 'undefined') localStorage.setItem("parsify_anon_id", anonId);
+
       const API_URL = "https://parsify-api-1vh0.onrender.com";
       const res = await fetch(`${API_URL}/api/convert`, {
         method: "POST",
+        headers: {
+          "X-Anon-Id": anonId
+        },
         body: formData,
       });
 
