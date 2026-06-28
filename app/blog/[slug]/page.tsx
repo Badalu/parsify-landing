@@ -132,8 +132,21 @@ export default async function BlogPostPage({ params }: PageProps) {
             />
           ) : null}
 
-          <div className="prose prose-lg max-w-none text-muted-foreground font-medium prose-headings:font-black prose-headings:uppercase prose-headings:text-shadow-color prose-a:text-primary prose-a:font-bold prose-strong:text-foreground prose-strong:font-black space-y-6">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+          <div className="prose prose-lg max-w-none text-muted-foreground font-medium space-y-6">
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h2: ({node, ...props}) => <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4" {...props} />,
+                h3: ({node, ...props}) => <h3 className="text-xl font-bold mt-6 mb-2 text-shadow-color" {...props} />,
+                ul: ({node, ...props}) => <ul className="list-disc pl-6 space-y-2 mt-4" {...props} />,
+                ol: ({node, ...props}) => <ol className="list-decimal pl-6 space-y-2 mt-4" {...props} />,
+                a: ({node, ...props}) => <a className="text-primary hover:underline font-bold" {...props} />,
+                strong: ({node, ...props}) => <strong className="font-bold text-foreground" {...props} />,
+                img: ({node, ...props}) => <img className="my-8 w-full border-4 border-shadow-color brutal-shadow rounded-sm bg-background object-cover" {...props} />
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
 
           <AuthorBio />
