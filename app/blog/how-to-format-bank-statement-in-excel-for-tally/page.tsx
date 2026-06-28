@@ -26,7 +26,7 @@ export default function BlogPost5() {
             Excel Formatting
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-10 text-shadow-color uppercase font-sans">
-            How to Format <span className="text-secondary">Bank Statement in Excel</span> for Tally
+            How to Format <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2 md:mt-0">Bank Statement in Excel</span> for Tally
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground font-medium space-y-6">

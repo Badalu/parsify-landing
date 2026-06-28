@@ -26,7 +26,7 @@ export default function BlogPost4() {
             Tally Tips & Tricks
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-10 text-shadow-color uppercase font-sans">
-            Shortcut to <span className="text-secondary">Enter Bank Statement</span> in Tally
+            Shortcut to <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2 md:mt-0">Enter Bank Statement</span> in Tally
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground font-medium space-y-6">
