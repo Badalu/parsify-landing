@@ -111,7 +111,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-10 text-shadow-color uppercase font-sans">
             {post.title.includes('*') ? (
               post.title.split('*').map((part: string, i: number) => (
-                i % 2 === 1 ? <span key={i} className="text-secondary">{part}</span> : part
+                i % 2 === 1 ? <span key={i} className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2 md:mt-0">{part}</span> : part
               ))
             ) : (
               post.title
