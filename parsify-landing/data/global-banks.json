@@ -1,0 +1,41 @@
+[
+  { "countrySlug": "uae", "countryName": "UAE", "bankSlug": "emirates-nbd", "bankName": "Emirates NBD" },
+  { "countrySlug": "uae", "countryName": "UAE", "bankSlug": "dubai-islamic-bank", "bankName": "Dubai Islamic Bank (DIB)" },
+  { "countrySlug": "uae", "countryName": "UAE", "bankSlug": "adcb", "bankName": "Abu Dhabi Commercial Bank (ADCB)" },
+  { "countrySlug": "uae", "countryName": "UAE", "bankSlug": "first-abu-dhabi-bank", "bankName": "First Abu Dhabi Bank (FAB)" },
+  { "countrySlug": "uae", "countryName": "UAE", "bankSlug": "mashreq", "bankName": "Mashreq Bank" },
+
+  { "countrySlug": "usa", "countryName": "USA", "bankSlug": "chase", "bankName": "Chase Bank" },
+  { "countrySlug": "usa", "countryName": "USA", "bankSlug": "bank-of-america", "bankName": "Bank of America" },
+  { "countrySlug": "usa", "countryName": "USA", "bankSlug": "wells-fargo", "bankName": "Wells Fargo" },
+  { "countrySlug": "usa", "countryName": "USA", "bankSlug": "citi", "bankName": "Citibank" },
+  { "countrySlug": "usa", "countryName": "USA", "bankSlug": "us-bank", "bankName": "U.S. Bank" },
+
+  { "countrySlug": "uk", "countryName": "United Kingdom", "bankSlug": "barclays", "bankName": "Barclays" },
+  { "countrySlug": "uk", "countryName": "United Kingdom", "bankSlug": "hsbc", "bankName": "HSBC UK" },
+  { "countrySlug": "uk", "countryName": "United Kingdom", "bankSlug": "lloyds", "bankName": "Lloyds Bank" },
+  { "countrySlug": "uk", "countryName": "United Kingdom", "bankSlug": "natwest", "bankName": "NatWest" },
+  { "countrySlug": "uk", "countryName": "United Kingdom", "bankSlug": "santander", "bankName": "Santander UK" },
+
+  { "countrySlug": "australia", "countryName": "Australia", "bankSlug": "cba", "bankName": "Commonwealth Bank (CBA)" },
+  { "countrySlug": "australia", "countryName": "Australia", "bankSlug": "westpac", "bankName": "Westpac" },
+  { "countrySlug": "australia", "countryName": "Australia", "bankSlug": "nab", "bankName": "National Australia Bank (NAB)" },
+  { "countrySlug": "australia", "countryName": "Australia", "bankSlug": "anz", "bankName": "ANZ Bank" },
+
+  { "countrySlug": "singapore", "countryName": "Singapore", "bankSlug": "dbs", "bankName": "DBS Bank" },
+  { "countrySlug": "singapore", "countryName": "Singapore", "bankSlug": "ocbc", "bankName": "OCBC Bank" },
+  { "countrySlug": "singapore", "countryName": "Singapore", "bankSlug": "uob", "bankName": "UOB" },
+
+  { "countrySlug": "saudi-arabia", "countryName": "Saudi Arabia", "bankSlug": "al-rajhi", "bankName": "Al Rajhi Bank" },
+  { "countrySlug": "saudi-arabia", "countryName": "Saudi Arabia", "bankSlug": "snb", "bankName": "Saudi National Bank (SNB)" },
+  { "countrySlug": "saudi-arabia", "countryName": "Saudi Arabia", "bankSlug": "riyad-bank", "bankName": "Riyad Bank" },
+
+  { "countrySlug": "canada", "countryName": "Canada", "bankSlug": "td-bank", "bankName": "TD Bank" },
+  { "countrySlug": "canada", "countryName": "Canada", "bankSlug": "rbc", "bankName": "Royal Bank of Canada (RBC)" },
+  { "countrySlug": "canada", "countryName": "Canada", "bankSlug": "scotiabank", "bankName": "Scotiabank" },
+  { "countrySlug": "canada", "countryName": "Canada", "bankSlug": "bmo", "bankName": "BMO" },
+  
+  { "countrySlug": "south-africa", "countryName": "South Africa", "bankSlug": "standard-bank", "bankName": "Standard Bank" },
+  { "countrySlug": "south-africa", "countryName": "South Africa", "bankSlug": "first-national-bank", "bankName": "First National Bank (FNB)" },
+  { "countrySlug": "south-africa", "countryName": "South Africa", "bankSlug": "absa", "bankName": "Absa Bank" }
+]

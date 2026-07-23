@@ -5,6 +5,8 @@ import { ArrowRight, FileText, CheckCircle2, Shield, Zap, Check } from 'lucide-r
 import { Pricing } from './components/pricing';
 import { AnonUpload } from './components/AnonUpload';
 import { TypewriterHeading } from './components/TypewriterHeading';
+import { Testimonials } from './components/Testimonials';
+import globalBanks from '@/data/global-banks.json';
 
 export const metadata: Metadata = {
   title: 'Bank Statement Converter — Convert PDF to Excel & CSV | Parsify',
@@ -385,8 +387,32 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+          
+          <div className="mt-12 text-center">
+             <h3 className="text-xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
+               Global Banks (International)
+             </h3>
+             <div className="flex flex-wrap justify-center gap-3">
+               {globalBanks.slice(0, 15).map((bank) => (
+                 <Link
+                   key={bank.bankSlug}
+                   href={`/converter/${bank.countrySlug}/${bank.bankSlug}`}
+                   className="px-3 py-1.5 border-2 border-shadow-color bg-background text-xs font-bold uppercase tracking-wider hover:-translate-y-0.5 hover:translate-x-0.5 brutal-shadow hover:shadow-[2px_2px_0px_0px_#1a1c1d] transition-all"
+                 >
+                   {bank.bankName}
+                 </Link>
+               ))}
+               <Link href="/converter/usa/chase" className="px-3 py-1.5 border-2 border-primary bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wider hover:-translate-y-0.5 hover:translate-x-0.5 brutal-shadow hover:shadow-[2px_2px_0px_0px_#1a1c1d] transition-all">
+                 View All Global Banks →
+               </Link>
+             </div>
+          </div>
         </div>
       </section>
+
+
+      {/* ══ 4.9. TESTIMONIALS ══ */}
+      <Testimonials />
 
       {/* ══ 5. PRICING ══ */}
       <Pricing DASHBOARD_URL={DASHBOARD_URL} />

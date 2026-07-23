@@ -1,4 +1,6 @@
 import { MetadataRoute } from 'next'
+import { supabase } from '@/lib/supabase'
+import globalBanks from '@/data/global-banks.json'
 
 // ─── Bank-specific landing pages for programmatic SEO ────────────────────────
 const BANK_PAGES = [
@@ -117,5 +119,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }))
 
-  return [...staticRoutes, ...blogRoutes, ...bankRoutes]
+  // ── Dynamic Blog pages from Supabase ──
+  const { data: dynamicPosts } = await supabase
+    .from("blog_posts")
+    .select("slug, updated_at")
+    .eq("published", true);
+
+  const dynamicBlogRoutes: MetadataRoute.Sitemap = (dynamicPosts || []).map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.updated_at ? new Date(post.updated_at) : now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  // ── Global Programmatic SEO Bank Pages ──
+  const globalBankRoutes: MetadataRoute.Sitemap = globalBanks.map((bank) => ({
+    url: `${baseUrl}/converter/${bank.countrySlug}/${bank.bankSlug}`,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...dynamicBlogRoutes, ...bankRoutes, ...globalBankRoutes]
 }

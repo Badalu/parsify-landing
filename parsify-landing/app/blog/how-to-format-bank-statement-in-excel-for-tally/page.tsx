@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
   title: 'How to Format Bank Statement in Excel for Tally | Parsify',
@@ -12,20 +13,20 @@ export default function BlogPost5() {
     "@type": "Article",
     "headline": "How to Format Bank Statement in Excel for Tally",
     "description": "Learn the exact Excel column formats and templates required to successfully import your bank statement data into Tally without errors.",
-    "author": { "@type": "Organization", "name": "Parsify" },
+    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
     "publisher": { "@type": "Organization", "name": "Parsify" }
   };
 
   return (
     <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="brutal-card p-8 md:p-12 bg-card relative">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="brutal-card p-5 md:p-12 bg-card relative">
           <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
             Excel Formatting
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-10 text-shadow-color uppercase font-sans">
-            How to Format <span className="text-secondary">Bank Statement in Excel</span> for Tally
+            How to Format <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2 md:mt-0">Bank Statement in Excel</span> for Tally
           </h1>
           
           <div className="prose prose-lg max-w-none text-muted-foreground font-medium space-y-6">
@@ -61,6 +62,8 @@ export default function BlogPost5() {
               Once formatted, simply go to Tally Prime &gt; Banking &gt; Bank Reconciliation &gt; Import, and map your pristine columns for a flawless import.
             </p>
           </div>
+
+          <AuthorBio />
         </div>
       </div>
     </main>

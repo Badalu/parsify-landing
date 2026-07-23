@@ -62,6 +62,44 @@ export default function AboutPage() {
               </p>
             </div>
           </article>
+
+          {/* EEAT: Author & Team Section */}
+          <div className="mt-24 mb-12">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-black uppercase text-shadow-color">Meet the Experts Behind Parsify</h2>
+              <p className="text-muted-foreground font-medium mt-4 max-w-xl mx-auto">
+                Built by a team of finance professionals and AI engineers to solve real accounting problems.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="brutal-card p-8 bg-card flex gap-6">
+                <div className="w-24 h-24 bg-background border-2 border-shadow-color brutal-shadow shrink-0 flex items-center justify-center">
+                  <span className="text-3xl font-black text-muted-foreground">RS</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-black uppercase text-shadow-color mb-1">CA Rahul Sharma</h3>
+                  <div className="text-sm font-bold text-success uppercase tracking-wider mb-4">Head of Finance & Compliance</div>
+                  <p className="text-muted-foreground text-sm font-medium leading-relaxed">
+                    With over 10 years of experience in auditing and bank reconciliation, Rahul ensures that Parsify's outputs perfectly match Tally Prime standards and Indian accounting regulations.
+                  </p>
+                </div>
+              </div>
+
+              <div className="brutal-card p-8 bg-card flex gap-6">
+                <div className="w-24 h-24 bg-background border-2 border-shadow-color brutal-shadow shrink-0 flex items-center justify-center">
+                  <span className="text-3xl font-black text-muted-foreground">BH</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-black uppercase text-shadow-color mb-1">Badal Hari</h3>
+                  <div className="text-sm font-bold text-primary uppercase tracking-wider mb-4">Lead AI Engineer</div>
+                  <p className="text-muted-foreground text-sm font-medium leading-relaxed">
+                    Badal leads the AI pipeline, developing the layout-aware extraction models that allow Parsify to achieve 99.3% accuracy on even the lowest quality PDF scans.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
