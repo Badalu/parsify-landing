@@ -41,10 +41,25 @@ export function invalidateConversionsCache() {
 }
 
 async function fetchData(userId: string): Promise<CacheEntry> {
-  const { data: profileData } = await (supabase.from("profiles") as any)
-    .select("tier, premium_expiry_date, credits, plan_name")
-    .eq("id", userId)
-    .single();
+  let profileData: any = null;
+  try {
+    const { data, error } = await (supabase.from("profiles") as any)
+      .select("tier, premium_expiry_date, credits, plan_name")
+      .eq("id", userId)
+      .maybeSingle();
+
+    if (error && (error.code === "PGRST100" || error.message?.includes("plan_name"))) {
+      const { data: fallback } = await (supabase.from("profiles") as any)
+        .select("tier, premium_expiry_date, credits")
+        .eq("id", userId)
+        .maybeSingle();
+      profileData = fallback;
+    } else {
+      profileData = data;
+    }
+  } catch (e) {
+    console.error("Profile fetch error", e);
+  }
 
   let userTier = profileData?.tier || "registered";
   const credits = profileData?.credits || 0;
@@ -157,8 +172,9 @@ export function useDashboardConversions() {
 
     if (channelRef.current) return;
 
+    const channelName = `conversions_${user.id}_${Date.now()}`;
     const channel = supabase
-      .channel(`conversions:${user.id}`)
+      .channel(channelName)
       .on(
         "postgres_changes",
         {
