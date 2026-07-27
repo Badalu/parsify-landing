@@ -6,6 +6,7 @@ import { Pricing } from './components/pricing';
 import { AnonUpload } from './components/AnonUpload';
 import { TypewriterHeading } from './components/TypewriterHeading';
 import { Testimonials } from './components/Testimonials';
+import { BeforeAfterPreview } from './components/BeforeAfterPreview';
 import globalBanks from '@/data/global-banks.json';
 
 export const metadata: Metadata = {
@@ -127,6 +128,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ══ 3.5. INTERACTIVE BEFORE VS AFTER PREVIEW ══ */}
+      <BeforeAfterPreview />
 
       {/* ══ 4. FEATURES ══ */}
       <section id="features" className="py-32 border-b-2 border-shadow-color bg-card bg-grid-pattern">
