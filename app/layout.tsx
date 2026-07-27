@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     default: "Bank Statement PDF to Excel & CSV Converter — Free for Indian CAs | Parsify",
   },
   description:
-    "Convert bank statement PDF to Excel & CSV instantly. India's #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis, Kotak & 200+ banks. Auto GST tagging, Tally-ready output, 99.3% accuracy. 50 pages free monthly.",
+    "Convert bank statement PDF to Excel & CSV instantly. India's #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis, Kotak & 200+ banks. Auto GST tagging, Tally-ready output, 99.3% accuracy. 5 free trial pages on signup.",
   applicationName: "Parsify",
   authors: [{ name: "Parsify", url: "https://parsify.in" }],
   creator: "Parsify",
@@ -188,7 +188,7 @@ const faqPageSchema = {
       "name": "Is Parsify free to use?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! You can convert 1 statement per day without signing up. Create a free account to get 50 free pages every month. Paid plans start at ₹999/month for 40 statements."
+        "text": "Yes! You can test sample statement conversions for free without signing up. Create a free account to get 5 free trial pages to test full output. Paid plans start at ₹999/month for 40 statements."
       }
     },
     {

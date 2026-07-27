@@ -314,7 +314,7 @@ export function AnonUpload() {
           
           {!transactions && (
             <div className="flex justify-between items-center text-xs font-bold pt-2">
-              <span className="text-muted-foreground">50 pages free monthly</span>
+              <span className="text-muted-foreground">5 free trial pages on signup</span>
               <a href={`${DASHBOARD_URL}/login`} className="text-secondary hover:underline">
                 Log In &rarr;
               </a>

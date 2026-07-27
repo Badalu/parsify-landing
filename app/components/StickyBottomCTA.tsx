@@ -37,7 +37,7 @@ export function StickyBottomCTA() {
               Convert Bank Statement PDF <span className="hidden lg:inline-block bg-secondary text-white text-[9px] px-1.5 py-0.5 border border-shadow-color font-bold">5 Secs</span>
             </div>
             <div className="text-xs font-bold opacity-90 flex items-center gap-2 mt-0.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-success" /> 50 Pages Free • Tally & Excel Ready
+              <ShieldCheck className="w-3.5 h-3.5 text-success" /> 5 Free Pages Trial • Tally & Excel Ready
             </div>
           </div>
         </div>
