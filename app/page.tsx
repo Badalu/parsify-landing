@@ -394,13 +394,47 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ══ 4.8. SUPPORTED BANKS SEO LINKS ══ */}
+      {/* ══ 4.8. SUPPORTED BANKS & TOOLS SEO LINKS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-             <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
+          
+          {/* Featured Tools */}
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
+              Featured <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block">Conversion Tools</span>
+            </h2>
+            <p className="text-muted-foreground font-medium max-w-xl mx-auto mb-8">
+              Explore specialized conversion formats built for Indian CAs, accountants, and finance teams.
+            </p>
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
+              <Link
+                href="/pdf-to-excel"
+                className="brutal-card p-6 bg-card hover:-translate-y-1 transition-transform border-2 border-shadow-color"
+              >
+                <div className="text-primary font-black uppercase text-lg mb-2">PDF to Excel Converter →</div>
+                <p className="text-xs text-muted-foreground font-medium">Extract bank statements directly into formatted XLS & XLSX files mapped for Tally.</p>
+              </Link>
+              <Link
+                href="/pdf-to-csv"
+                className="brutal-card p-6 bg-card hover:-translate-y-1 transition-transform border-2 border-shadow-color"
+              >
+                <div className="text-secondary font-black uppercase text-lg mb-2">PDF to CSV Converter →</div>
+                <p className="text-xs text-muted-foreground font-medium">Convert PDF statements into lightweight plain-text CSV files for databases & Zoho.</p>
+              </Link>
+              <Link
+                href="/bank-statement-converter"
+                className="brutal-card p-6 bg-card hover:-translate-y-1 transition-transform border-2 border-shadow-color"
+              >
+                <div className="text-success font-black uppercase text-lg mb-2">Bank Statement Converter →</div>
+                <p className="text-xs text-muted-foreground font-medium">AI-powered parser for 1,000+ Indian banks with OCR for scanned PDF statements.</p>
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center mb-12">
+             <h3 className="text-2xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
                Supported <span className="text-primary bg-primary/10 px-2 border-2 border-primary inline-block">Bank Converters</span>
-             </h2>
+             </h3>
              <p className="text-muted-foreground font-medium max-w-xl mx-auto">
                Instantly convert PDF bank statements from any major Indian bank using our specialized bank statement converter tools.
              </p>
