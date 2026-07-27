@@ -337,29 +337,54 @@ export default function HomePage() {
       {/* ══ 4.6. SEO CONTENT SECTION ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-card bg-grid-pattern">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
-                The Ultimate <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block rotate-1">Bank Statement Converter</span>
+          {/* 1. Direct Definition */}
+          <div className="brutal-card p-8 bg-background mb-16 border-2 border-shadow-color">
+            <p className="text-lg text-foreground font-medium leading-relaxed">
+              A bank statement converter is a software utility that transforms financial transactions from uneditable PDF files into structured spreadsheet formats like PDF to Excel and PDF to CSV. Parsify is an online tool designed to convert bank statement PDFs into editable XLS, XLSX, and CSV files. It supports thousands of Indian bank statement formats, including State Bank of India (SBI), HDFC Bank, ICICI Bank, and Axis Bank.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
+            {/* 2. How to Convert Bank Statement PDF to Excel or CSV */}
+            <div className="brutal-card p-8 bg-background h-full">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
+                How to Convert Bank Statement PDF to Excel or CSV
               </h2>
-              <p className="text-muted-foreground font-medium mb-6 leading-relaxed">
-                Manually entering transaction data from PDF statements into Excel or accounting platforms like Tally is time-consuming and error-prone. Our AI-powered bank statement converter automates this workflow, processing multi-page bank statements in under 5 seconds with 99.3% accuracy.
-              </p>
+              <ol className="space-y-4 list-decimal list-inside font-medium text-muted-foreground">
+                <li className="pl-2"><span className="text-foreground font-bold">Upload</span> your bank statement PDF document to the online converter interface.</li>
+                <li className="pl-2"><span className="text-foreground font-bold">Enter</span> the file password if your bank statement PDF is password-protected.</li>
+                <li className="pl-2"><span className="text-foreground font-bold">The system</span> automatically parses transaction rows, dates, descriptions, and balances.</li>
+                <li className="pl-2"><span className="text-foreground font-bold">Download</span> the extracted financial data in your preferred Excel (XLS, XLSX) or CSV format.</li>
+              </ol>
+            </div>
+
+            {/* 3. PDF to Excel vs PDF to CSV: Which Should You Choose */}
+            <div className="brutal-card p-8 bg-background h-full">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
+                PDF to Excel vs PDF to CSV: Which Should You Choose
+              </h2>
               <p className="text-muted-foreground font-medium leading-relaxed">
-                Whether you need an HDFC, SBI, ICICI, or Axis bank statement converter, our tool automatically detects the bank format, parses rows, splits GST, and provides a perfectly structured Excel/CSV output ready for audits and reconciliation.
+                Choosing between Excel and CSV depends on your accounting workflow and data structure requirements. Exporting a bank statement to Excel (XLS or XLSX) provides formatted tables with grid lines, making it suitable for manual inspection, formulas, and direct desktop spreadsheet analysis. Conversely, converting a bank statement to CSV produces lightweight, unformatted plain text data ideal for automated database imports, custom scripts, and bulk uploads into Tally Prime or Zoho Books. Financial professionals generally prefer Excel for auditing individual statements and CSV for batch data processing.
               </p>
             </div>
-            
-            <div className="space-y-6">
-              <div className="brutal-card p-6 bg-background">
-                <h3 className="text-lg font-black uppercase text-shadow-color mb-2">Automated PDF Parsing</h3>
-                <p className="text-sm text-muted-foreground font-medium">Extract transaction dates, description details, debit/credit fields, and calculate running balances automatically without template configurations.</p>
-              </div>
-              <div className="brutal-card p-6 bg-background">
-                <h3 className="text-lg font-black uppercase text-shadow-color mb-2">Audit-Ready Excel Output</h3>
-                <p className="text-sm text-muted-foreground font-medium">Download standardized sheets mapped with correct Tally voucher types, cleaned transaction party names, and formatted dates.</p>
-              </div>
-            </div>
+          </div>
+
+          {/* 4. Why Use an Online Bank Statement Converter */}
+          <div className="brutal-card p-8 bg-background">
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
+              Why Use an Online Bank Statement Converter
+            </h2>
+            <ul className="space-y-4 list-disc list-inside font-medium text-muted-foreground">
+              <li className="pl-2">
+                <strong className="text-foreground font-bold">High Data Extraction Accuracy:</strong> Automated tabular parsing eliminates human copy-paste errors by preserving debit, credit, date, and running balance alignment.
+              </li>
+              <li className="pl-2">
+                <strong className="text-foreground font-bold">Time Savings Over Manual Entry:</strong> Processing multi-page transaction records takes seconds instead of hours of manual typing into spreadsheets.
+              </li>
+              <li className="pl-2">
+                <strong className="text-foreground font-bold">Support for Password-Protected and Scanned Files:</strong> Built-in optical character recognition (OCR) and password handlers process encrypted, original digital, and scanned image PDFs.
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -410,12 +435,13 @@ export default function HomePage() {
         </div>
       </section>
 
-
       {/* ══ 4.9. TESTIMONIALS ══ */}
       <Testimonials />
 
       {/* ══ 5. PRICING ══ */}
       <Pricing DASHBOARD_URL={DASHBOARD_URL} />
+      
+      {/* ══ 5.1. FAQ SECTION & JSON-LD SCHEMA ══ */}
       <section id="faq" className="py-32 border-b-2 border-shadow-color bg-card">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-20">
@@ -426,24 +452,28 @@ export default function HomePage() {
           <div className="space-y-6">
             {[
               {
-                q: "Bank statement PDF to Excel kaise convert karein?",
-                a: "Parsify par login karein, apna bank statement PDF drag and drop karein, aur software automatically read karke perfect Excel (.xlsx) ya CSV sheet taiyar kar dega jise aap download kar sakte hain."
+                q: "Is Parsify free to convert PDF to Excel or CSV?",
+                a: "Yes, Parsify provides free conversions for bank statement PDFs to Excel or CSV formats. Users can test document parsing without requiring credit card details. Subscription plans are available for Chartered Accountants and enterprises needing high-volume monthly conversions."
               },
               {
-                q: "CA ke liye best bank statement analyzer tool kaunsa hai?",
-                a: "CAs ke liye Parsify best bank statement analyzer tool hai kyunki ye HDFC, SBI, ICICI, Axis samet 200+ Indian banks ke statement formats support karta hai aur bad format multi-page tables ko perfectly clean Excel tables mein convert kar deta hai."
+                q: "Is it safe? Does it store my bank statement data?",
+                a: "Parsify uses end-to-end encryption to process documents securely. Uploaded bank statements and converted spreadsheet files are automatically purged from servers after processing. Parsify does not store, share, or sell sensitive customer transactional data or account numbers to third parties."
               },
               {
-                q: "GST statement converter India mein kaunsa use karein?",
-                a: "India mein GST data aur portal statement conversions ke liye Parsify ekdam reliable converter hai jo GST data files ko structured and audit-ready Excel formats mein extract karke reconcile karne mein madad karta hai."
+                q: "Which banks are supported for PDF to Excel conversion?",
+                a: "Parsify supports thousands of Indian and global banking institutions. Supported Indian banks include State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Bank of Baroda, Kotak Mahindra Bank, and Punjab National Bank, including savings, current, and credit card statements."
               },
               {
-                q: "Parsify free mein use kar sakte hain?",
-                a: "Haan! Bina kisi credit card ya sign up ke aap Parsify par 1 statement daily free convert kar sakte hain. Free account create karne par aapko daily 2 free statements milte hain."
+                q: "Can it convert scanned or image-based bank statement PDFs?",
+                a: "Yes, Parsify integrates Optical Character Recognition (OCR) technology to extract transactions from scanned document copies and image-based PDFs. The system identifies headers, transaction lines, and numbers from image files and converts them into structured Excel or CSV tables."
               },
               {
-                q: "Kitne statements free mein process hote hain?",
-                a: "Bina account ke aap 1 statement per day convert kar sakte hain, aur free account ke sath 2 statements daily convert kar sakte hain."
+                q: "What is the difference between exporting to Excel vs CSV?",
+                a: "Excel files (XLS/XLSX) preserve formatting, cell types, and multiple worksheets, making them suitable for manual accounting and analysis in Microsoft Excel. CSV files contain plain, unformatted comma-separated text values, ideal for programmatic imports into Tally, Zoho Books, or custom financial databases."
+              },
+              {
+                q: "Can I convert multiple bank statement PDFs at once (bulk conversion)?",
+                a: "Yes, Parsify supports batch processing for multiple bank statement PDFs simultaneously. Users can upload several PDF files at once, and the platform parses each statement, allowing batch export into separate or consolidated Excel or CSV files for efficient accounting workflows."
               }
             ].map((faq, i) => (
               <div key={i} className="brutal-card p-6 bg-background">
@@ -458,6 +488,67 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+
+        {/* FAQPage JSON-LD Schema injection */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Is Parsify free to convert PDF to Excel or CSV?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Parsify provides free conversions for bank statement PDFs to Excel or CSV formats. Users can test document parsing without requiring credit card details. Subscription plans are available for Chartered Accountants and enterprises needing high-volume monthly conversions."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is it safe? Does it store my bank statement data?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Parsify uses end-to-end encryption to process documents securely. Uploaded bank statements and converted spreadsheet files are automatically purged from servers after processing. Parsify does not store, share, or sell sensitive customer transactional data or account numbers to third parties."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Which banks are supported for PDF to Excel conversion?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Parsify supports thousands of Indian and global banking institutions. Supported Indian banks include State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Bank of Baroda, Kotak Mahindra Bank, and Punjab National Bank, including savings, current, and credit card statements."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can it convert scanned or image-based bank statement PDFs?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Parsify integrates Optical Character Recognition (OCR) technology to extract transactions from scanned document copies and image-based PDFs. The system identifies headers, transaction lines, and numbers from image files and converts them into structured Excel or CSV tables."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is the difference between exporting to Excel vs CSV?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Excel files (XLS/XLSX) preserve formatting, cell types, and multiple worksheets, making them suitable for manual accounting and analysis in Microsoft Excel. CSV files contain plain, unformatted comma-separated text values, ideal for programmatic imports into Tally, Zoho Books, or custom financial databases."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I convert multiple bank statement PDFs at once (bulk conversion)?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, Parsify supports batch processing for multiple bank statement PDFs simultaneously. Users can upload several PDF files at once, and the platform parses each statement, allowing batch export into separate or consolidated Excel or CSV files for efficient accounting workflows."
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </section>
 
       {/* ══ 6. CTA ══ */}
