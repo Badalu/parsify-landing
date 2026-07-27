@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { AnonUpload } from '../components/AnonUpload';
+import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 
 export const metadata: Metadata = {
   title: 'Axis Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify',
@@ -213,6 +214,9 @@ export default function AxisConverterPage() {
           </div>
         </div>
       </section>
+
+      {/* ══ INTERACTIVE BEFORE VS AFTER PREVIEW ══ */}
+      <BeforeAfterPreview />
 
       {/* ══ WHY PARSIFY FOR Axis ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

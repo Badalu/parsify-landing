@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
+import { BeforeAfterPreview } from '@/app/components/BeforeAfterPreview';
 import { AnonUpload } from '@/app/components/AnonUpload';
 import globalBanks from '@/data/global-banks.json';
 
@@ -271,6 +272,9 @@ export default async function ProgrammaticBankConverterPage({ params }: PageProp
           </div>
         </div>
       </section>
+
+      {/* ══ INTERACTIVE BEFORE VS AFTER PREVIEW ══ */}
+      <BeforeAfterPreview />
 
       {/* ══ WHY PARSIFY ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
+import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
 
 export const metadata: Metadata = {
@@ -213,6 +214,9 @@ export default function CanaraBankConverterPage() {
           </div>
         </div>
       </section>
+
+      {/* ══ INTERACTIVE BEFORE VS AFTER PREVIEW ══ */}
+      <BeforeAfterPreview />
 
       {/* ══ WHY PARSIFY FOR Canara Bank ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">
