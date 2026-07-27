@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { ArrowRight, FileText, CheckCircle2, UploadCloud, Loader2, Sparkles, Lock } from "lucide-react";
+import { ArrowRight, FileText, CheckCircle2, UploadCloud, Loader2, Sparkles, Lock, Shield, Zap, RefreshCw } from "lucide-react";
 
 interface Transaction {
   date: string;
@@ -12,6 +12,14 @@ interface Transaction {
   balance: string;
 }
 
+const SAMPLE_TRANSACTIONS: Transaction[] = [
+  { date: "15/07/2024", description: "UPI-SWIGGY INDIA PVT LTD-123456789012", debit: "₹485.00", credit: "-", balance: "₹1,45,210.00" },
+  { date: "16/07/2024", description: "NEFT-N320241589-AMAZON SELLER SERVICES", debit: "-", credit: "₹24,500.00", balance: "₹1,69,710.00" },
+  { date: "17/07/2024", description: "POS 459821 AWS CLOUD SERVICES SEATTLE", debit: "₹2,100.00", credit: "-", balance: "₹1,67,610.00" },
+  { date: "18/07/2024", description: "CHQ CLG KOTAK MAHINDRA VENDOR SETTLE", debit: "₹8,750.00", credit: "-", balance: "₹1,58,860.00" },
+  { date: "19/07/2024", description: "IMPS RELIANCE RETAIL LIMITED BATCH99", debit: "-", credit: "₹14,200.00", balance: "₹1,73,060.00" },
+];
+
 export function AnonUpload() {
   const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
   
@@ -21,13 +29,26 @@ export function AnonUpload() {
   const [transactions, setTransactions] = useState<Transaction[] | null>(null);
   const [isPasswordProtected, setIsPasswordProtected] = useState(false);
   const [password, setPassword] = useState("");
+  const [isSampleMode, setIsSampleMode] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
+      setIsSampleMode(false);
       handleUpload(e.target.files[0]);
     }
+  };
+
+  const handleTrySample = () => {
+    setError(null);
+    setLoading(true);
+    setIsPasswordProtected(false);
+    setIsSampleMode(true);
+    setTimeout(() => {
+      setTransactions(SAMPLE_TRANSACTIONS);
+      setLoading(false);
+    }, 600);
   };
 
   const handleUpload = async (selectedFile: File, pwd?: string) => {
@@ -36,6 +57,7 @@ export function AnonUpload() {
     setError(null);
     setTransactions(null);
     setIsPasswordProtected(false);
+    setIsSampleMode(false);
 
     try {
       const formData = new FormData();
@@ -119,10 +141,10 @@ export function AnonUpload() {
         {/* Header Badge */}
         <div className="flex justify-between items-center mb-6">
           <span className="inline-block border-2 border-shadow-color bg-secondary text-white text-[10px] font-black uppercase tracking-widest px-2.5 py-1 brutal-shadow">
-            LIVE PREVIEW
+            LIVE PARSER
           </span>
-          <span className="text-[11px] font-mono font-bold text-muted-foreground uppercase">
-            🔒 SECURE SSL
+          <span className="text-[11px] font-mono font-bold text-muted-foreground uppercase flex items-center gap-1">
+            <Lock className="w-3 h-3 text-success" /> 256-BIT SSL SECURE
           </span>
         </div>
 
@@ -132,32 +154,46 @@ export function AnonUpload() {
             TRY IT YOURSELF
           </h3>
           <p className="text-sm font-medium text-muted-foreground leading-relaxed">
-            Upload a bank statement PDF to see the magic. First page preview is free.
+            Upload any bank statement PDF to test instant extraction.
           </p>
         </div>
 
         {!transactions && !loading && !isPasswordProtected && (
-          <div 
-            onClick={() => fileInputRef.current?.click()}
-            className="border-2 border-dashed border-shadow-color bg-background hover:bg-secondary/10 transition-colors p-8 mb-6 brutal-shadow flex flex-col items-center justify-center cursor-pointer min-h-[160px]"
-          >
-            <input 
-              type="file" 
-              accept=".pdf" 
-              className="hidden" 
-              ref={fileInputRef} 
-              onChange={handleFileChange}
-            />
-            <UploadCloud className="w-10 h-10 text-secondary mb-3" />
-            <span className="font-bold text-sm uppercase tracking-wider text-shadow-color">Click to Upload PDF</span>
-            <span className="text-xs text-muted-foreground mt-2">HDFC, SBI, ICICI, Axis & more</span>
+          <div>
+            <div 
+              onClick={() => fileInputRef.current?.click()}
+              className="border-2 border-dashed border-shadow-color bg-background hover:bg-secondary/10 transition-colors p-8 mb-4 brutal-shadow flex flex-col items-center justify-center cursor-pointer min-h-[150px]"
+            >
+              <input 
+                type="file" 
+                accept=".pdf" 
+                className="hidden" 
+                ref={fileInputRef} 
+                onChange={handleFileChange}
+              />
+              <UploadCloud className="w-10 h-10 text-secondary mb-2" />
+              <span className="font-bold text-sm uppercase tracking-wider text-shadow-color">Click to Upload Bank PDF</span>
+              <span className="text-xs text-muted-foreground mt-1">HDFC, SBI, ICICI, Axis, Kotak & 200+ banks</span>
+            </div>
+
+            {/* Instant Demo Button */}
+            <button
+              onClick={handleTrySample}
+              type="button"
+              className="w-full mb-6 py-2.5 px-4 bg-background border-2 border-shadow-color text-xs font-black uppercase tracking-wider text-secondary flex items-center justify-center gap-2 hover:bg-secondary/10 brutal-shadow transition-all"
+            >
+              <Sparkles className="w-4 h-4 text-secondary animate-pulse" />
+              <span>Don't have a file? Try Sample HDFC PDF Demo</span>
+            </button>
           </div>
         )}
 
         {loading && (
           <div className="border-2 border-shadow-color bg-background p-8 mb-6 brutal-shadow flex flex-col items-center justify-center min-h-[160px]">
             <Loader2 className="w-8 h-8 text-secondary animate-spin mb-4" />
-            <span className="font-bold text-sm uppercase tracking-wider text-shadow-color animate-pulse">Parsing Document...</span>
+            <span className="font-bold text-sm uppercase tracking-wider text-shadow-color animate-pulse">
+              {isSampleMode ? "Loading Sample HDFC Statement..." : "Parsing Document..."}
+            </span>
             <span className="text-xs text-muted-foreground mt-2 text-center">Our AI is reading tables, fixing smudges, and merging rows.</span>
           </div>
         )}
@@ -193,9 +229,21 @@ export function AnonUpload() {
             <div className="bg-muted/30 border-b-2 border-shadow-color p-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-secondary" />
-                <span className="text-xs font-black uppercase tracking-widest text-shadow-color">Extracted Data</span>
+                <span className="text-xs font-black uppercase tracking-widest text-shadow-color">
+                  {isSampleMode ? "Sample HDFC Extracted Data" : "Extracted Data"}
+                </span>
               </div>
-              <span className="text-[10px] font-bold text-success bg-success/10 px-2 py-0.5 border border-success">SUCCESS</span>
+              <div className="flex items-center gap-2">
+                {isSampleMode && (
+                  <button 
+                    onClick={() => { setTransactions(null); setIsSampleMode(false); }}
+                    className="text-[10px] font-bold text-muted-foreground hover:text-foreground flex items-center gap-1 underline"
+                  >
+                    <RefreshCw className="w-3 h-3" /> Reset
+                  </button>
+                )}
+                <span className="text-[10px] font-bold text-success bg-success/10 px-2 py-0.5 border border-success">PARSED</span>
+              </div>
             </div>
             
             <div className="overflow-x-auto">
@@ -224,8 +272,8 @@ export function AnonUpload() {
                       href={`${DASHBOARD_URL}/signup`} 
                       className="bg-primary text-white border-2 border-shadow-color px-4 py-2 uppercase tracking-widest text-xs font-black flex items-center gap-2 shadow-[4px_4px_0px_0px_#1a1c1d] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0px_0px_#1a1c1d] transition-all"
                     >
-                      Get Premium to Download
-                      <Lock className="w-3 h-3" strokeWidth={3} />
+                      Download Full Excel & CSV
+                      <ArrowRight className="w-3.5 h-3.5" strokeWidth={3} />
                     </a>
                   </div>
                 </tbody>
@@ -234,22 +282,25 @@ export function AnonUpload() {
           </div>
         )}
 
-        {/* Feature Checkpoints */}
-        {!transactions && (
-          <div className="space-y-2.5 mb-8 text-sm">
-            {[
-              "Free 50 pages every single month",
-              "Automatic GST splitting & Ledgers",
-              "99.3% accuracy across 100+ Indian banks",
-              "Zero data retention (deleted instantly)"
-            ].map((text, idx) => (
-              <div key={idx} className="flex items-center gap-2 font-bold text-shadow-color text-xs">
-                <CheckCircle2 className="w-4 h-4 text-success shrink-0" strokeWidth={3} />
-                <span>{text}</span>
-              </div>
-            ))}
+        {/* Security & Privacy Badges */}
+        <div className="grid grid-cols-2 gap-2 mb-6 pt-2 border-t border-shadow-color/20">
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-shadow-color bg-background p-2 border border-shadow-color brutal-shadow">
+            <Lock className="w-3.5 h-3.5 text-secondary shrink-0" />
+            <span>256-Bit SSL Encrypted</span>
           </div>
-        )}
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-shadow-color bg-background p-2 border border-shadow-color brutal-shadow">
+            <Shield className="w-3.5 h-3.5 text-success shrink-0" />
+            <span>Auto-Purged 60 Mins</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-shadow-color bg-background p-2 border border-shadow-color brutal-shadow">
+            <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0" />
+            <span>DPDP Act 2023 Compliant</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-shadow-color bg-background p-2 border border-shadow-color brutal-shadow">
+            <Zap className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+            <span>No Human Inspection</span>
+          </div>
+        </div>
 
         {/* CTA Group */}
         <div className="space-y-3">
@@ -263,7 +314,7 @@ export function AnonUpload() {
           
           {!transactions && (
             <div className="flex justify-between items-center text-xs font-bold pt-2">
-              <span className="text-muted-foreground">No credit card required</span>
+              <span className="text-muted-foreground">50 pages free monthly</span>
               <a href={`${DASHBOARD_URL}/login`} className="text-secondary hover:underline">
                 Log In &rarr;
               </a>

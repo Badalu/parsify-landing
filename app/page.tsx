@@ -7,6 +7,7 @@ import { AnonUpload } from './components/AnonUpload';
 import { TypewriterHeading } from './components/TypewriterHeading';
 import { Testimonials } from './components/Testimonials';
 import { BeforeAfterPreview } from './components/BeforeAfterPreview';
+import { StickyBottomCTA } from './components/StickyBottomCTA';
 import globalBanks from '@/data/global-banks.json';
 
 export const metadata: Metadata = {
@@ -572,6 +573,9 @@ export default function HomePage() {
         {/* Background Decorative Pattern */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
       </section>
+
+      {/* ══ 7. STICKY BOTTOM FLOATING CTA ══ */}
+      <StickyBottomCTA />
 
     </main>
   );
