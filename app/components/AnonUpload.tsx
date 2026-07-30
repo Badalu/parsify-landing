@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { ArrowRight, FileText, CheckCircle2, UploadCloud, Loader2, Sparkles, Lock, Shield, Zap, RefreshCw, X, Maximize2, FileSpreadsheet, Download } from "lucide-react";
+import { ArrowRight, FileText, CheckCircle2, UploadCloud, Loader2, Sparkles, Lock, Shield, Zap, RefreshCw, X, Maximize2, FileSpreadsheet, Download, Crown } from "lucide-react";
 import * as XLSX from "xlsx";
 
 interface Transaction {
@@ -32,6 +32,9 @@ export function AnonUpload() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [transactions, setTransactions] = useState<Transaction[] | null>(null);
+  const [pageCount, setPageCount] = useState<number>(1);
+  const [fileName, setFileName] = useState<string>("");
+  const [bankName, setBankName] = useState<string>("");
   const [isPasswordProtected, setIsPasswordProtected] = useState(false);
   const [password, setPassword] = useState("");
   const [isSampleMode, setIsSampleMode] = useState(false);
@@ -51,10 +54,13 @@ export function AnonUpload() {
     setLoading(true);
     setIsPasswordProtected(false);
     setIsSampleMode(true);
+    setPageCount(1);
+    setFileName("Sample_HDFC_Statement.pdf");
+    setBankName("HDFC Bank");
     setTimeout(() => {
       setTransactions(SAMPLE_TRANSACTIONS);
       setLoading(false);
-      setIsModalOpen(true); // Open modal popup automatically
+      setIsModalOpen(true);
     }, 600);
   };
 
@@ -76,8 +82,38 @@ export function AnonUpload() {
     XLSX.writeFile(workbook, "Parsify_HDFC_Demo_Statement.xlsx");
   };
 
+  const handleRealDownload = () => {
+    if (!transactions) return;
+    const payload = {
+      filename: fileName || "Statement.pdf",
+      pages: pageCount,
+      bank_name: bankName || "Auto-detect",
+      transactions: transactions,
+      transactions_count: transactions.length,
+      created_at: new Date().toISOString()
+    };
+    const jsonStr = JSON.stringify(payload);
+    try {
+      localStorage.setItem("parsify_pending_conversion", jsonStr);
+      document.cookie = `parsify_pending_conversion=${encodeURIComponent(jsonStr)}; path=/; max-age=604800; SameSite=Lax`;
+    } catch (e) {
+      console.error("Storage error:", e);
+    }
+
+    if (pageCount > 5) {
+      localStorage.setItem("parsify_post_auth_redirect", "/dashboard/usage");
+      document.cookie = "parsify_post_auth_redirect=/dashboard/usage; path=/; max-age=604800; SameSite=Lax";
+      window.location.href = `${DASHBOARD_URL}/signup?reason=pages_exceeded&pages=${pageCount}&pending=1`;
+    } else {
+      localStorage.setItem("parsify_post_auth_redirect", "/dashboard/convert?pending=1");
+      document.cookie = "parsify_post_auth_redirect=/dashboard/convert?pending=1; path=/; max-age=604800; SameSite=Lax";
+      window.location.href = `${DASHBOARD_URL}/signup?pending=1`;
+    }
+  };
+
   const handleUpload = async (selectedFile: File, pwd?: string) => {
     setFile(selectedFile);
+    setFileName(selectedFile.name);
     setLoading(true);
     setError(null);
     setTransactions(null);
@@ -138,7 +174,9 @@ export function AnonUpload() {
       const data = await res.json();
       if (data.transactions && data.transactions.length > 0) {
         setTransactions(data.transactions);
-        setIsModalOpen(true); // Open modal popup automatically
+        setPageCount(data.pages || 1);
+        setBankName(data.bank_name || "Auto-detect");
+        setIsModalOpen(true);
       } else {
         throw new Error("No transactions detected in this statement.");
       }
@@ -251,7 +289,7 @@ export function AnonUpload() {
             </div>
           )}
 
-          {/* PARSED RESULT SUMMARY CARD (With Open Modal Popup Trigger & Direct Demo Excel Download) */}
+          {/* PARSED RESULT SUMMARY CARD */}
           {transactions && !loading && (
             <div className="border-2 border-shadow-color bg-background p-4 mb-6 brutal-shadow">
               <div className="flex items-center justify-between mb-3 pb-2 border-b border-shadow-color/20">
@@ -262,14 +300,14 @@ export function AnonUpload() {
                   </span>
                 </div>
                 <span className="text-[10px] font-bold text-success bg-success/10 px-2 py-0.5 border border-success">
-                  {transactions.length} ROWS
+                  {transactions.length} ROWS ({pageCount} {pageCount === 1 ? 'PAGE' : 'PAGES'})
                 </span>
               </div>
 
               <p className="text-xs text-muted-foreground font-medium mb-4">
                 {isSampleMode
                   ? "All transaction dates, GSTIN codes, debit/credit, and running balances ready for full preview & download."
-                  : "All transaction dates, party names, debit, credit, and running balances extracted cleanly."}
+                  : `Full statement preview extracted cleanly. ${pageCount > 5 ? "Statement is > 5 pages — premium plan required to download." : "Ready for download."}`}
               </p>
 
               <button
@@ -280,13 +318,21 @@ export function AnonUpload() {
                 <span>Open Full Extracted Preview Popup</span>
               </button>
 
-              {isSampleMode && (
+              {isSampleMode ? (
                 <button
                   onClick={handleDownloadDemoExcel}
                   className="w-full py-2.5 px-4 bg-success text-white border-2 border-shadow-color text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 brutal-shadow hover:bg-success/90 transition-all mb-2"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download Demo Excel (.xlsx)</span>
+                </button>
+              ) : (
+                <button
+                  onClick={handleRealDownload}
+                  className={`w-full py-2.5 px-4 ${pageCount > 5 ? "bg-amber-600 text-white" : "bg-success text-white"} border-2 border-shadow-color text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 brutal-shadow hover:opacity-90 transition-all mb-2`}
+                >
+                  {pageCount > 5 ? <Crown className="w-4 h-4" /> : <Download className="w-4 h-4" />}
+                  <span>{pageCount > 5 ? `Unlock & Download (${pageCount} Pages - Paid Plan)` : "Download Excel / CSV"}</span>
                 </button>
               )}
 
@@ -330,12 +376,20 @@ export function AnonUpload() {
               >
                 <Download className="w-5 h-5" /> Download Demo Excel (.xlsx)
               </button>
+            ) : transactions ? (
+              <button
+                onClick={handleRealDownload}
+                className={`brutal-btn-primary ${pageCount > 5 ? "bg-amber-600" : "bg-secondary"} text-white border-2 border-shadow-color w-full text-center py-3.5 uppercase tracking-widest text-sm font-black flex items-center justify-center gap-2 hover:translate-x-0.5 hover:translate-y-0.5 shadow-[4px_4px_0px_0px_#1a1c1d] transition-all`}
+              >
+                {pageCount > 5 ? "Upgrade to Paid Plan to Download" : "Sign Up to Download Excel / CSV"}
+                <ArrowRight className="w-4 h-4" strokeWidth={3} />
+              </button>
             ) : (
               <a 
-                href={transactions ? `${DASHBOARD_URL}/signup` : `${DASHBOARD_URL}/dashboard/convert`} 
-                className="brutal-btn-primary bg-secondary text-white border-2 border-shadow-color w-full text-center py-3.5 uppercase tracking-widest text-sm font-black flex items-center justify-center gap-2 hover:translate-x-0.5 hover:translate-y-0.5 shadow-[4px_4px_0px_0px_#1a1c1d] hover:shadow-[2px_2px_0px_0px_#1a1c1d] transition-all"
+                href={`${DASHBOARD_URL}/dashboard/convert`} 
+                className="brutal-btn-primary bg-secondary text-white border-2 border-shadow-color w-full text-center py-3.5 uppercase tracking-widest text-sm font-black flex items-center justify-center gap-2 hover:translate-x-0.5 hover:translate-y-0.5 shadow-[4px_4px_0px_0px_#1a1c1d] transition-all"
               >
-                {transactions ? "Unlock Full Excel & CSV Download" : "Go to Dashboard"}
+                Go to Dashboard
                 <ArrowRight className="w-4 h-4" strokeWidth={3} />
               </a>
             )}
@@ -367,7 +421,7 @@ export function AnonUpload() {
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="text-lg sm:text-xl font-black uppercase text-shadow-color tracking-tight font-sans">
-                      {isSampleMode ? "Sample HDFC Statement Output (Full Preview)" : "Extracted Bank Statement Preview"}
+                      {isSampleMode ? "Sample HDFC Statement Output (Full Preview)" : "Extracted Bank Statement Preview (Full View)"}
                     </h3>
                     <span className="bg-success text-white text-[9px] font-black uppercase px-2 py-0.5 border border-shadow-color brutal-shadow hidden sm:inline-block">
                       99.3% ACCURATE
@@ -394,7 +448,7 @@ export function AnonUpload() {
                 
                 {/* Table Header Controls */}
                 <div className="bg-muted/40 p-3 border-b-2 border-shadow-color flex justify-between items-center text-xs font-mono font-bold">
-                  <span className="text-shadow-color uppercase">Parsed Rows: {transactions.length}</span>
+                  <span className="text-shadow-color uppercase">Parsed Rows: {transactions.length} | Pages: {pageCount}</span>
                   <span className="text-success uppercase font-black">✓ Date, Balance & GST Aligned</span>
                 </div>
 
@@ -415,9 +469,7 @@ export function AnonUpload() {
                       {transactions.map((txn, idx) => (
                         <tr
                           key={idx}
-                          className={`hover:bg-primary/5 transition-colors ${
-                            !isSampleMode && idx > 2 ? "blur-[2.5px] opacity-50 pointer-events-none select-none" : ""
-                          }`}
+                          className="hover:bg-primary/5 transition-colors"
                         >
                           <td className="p-3 font-semibold text-muted-foreground border-r border-shadow-color/20">{txn.date}</td>
                           <td className="p-3 font-bold text-foreground max-w-[280px] truncate border-r border-shadow-color/20">{txn.description}</td>
@@ -431,30 +483,6 @@ export function AnonUpload() {
                     </tbody>
                   </table>
                 </div>
-
-                {/* Blur Paywall Overlay - ONLY FOR REAL FILES (!isSampleMode) */}
-                {!isSampleMode && (
-                  <div className="absolute inset-x-0 bottom-0 top-[180px] bg-gradient-to-t from-background via-background/90 to-transparent flex flex-col items-center justify-center p-6 z-20">
-                    <div className="brutal-card p-6 bg-card border-4 border-shadow-color shadow-[6px_6px_0px_0px_#1a1c1d] max-w-md text-center">
-                      <div className="w-10 h-10 bg-primary/10 border-2 border-primary text-primary mx-auto mb-3 flex items-center justify-center brutal-shadow">
-                        <Lock className="w-5 h-5" strokeWidth={2.5} />
-                      </div>
-                      <h4 className="text-lg font-black uppercase text-shadow-color mb-2">
-                        Unlock Complete Statement Excel File
-                      </h4>
-                      <p className="text-xs text-muted-foreground font-medium mb-4">
-                        Create your free Parsify account to download all {transactions.length} rows as XLS, XLSX, CSV, or Tally XML format.
-                      </p>
-                      <a
-                        href={`${DASHBOARD_URL}/signup`}
-                        className="brutal-btn-primary bg-secondary text-white border-2 border-shadow-color w-full py-3 uppercase tracking-widest text-xs font-black flex items-center justify-center gap-2 shadow-[4px_4px_0px_0px_#1a1c1d] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
-                      >
-                        Register Free to Download Full File
-                        <ArrowRight className="w-4 h-4" strokeWidth={3} />
-                      </a>
-                    </div>
-                  </div>
-                )}
 
               </div>
             </div>
@@ -481,12 +509,13 @@ export function AnonUpload() {
                     <Download className="w-4 h-4" /> Download Demo Excel (.xlsx)
                   </button>
                 ) : (
-                  <a
-                    href={`${DASHBOARD_URL}/signup`}
-                    className="brutal-btn-primary bg-secondary text-white border-2 border-shadow-color text-xs px-6 py-2.5 uppercase font-black tracking-wider flex items-center gap-2 shadow-[3px_3px_0px_0px_#1a1c1d]"
+                  <button
+                    onClick={handleRealDownload}
+                    className={`brutal-btn-primary ${pageCount > 5 ? "bg-amber-600" : "bg-secondary"} text-white border-2 border-shadow-color text-xs px-6 py-2.5 uppercase font-black tracking-wider flex items-center gap-2 shadow-[3px_3px_0px_0px_#1a1c1d]`}
                   >
-                    Download Excel / CSV <ArrowRight className="w-3.5 h-3.5" strokeWidth={3} />
-                  </a>
+                    {pageCount > 5 ? <Crown className="w-4 h-4" /> : <Download className="w-4 h-4" />}
+                    <span>{pageCount > 5 ? "Upgrade to Paid Plan to Download" : "Unlock & Download Excel / CSV"}</span>
+                  </button>
                 )}
               </div>
             </div>
@@ -497,4 +526,5 @@ export function AnonUpload() {
     </>
   );
 }
+
 
