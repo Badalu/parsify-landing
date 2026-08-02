@@ -125,8 +125,8 @@ export function AnonUpload() {
       formData.append("file", selectedFile);
       formData.append("bank", "auto");
       formData.append("date_format", "DD/MM/YYYY");
-      formData.append("categorize", "false");
-      formData.append("gst", "false");
+      formData.append("categorize", "true");
+      formData.append("gst", "true");
       if (pwd) {
         formData.append("password", pwd);
       }
@@ -476,8 +476,8 @@ export function AnonUpload() {
                           <td className="p-3 text-right text-destructive font-bold border-r border-shadow-color/20">{txn.debit}</td>
                           <td className="p-3 text-right text-success font-bold border-r border-shadow-color/20">{txn.credit}</td>
                           <td className="p-3 text-right font-bold text-shadow-color border-r border-shadow-color/20">{txn.balance}</td>
-                          <td className="p-3 font-bold text-primary border-r border-shadow-color/20">{txn.gstin || "-"}</td>
-                          <td className="p-3 text-right font-semibold text-emerald-600">{txn.gst_amount || "-"}</td>
+                          <td className="p-3 font-bold text-primary border-r border-shadow-color/20">{txn.gstin || (txn as any).gst || "-"}</td>
+                          <td className="p-3 text-right font-semibold text-emerald-600">{txn.gst_amount || ((txn as any).gst && (txn as any).gst !== txn.gstin ? (txn as any).gst : "-")}</td>
                         </tr>
                       ))}
                     </tbody>
