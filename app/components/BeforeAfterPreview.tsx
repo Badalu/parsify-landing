@@ -133,7 +133,7 @@ export function BeforeAfterPreview() {
               onClick={() => setViewMode("pdfOnly")}
               className={`px-4 py-2 text-xs font-bold uppercase ${viewMode === "pdfOnly" ? "bg-destructive text-white" : "text-muted-foreground"}`}
             >
-              📄 Messy PDF
+              Messy PDF
             </button>
             <button
               onClick={() => setViewMode("sideBySide")}
@@ -145,7 +145,7 @@ export function BeforeAfterPreview() {
               onClick={() => setViewMode("excelOnly")}
               className={`px-4 py-2 text-xs font-bold uppercase ${viewMode === "excelOnly" ? "bg-success text-white" : "text-muted-foreground"}`}
             >
-              📊 Parsify Excel
+              Parsify Excel
             </button>
           </div>
         </div>

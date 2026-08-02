@@ -264,12 +264,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const dashboardUrl = DASHBOARD_URL;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-4ZTPN4PH1M";
 
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18169246685"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ZTPN4PH1M"></script>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -280,7 +281,7 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-4ZTPN4PH1M');
+              gtag('config', '${gaId}', { 'cookie_domain': 'auto' });
               gtag('config', 'AW-18169246685');
 
               // PostHog Tracking snippet
