@@ -3,13 +3,14 @@ import type { Metadata } from 'next';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Blog | Parsify',
+  alternates: { canonical: '/blog' },
+  title: { absolute: 'Blog | Parsify' },
   description: 'Latest news, guides, and insights from the Parsify team.',
 };
 
 export default function BlogPage() {
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block border-2 border-shadow-color bg-card px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-6 brutal-shadow">
@@ -78,6 +79,6 @@ export default function BlogPage() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

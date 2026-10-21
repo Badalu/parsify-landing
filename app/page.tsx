@@ -11,11 +11,24 @@ import { StickyBottomCTA } from './components/StickyBottomCTA';
 import globalBanks from '@/data/global-banks.json';
 
 export const metadata: Metadata = {
-  title: 'Bank Statement Converter — Convert PDF to Excel & CSV | Parsify',
-  description: 'Convert bank statements instantly with the best AI-powered bank statement converter. Convert PDF bank statements to clean Excel, CSV & Tally in seconds. 99.3% accuracy.',
+  title: { absolute: 'Bank Statement Converter — Free PDF to Excel & CSV | Parsify' },
+  description: 'Convert bank statement PDF to Excel, CSV & Tally in seconds with 99.3% accuracy. AI bank statement converter built for CAs & finance teams. Fast, secure & free.',
   alternates: {
     canonical: 'https://parsify.in',
   },
+  keywords: [
+    'bank statement converter',
+    'bank statement convert to excel',
+    'accurate bank statement converter',
+    'bank statement converter free',
+    'bank statement pdf to excel converter',
+    'convert pdf bank statement to excel',
+    'convert bank statements to excel',
+    'how to convert bank statement pdf to excel',
+    'bank statement converter online',
+    'best bank statement converter for CAs',
+    'bank reconciliation software'
+  ]
 };
 
 const BANK_LINKS = [
@@ -40,7 +53,7 @@ export default function HomePage() {
   const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
       
       {/* ══ 1. HERO ══ */}
       <section className="relative pt-6 sm:pt-10 lg:pt-16 pb-12 sm:pb-20 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
@@ -50,7 +63,7 @@ export default function HomePage() {
             {/* Hero Left */}
             <div className="max-w-2xl">
               <div className="inline-block border-2 border-shadow-color bg-card px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
-                #1 Bank Statement Converter for Indian CAs
+                AI Bank Statement Converter for Indian CAs &amp; Accountants
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight leading-tight sm:leading-none mb-6 text-shadow-color uppercase font-sans">
                 Bank Statement <br/>
@@ -59,15 +72,28 @@ export default function HomePage() {
               <div className="mb-8">
                 <TypewriterHeading />
               </div>
-              <p className="text-lg text-muted-foreground font-medium mb-10 max-w-lg leading-relaxed">
-                Upload any bank statement PDF — HDFC, SBI, ICICI, Axis, Kotak or 200+ banks. Get clean, Tally-ready Excel or CSV in seconds. Built for Indian CAs and accounting teams.
+              <p className="text-lg text-muted-foreground font-medium mb-8 max-w-lg leading-relaxed">
+                The AI-powered <strong>bank statement converter</strong> built for Indian Chartered Accountants and finance teams. Convert any bank statement PDF (HDFC, SBI, ICICI, Axis, Kotak &amp; all major Indian banks) into clean, Tally-ready Excel (XLSX, XLS) or CSV in seconds with 99.3% accuracy.
               </p>
               
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 mt-8">
                 <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary w-full sm:w-auto justify-center text-lg px-8 py-4 uppercase tracking-wider">
-                  Go to Dashboard
+                  Convert Statement Now
                   <ArrowRight className="ml-2 w-5 h-5 inline-block" strokeWidth={3} />
                 </a>
+              </div>
+
+              {/* Trust Badges */}
+              <div className="mt-8 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                <span className="flex items-center gap-1 text-success">
+                  <Check className="w-4 h-4 text-success" strokeWidth={3} /> 99.3% Table Accuracy
+                </span>
+                <span className="flex items-center gap-1 text-success">
+                  <Check className="w-4 h-4 text-success" strokeWidth={3} /> Zero Data Retention
+                </span>
+                <span className="flex items-center gap-1 text-success">
+                  <Check className="w-4 h-4 text-success" strokeWidth={3} /> Password &amp; Scanned PDFs
+                </span>
               </div>
             </div>
 
@@ -339,58 +365,183 @@ export default function HomePage() {
           </div>
        </section>
 
-      {/* ══ 4.6. SEO CONTENT SECTION ══ */}
+      {/* ══ 4.6. SEO MASTER CONTENT SECTION ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-card bg-grid-pattern">
         <div className="max-w-7xl mx-auto px-6">
-          {/* 1. Direct Definition */}
-          <div className="brutal-card p-8 bg-background mb-16 border-2 border-shadow-color">
-            <p className="text-lg text-foreground font-medium leading-relaxed">
-              A bank statement converter is a software utility that transforms financial transactions from uneditable PDF files into structured spreadsheet formats like PDF to Excel and PDF to CSV. Parsify is an online tool designed to convert bank statement PDFs into editable XLS, XLSX, and CSV files. It supports thousands of Indian bank statement formats, including State Bank of India (SBI), HDFC Bank, ICICI Bank, and Axis Bank.
+          
+          {/* 1. Direct Definition (Featured Snippet Optimized) */}
+          <div className="brutal-card p-8 sm:p-10 bg-background mb-16 border-2 border-shadow-color">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 border border-primary inline-block mb-4">
+              Comprehensive Guide
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4">
+              What is a Bank Statement Converter?
+            </h2>
+            <p className="text-lg text-foreground font-medium leading-relaxed mb-4">
+              A <strong>bank statement converter</strong> is an automated financial software that extracts transaction records from uneditable digital or scanned PDF bank statements into structured, editable spreadsheet formats like Microsoft Excel (XLS, XLSX), CSV, and Tally XML. Unlike basic document converters, a specialized AI bank statement converter detects complex bank table layouts, splits multi-line transaction narratives, auto-calculates running balances, and tags GST details for immediate accounting reconciliation.
+            </p>
+            <p className="text-base text-muted-foreground font-medium leading-relaxed">
+              Parsify is engineered specifically for Indian Chartered Accountants (CAs), bookkeepers, tax professionals, and enterprise finance departments handling high-volume bank statement audits across SBI, HDFC Bank, ICICI Bank, Axis Bank, Kotak Mahindra, and all major Indian banks.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
-            {/* 2. How to Convert Bank Statement PDF to Excel or CSV */}
-            <div className="brutal-card p-8 bg-background h-full">
+          {/* 2. How to Convert & Format Choice Grid */}
+          <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
+            {/* How to Convert Bank Statement PDF to Excel Online */}
+            <div className="brutal-card p-8 bg-background h-full border-2 border-shadow-color">
               <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
-                How to Convert Bank Statement PDF to Excel or CSV
+                How to Convert Bank Statement PDF to Excel in 3 Steps
               </h2>
-              <ol className="space-y-4 list-decimal list-inside font-medium text-muted-foreground">
-                <li className="pl-2"><span className="text-foreground font-bold">Upload</span> your bank statement PDF document to the online converter interface.</li>
-                <li className="pl-2"><span className="text-foreground font-bold">Enter</span> the file password if your bank statement PDF is password-protected.</li>
-                <li className="pl-2"><span className="text-foreground font-bold">The system</span> automatically parses transaction rows, dates, descriptions, and balances.</li>
-                <li className="pl-2"><span className="text-foreground font-bold">Download</span> the extracted financial data in your preferred Excel (XLS, XLSX) or CSV format.</li>
+              <ol className="space-y-6 list-none font-medium text-muted-foreground">
+                <li className="flex items-start gap-4">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-none border-2 border-shadow-color bg-primary text-primary-foreground font-black flex items-center justify-center text-sm brutal-shadow">1</span>
+                  <div>
+                    <strong className="text-foreground font-bold block text-base mb-1">Upload Your Bank Statement PDF</strong>
+                    <span>Drag and drop your PDF bank statement into the converter. Original e-statements and password-encrypted PDFs are automatically unlocked upon password entry.</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-none border-2 border-shadow-color bg-secondary text-secondary-foreground font-black flex items-center justify-center text-sm brutal-shadow">2</span>
+                  <div>
+                    <strong className="text-foreground font-bold block text-base mb-1">AI Recognizes Table Columns &amp; Data</strong>
+                    <span>The neural extraction engine scans dates, descriptions, cheque numbers, withdrawal debits, deposit credits, and balance columns with 99.3% accuracy.</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-none border-2 border-shadow-color bg-success text-white font-black flex items-center justify-center text-sm brutal-shadow">3</span>
+                  <div>
+                    <strong className="text-foreground font-bold block text-base mb-1">Export Clean Excel (.XLSX) or CSV</strong>
+                    <span>Download clean, standardized tabular data ready for immediate import into Tally Prime, Zoho Books, QuickBooks, or custom financial models.</span>
+                  </div>
+                </li>
               </ol>
             </div>
 
-            {/* 3. PDF to Excel vs PDF to CSV: Which Should You Choose */}
-            <div className="brutal-card p-8 bg-background h-full">
+            {/* Excel vs CSV Selection Guide */}
+            <div className="brutal-card p-8 bg-background h-full border-2 border-shadow-color">
               <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
-                PDF to Excel vs PDF to CSV: Which Should You Choose
+                PDF to Excel vs PDF to CSV: Which Format to Choose?
               </h2>
-              <p className="text-muted-foreground font-medium leading-relaxed">
-                Choosing between Excel and CSV depends on your accounting workflow and data structure requirements. Exporting a bank statement to Excel (XLS or XLSX) provides formatted tables with grid lines, making it suitable for manual inspection, formulas, and direct desktop spreadsheet analysis. Conversely, converting a bank statement to CSV produces lightweight, unformatted plain text data ideal for automated database imports, custom scripts, and bulk uploads into Tally Prime or Zoho Books. Financial professionals generally prefer Excel for auditing individual statements and CSV for batch data processing.
+              <p className="text-muted-foreground font-medium leading-relaxed mb-6">
+                Selecting the ideal output format depends on your financial workflow:
+              </p>
+              <div className="space-y-4 text-sm font-medium">
+                <div className="p-4 bg-card border-2 border-shadow-color">
+                  <h3 className="font-bold text-base text-foreground uppercase mb-1 flex items-center gap-2">
+                    <span className="text-primary font-black">XLSX / XLS (Microsoft Excel)</span>
+                  </h3>
+                  <p className="text-muted-foreground">Best for auditing, manual review, and mathematical formulas. Retains visual column formatting, currency signs, and date formats across multi-page bank accounts.</p>
+                </div>
+                <div className="p-4 bg-card border-2 border-shadow-color">
+                  <h3 className="font-bold text-base text-foreground uppercase mb-1 flex items-center gap-2">
+                    <span className="text-secondary font-black">CSV (Comma-Separated Values)</span>
+                  </h3>
+                  <p className="text-muted-foreground">Ideal for automated bulk imports into accounting databases, ERP systems, Tally Prime, and Zoho Books where clean raw data without formatting overhead is required.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Detailed Comparison Table (High-Value SEO Asset) */}
+          <div className="brutal-card p-8 sm:p-10 bg-background mb-16 border-2 border-shadow-color overflow-hidden">
+            <div className="mb-8">
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-3 py-1 border border-secondary inline-block mb-3">
+                Industry Comparison
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-shadow-color font-sans mb-3">
+                Manual Entry vs Generic PDF Tools vs Parsify AI Converter
+              </h2>
+              <p className="text-muted-foreground font-medium max-w-2xl">
+                See why over 2,400 accounting firms and chartered accountants transitioned from slow manual entry and broken generic PDF tools to Parsify.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b-2 border-shadow-color bg-card">
+                    <th className="p-4 font-black uppercase text-foreground">Feature / Capability</th>
+                    <th className="p-4 font-black uppercase text-muted-foreground">Manual Typing</th>
+                    <th className="p-4 font-black uppercase text-destructive">Generic PDF Converters</th>
+                    <th className="p-4 font-black uppercase text-primary bg-primary/10 border-l-2 border-r-2 border-primary">Parsify Bank Converter</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y border-b-2 border-shadow-color font-medium">
+                  <tr>
+                    <td className="p-4 font-bold text-foreground">Speed (50-Page Statement)</td>
+                    <td className="p-4 text-muted-foreground">4 to 6 Hours</td>
+                    <td className="p-4 text-muted-foreground">2 to 3 Minutes</td>
+                    <td className="p-4 font-bold text-success bg-primary/5 border-l-2 border-r-2 border-primary">Under 10 Seconds ⚡</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-foreground">Merged Cells &amp; Split Narratives</td>
+                    <td className="p-4 text-muted-foreground">Prone to human error</td>
+                    <td className="p-4 text-destructive">Breaks table structure ❌</td>
+                    <td className="p-4 font-bold text-success bg-primary/5 border-l-2 border-r-2 border-primary">Auto-reconstructed (99.3%) ✅</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-foreground">Scanned Image &amp; CamScanner PDFs</td>
+                    <td className="p-4 text-muted-foreground">Requires manual typing</td>
+                    <td className="p-4 text-destructive">Unreadable / Garbage text ❌</td>
+                    <td className="p-4 font-bold text-success bg-primary/5 border-l-2 border-r-2 border-primary">Deep Neural OCR Engine ✅</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-foreground">Password-Protected Bank Statements</td>
+                    <td className="p-4 text-muted-foreground">Manual unlock needed</td>
+                    <td className="p-4 text-destructive">Upload fails ❌</td>
+                    <td className="p-4 font-bold text-success bg-primary/5 border-l-2 border-r-2 border-primary">One-click auto decryption ✅</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-foreground">GSTIN &amp; Party Name Tagging</td>
+                    <td className="p-4 text-muted-foreground">Manual search &amp; copy</td>
+                    <td className="p-4 text-destructive">Not available ❌</td>
+                    <td className="p-4 font-bold text-success bg-primary/5 border-l-2 border-r-2 border-primary">Auto-extracted &amp; Verified ✅</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-foreground">Tally Voucher Mapping (Contra/Receipt)</td>
+                    <td className="p-4 text-muted-foreground">Manual classification</td>
+                    <td className="p-4 text-destructive">Not available ❌</td>
+                    <td className="p-4 font-bold text-success bg-primary/5 border-l-2 border-r-2 border-primary">Tally Prime Ready ✅</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-foreground">Data Confidentiality &amp; Privacy</td>
+                    <td className="p-4 text-muted-foreground">Controlled locally</td>
+                    <td className="p-4 text-destructive">Stored on third-party cloud ⚠️</td>
+                    <td className="p-4 font-bold text-success bg-primary/5 border-l-2 border-r-2 border-primary">Strict Zero Data Retention 🔒</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* 4. Why Use an Online Bank Statement Converter (SEO Keywords Block) */}
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="brutal-card p-6 bg-background border-2 border-shadow-color">
+              <h3 className="text-xl font-black uppercase text-shadow-color mb-3">
+                Eliminate Reconciliation Errors
+              </h3>
+              <p className="text-muted-foreground font-medium text-sm leading-relaxed">
+                Manual transcription of debit and credit amounts often leads to accounting variances. Parsify cross-verifies opening and closing balances across every statement page to ensure zero discrepancy.
+              </p>
+            </div>
+            <div className="brutal-card p-6 bg-background border-2 border-shadow-color">
+              <h3 className="text-xl font-black uppercase text-shadow-color mb-3">
+                Bulk Bank Statement Processing
+              </h3>
+              <p className="text-muted-foreground font-medium text-sm leading-relaxed">
+                Convert dozens of monthly statements for multi-year audits or loan underwriting simultaneously. Combine multi-month bank statements into a single unified Excel spreadsheet effortlessly.
+              </p>
+            </div>
+            <div className="brutal-card p-6 bg-background border-2 border-shadow-color">
+              <h3 className="text-xl font-black uppercase text-shadow-color mb-3">
+                Bank-Grade 256-bit Security
+              </h3>
+              <p className="text-muted-foreground font-medium text-sm leading-relaxed">
+                Your client bank statements are processed in memory with 256-bit encryption. Files are never stored, indexed, or shared. Everything is permanently purged immediately after conversion.
               </p>
             </div>
           </div>
 
-          {/* 4. Why Use an Online Bank Statement Converter */}
-          <div className="brutal-card p-8 bg-background">
-            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-shadow-color font-sans mb-6">
-              Why Use an Online Bank Statement Converter
-            </h2>
-            <ul className="space-y-4 list-disc list-inside font-medium text-muted-foreground">
-              <li className="pl-2">
-                <strong className="text-foreground font-bold">High Data Extraction Accuracy:</strong> Automated tabular parsing eliminates human copy-paste errors by preserving debit, credit, date, and running balance alignment.
-              </li>
-              <li className="pl-2">
-                <strong className="text-foreground font-bold">Time Savings Over Manual Entry:</strong> Processing multi-page transaction records takes seconds instead of hours of manual typing into spreadsheets.
-              </li>
-              <li className="pl-2">
-                <strong className="text-foreground font-bold">Support for Password-Protected and Scanned Files:</strong> Built-in optical character recognition (OCR) and password handlers process encrypted, original digital, and scanned image PDFs.
-              </li>
-            </ul>
-          </div>
         </div>
       </section>
 
@@ -422,11 +573,11 @@ export default function HomePage() {
                 <p className="text-xs text-muted-foreground font-medium">Convert PDF statements into lightweight plain-text CSV files for databases & Zoho.</p>
               </Link>
               <Link
-                href="/bank-statement-converter"
+                href="/blog/how-to-import-pdf-bank-statement-in-tally-prime"
                 className="brutal-card p-6 bg-card hover:-translate-y-1 transition-transform border-2 border-shadow-color"
               >
-                <div className="text-success font-black uppercase text-lg mb-2">Bank Statement Converter →</div>
-                <p className="text-xs text-muted-foreground font-medium">AI-powered parser for 1,000+ Indian banks with OCR for scanned PDF statements.</p>
+                <div className="text-success font-black uppercase text-lg mb-2">Tally Prime Bank Importer →</div>
+                <p className="text-xs text-muted-foreground font-medium">Automate bank reconciliation in Tally Prime with formatted Excel &amp; XML voucher mapping.</p>
               </Link>
             </div>
           </div>
@@ -484,38 +635,52 @@ export default function HomePage() {
       <section id="faq" className="py-32 border-b-2 border-shadow-color bg-card">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-20">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 border border-primary inline-block mb-3">
+              Got Questions?
+            </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-shadow-color font-sans mb-4 leading-tight">
-              Frequently Asked <span className="text-primary bg-primary/10 px-2 border-2 border-primary inline-block mt-2 sm:mt-0">Questions</span>
+              Bank Statement Converter <span className="text-primary bg-primary/10 px-2 border-2 border-primary inline-block mt-2 sm:mt-0">FAQs</span>
             </h2>
+            <p className="text-muted-foreground font-medium max-w-xl mx-auto">
+              Everything you need to know about converting bank statements from PDF to Excel, CSV, and Tally.
+            </p>
           </div>
           <div className="space-y-6">
             {[
               {
-                q: "Is Parsify free to convert PDF to Excel or CSV?",
-                a: "Yes, Parsify provides free conversions for bank statement PDFs to Excel or CSV formats. Users can test document parsing without requiring credit card details. Subscription plans are available for Chartered Accountants and enterprises needing high-volume monthly conversions."
+                q: "What is the best bank statement converter for Indian CAs and accountants?",
+                a: "Parsify is an AI bank statement converter built specifically for Indian Chartered Accountants, tax practitioners, and bookkeepers. It supports all major Indian banks (including SBI, HDFC, ICICI, Axis, Kotak, and Bank of Baroda), handles merged rows and scanned PDFs, tags GSTINs, and formats outputs for instant Tally Prime import with 99.3% accuracy."
               },
               {
-                q: "Is it safe? Does it store my bank statement data?",
-                a: "Parsify uses end-to-end encryption to process documents securely. Uploaded bank statements and converted spreadsheet files are automatically purged from servers after processing. Parsify does not store, share, or sell sensitive customer transactional data or account numbers to third parties."
+                q: "How can I convert a bank statement to Excel for free?",
+                a: "You can convert bank statement PDFs to Excel for free on Parsify without credit card details. Simply drag and drop your PDF bank statement into the upload box on our homepage. The AI parses transaction rows in seconds and gives you an instant, clean Microsoft Excel (XLSX) or CSV file."
               },
               {
-                q: "Which banks are supported for PDF to Excel conversion?",
-                a: "Parsify supports thousands of Indian and global banking institutions. Supported Indian banks include State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Bank of Baroda, Kotak Mahindra Bank, and Punjab National Bank, including savings, current, and credit card statements."
+                q: "Can this bank statement converter handle password-protected PDFs?",
+                a: "Yes! Parsify comes with automated PDF decryption. When you upload a password-protected bank statement (such as standard DOB or PAN passwords from SBI or HDFC), simply enter the password once. The file is decrypted in memory and converted without saving your password."
               },
               {
-                q: "Can it convert scanned or image-based bank statement PDFs?",
-                a: "Yes, Parsify integrates Optical Character Recognition (OCR) technology to extract transactions from scanned document copies and image-based PDFs. The system identifies headers, transaction lines, and numbers from image files and converts them into structured Excel or CSV tables."
+                q: "Does Parsify convert scanned or image-based bank statement PDFs?",
+                a: "Yes. Parsify features a deep Neural OCR engine trained specifically on financial records and bank fonts. It successfully recognizes table borders, currency signs, and numbers from low-resolution scans, CamScanner mobile uploads, and skewed photocopies that fail on normal PDF converters."
               },
               {
-                q: "What is the difference between exporting to Excel vs CSV?",
-                a: "Excel files (XLS/XLSX) preserve formatting, cell types, and multiple worksheets, making them suitable for manual accounting and analysis in Microsoft Excel. CSV files contain plain, unformatted comma-separated text values, ideal for programmatic imports into Tally, Zoho Books, or custom financial databases."
+                q: "How does an AI bank statement converter differ from generic PDF converters?",
+                a: "Generic PDF converters treat pages as unstructured text, often jumbling columns, splitting multi-line transaction narratives into fake rows, and corrupting balances. Parsify's AI understands banking structure, reconciles opening and closing balances, extracts clean party names, and separates debits from credits perfectly."
               },
               {
-                q: "Can I convert multiple bank statement PDFs at once (bulk conversion)?",
-                a: "Yes, Parsify supports batch processing for multiple bank statement PDFs simultaneously. Users can upload several PDF files at once, and the platform parses each statement, allowing batch export into separate or consolidated Excel or CSV files for efficient accounting workflows."
+                q: "Can I import the converted bank statement directly into Tally Prime or Zoho Books?",
+                a: "Yes. Parsify's Excel and CSV exports are mapped specifically for accounting software. Outputs include standardized columns for Date, Narration, Extracted Party Name, Debit, Credit, Balance, GSTIN, and auto-classified Tally Voucher types (Payment, Receipt, Contra) for smooth import into Tally Prime and Zoho."
+              },
+              {
+                q: "Which Indian and international banks are supported?",
+                a: "Parsify supports all major Indian banks plus leading banks in the USA, UK, UAE, Australia and Singapore. In India, it natively supports State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Kotak Mahindra, Punjab National Bank (PNB), Bank of Baroda (BOB), Canara Bank, Union Bank, IndusInd, and cooperative banks across all account types."
+              },
+              {
+                q: "Is it safe to upload confidential client bank statements to Parsify?",
+                a: "Absolutely. Security is our highest priority. Parsify uses 256-bit SSL encryption and enforces a strict Zero-Data-Retention policy. Statements are processed in ephemeral memory and permanently purged immediately after conversion. We never store, share, or monetize financial transaction records."
               }
             ].map((faq, i) => (
-              <div key={i} className="brutal-card p-6 bg-background">
+              <div key={i} className="brutal-card p-6 bg-background border-2 border-shadow-color">
                 <h3 className="text-lg sm:text-xl font-black uppercase text-shadow-color mb-3 flex items-start gap-2">
                   <span className="text-secondary font-mono font-black">Q.</span>
                   {faq.q}
@@ -538,50 +703,66 @@ export default function HomePage() {
               "mainEntity": [
                 {
                   "@type": "Question",
-                  "name": "Is Parsify free to convert PDF to Excel or CSV?",
+                  "name": "What is the best bank statement converter for Indian CAs and accountants?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, Parsify provides free conversions for bank statement PDFs to Excel or CSV formats. Users can test document parsing without requiring credit card details. Subscription plans are available for Chartered Accountants and enterprises needing high-volume monthly conversions."
+                    "text": "Parsify is an AI bank statement converter built specifically for Indian Chartered Accountants, tax practitioners, and bookkeepers. It supports all major Indian banks (including SBI, HDFC, ICICI, Axis, Kotak, and Bank of Baroda), handles merged rows and scanned PDFs, tags GSTINs, and formats outputs for instant Tally Prime import with 99.3% accuracy."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Is it safe? Does it store my bank statement data?",
+                  "name": "How can I convert a bank statement to Excel for free?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Parsify uses end-to-end encryption to process documents securely. Uploaded bank statements and converted spreadsheet files are automatically purged from servers after processing. Parsify does not store, share, or sell sensitive customer transactional data or account numbers to third parties."
+                    "text": "You can convert bank statement PDFs to Excel for free on Parsify without credit card details. Simply drag and drop your PDF bank statement into the upload box on our homepage. The AI parses transaction rows in seconds and gives you an instant, clean Microsoft Excel (XLSX) or CSV file."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Which banks are supported for PDF to Excel conversion?",
+                  "name": "Can this bank statement converter handle password-protected PDFs?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Parsify supports thousands of Indian and global banking institutions. Supported Indian banks include State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Bank of Baroda, Kotak Mahindra Bank, and Punjab National Bank, including savings, current, and credit card statements."
+                    "text": "Yes! Parsify comes with automated PDF decryption. When you upload a password-protected bank statement (such as standard DOB or PAN passwords from SBI or HDFC), simply enter the password once. The file is decrypted in memory and converted without saving your password."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Can it convert scanned or image-based bank statement PDFs?",
+                  "name": "Does Parsify convert scanned or image-based bank statement PDFs?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, Parsify integrates Optical Character Recognition (OCR) technology to extract transactions from scanned document copies and image-based PDFs. The system identifies headers, transaction lines, and numbers from image files and converts them into structured Excel or CSV tables."
+                    "text": "Yes. Parsify features a deep Neural OCR engine trained specifically on financial records and bank fonts. It successfully recognizes table borders, currency signs, and numbers from low-resolution scans, CamScanner mobile uploads, and skewed photocopies that fail on normal PDF converters."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "What is the difference between exporting to Excel vs CSV?",
+                  "name": "How does an AI bank statement converter differ from generic PDF converters?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Excel files (XLS/XLSX) preserve formatting, cell types, and multiple worksheets, making them suitable for manual accounting and analysis in Microsoft Excel. CSV files contain plain, unformatted comma-separated text values, ideal for programmatic imports into Tally, Zoho Books, or custom financial databases."
+                    "text": "Generic PDF converters treat pages as unstructured text, often jumbling columns, splitting multi-line transaction narratives into fake rows, and corrupting balances. Parsify's AI understands banking structure, reconciles opening and closing balances, extracts clean party names, and separates debits from credits perfectly."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "Can I convert multiple bank statement PDFs at once (bulk conversion)?",
+                  "name": "Can I import the converted bank statement directly into Tally Prime or Zoho Books?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, Parsify supports batch processing for multiple bank statement PDFs simultaneously. Users can upload several PDF files at once, and the platform parses each statement, allowing batch export into separate or consolidated Excel or CSV files for efficient accounting workflows."
+                    "text": "Yes. Parsify's Excel and CSV exports are mapped specifically for accounting software. Outputs include standardized columns for Date, Narration, Extracted Party Name, Debit, Credit, Balance, GSTIN, and auto-classified Tally Voucher types (Payment, Receipt, Contra) for smooth import into Tally Prime and Zoho."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Which Indian and international banks are supported?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Parsify supports all major Indian banks plus leading banks in the USA, UK, UAE, Australia and Singapore. In India, it natively supports State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Kotak Mahindra, Punjab National Bank (PNB), Bank of Baroda (BOB), Canara Bank, Union Bank, IndusInd, and cooperative banks across all account types."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is it safe to upload confidential client bank statements to Parsify?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. Security is our highest priority. Parsify uses 256-bit SSL encryption and enforces a strict Zero-Data-Retention policy. Statements are processed in ephemeral memory and permanently purged immediately after conversion. We never store, share, or monetize financial transaction records."
                   }
                 }
               ]
@@ -611,7 +792,7 @@ export default function HomePage() {
       {/* ══ 7. STICKY BOTTOM FLOATING CTA ══ */}
       <StickyBottomCTA />
 
-    </main>
+    </div>
   );
 }
 

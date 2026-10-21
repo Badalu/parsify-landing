@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy — StatementConvert",
+  alternates: { canonical: '/privacy' },
+  title: "Privacy Policy",
   description: "Read our privacy policy to understand how we protect your bank statements and process financial data securely.",
 };
 
@@ -24,7 +25,7 @@ export default function PrivacyPage() {
 
         <div className="brutal-card p-12 bg-background text-muted-foreground font-medium leading-relaxed space-y-10">
           <p className="text-xl text-shadow-color font-bold">
-            At Parsify (StatementConvert), we understand that your financial statements contain highly sensitive personal and business information. We are committed to maintaining the highest standards of data security and privacy.
+            At Parsify, we understand that your financial statements contain highly sensitive personal and business information. We are committed to maintaining the highest standards of data security and privacy.
           </p>
 
           <div>

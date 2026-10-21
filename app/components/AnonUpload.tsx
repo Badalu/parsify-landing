@@ -238,7 +238,7 @@ export function AnonUpload() {
                 />
                 <UploadCloud className="w-10 h-10 text-secondary mb-2" />
                 <span className="font-bold text-sm uppercase tracking-wider text-shadow-color">Click to Upload Bank PDF</span>
-                <span className="text-xs text-muted-foreground mt-1">HDFC, SBI, ICICI, Axis, Kotak & 200+ banks</span>
+                <span className="text-xs text-muted-foreground mt-1">HDFC, SBI, ICICI, Axis, Kotak &amp; all major Indian banks</span>
               </div>
 
               {/* Instant Demo Button */}

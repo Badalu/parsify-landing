@@ -3,7 +3,8 @@ import type { Metadata } from 'next';
 import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
-  title: 'Bank Statement Reconciliation Process in Tally | Parsify',
+  alternates: { canonical: '/blog/bank-statement-reconciliation-process-in-tally' },
+  title: { absolute: 'Bank Statement Reconciliation Process in Tally | Parsify' },
   description: 'Understand the end-to-end bank statement reconciliation process in Tally Prime and how to automate it for faster month-end closing.',
 };
 
@@ -13,12 +14,16 @@ export default function BlogPost3() {
     "@type": "Article",
     "headline": "Bank Statement Reconciliation Process in Tally",
     "description": "Understand the end-to-end bank statement reconciliation process in Tally Prime, and learn how automated parsing tools can save you hours of work.",
-    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
-    "publisher": { "@type": "Organization", "name": "Parsify" }
+    "author": { "@type": "Organization", "name": "Parsify Team", "url": "https://parsify.in/about" },
+    "publisher": { "@id": "https://parsify.in/#organization" },
+    "datePublished": "2026-05-31",
+    "dateModified": "2026-10-21",
+    "image": "https://parsify.in/og-image.png",
+    "mainEntityOfPage": "https://parsify.in/blog/bank-statement-reconciliation-process-in-tally"
   };
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="brutal-card p-5 md:p-12 bg-card relative">
@@ -65,6 +70,6 @@ export default function BlogPost3() {
           <AuthorBio />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

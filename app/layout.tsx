@@ -1,13 +1,12 @@
 import "./globals.css";
 import Link from "next/link";
 import React from "react";
-import { ArrowDownUp } from "lucide-react";
+import Script from "next/script";
 import type { Metadata, Viewport } from "next";
 
 // Import the client Navbar we extracted
 import { Navbar } from "./components/navbar";
-
-const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
+import { SITE, FACTS, ORG_ID, WEBSITE_ID, APP_ID } from "@/lib/site";
 
 // ─── Viewport — removed maximum-scale=1 (Google penalizes it for accessibility) ──
 export const viewport: Viewport = {
@@ -17,49 +16,32 @@ export const viewport: Viewport = {
 };
 
 // ─── Full SEO Metadata ──────────────────────────────────────────────────────────
+// NOTE: no `alternates.canonical` here on purpose. A canonical in the root layout
+// is inherited by every page that doesn't override it, which made the blog,
+// about, pricing etc. all canonicalise to the homepage. Each page sets its own.
 export const metadata: Metadata = {
   title: {
-    template: "%s | Parsify — Bank Statement PDF to Excel Converter",
-    default: "Bank Statement PDF to Excel & CSV Converter — Free for Indian CAs | Parsify",
+    template: "%s | Parsify",
+    default: "Bank Statement Converter — Free Online PDF to Excel & CSV | Parsify",
   },
   description:
-    "Convert bank statement PDF to Excel & CSV instantly. India's #1 bank statement converter for CAs — supports HDFC, SBI, ICICI, Axis, Kotak & 200+ banks. Auto GST tagging, Tally-ready output, 99.3% accuracy. 5 free trial pages on signup.",
-  applicationName: "Parsify",
-  authors: [{ name: "Parsify", url: "https://parsify.in" }],
-  creator: "Parsify",
-  publisher: "Parsify",
-  generator: "Next.js",
-  keywords: [
-    "bank statement converter",
-    "bank statement pdf to excel",
-    "pdf to excel converter",
-    "HDFC bank statement to excel",
-    "SBI bank statement converter",
-    "ICICI bank statement to excel",
-    "bank statement to tally",
-    "CA bank statement software India",
-    "bank statement analyzer",
-    "bank reconciliation software",
-    "pdf bank statement converter free",
-    "bank statement excel converter India",
-    "Parsify",
-  ],
-  metadataBase: new URL("https://parsify.in"),
-  alternates: {
-    canonical: "/",
-  },
+    "Convert bank statement PDF to Excel, CSV & Tally with 99.3% accuracy. Free online AI bank statement converter for all major Indian banks (SBI, HDFC, ICICI, Axis). Instant & secure.",
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  metadataBase: new URL(SITE.url),
   openGraph: {
-    title: "Bank Statement PDF to Excel Converter — Free for Indian CAs | Parsify",
+    title: "Bank Statement Converter — Free Online PDF to Excel & CSV | Parsify",
     description:
-      "Convert any bank statement PDF to clean Excel/CSV in seconds. Supports HDFC, SBI, ICICI, Axis & 200+ Indian banks. Auto GST tagging, Tally-ready output. Used by 2,400+ CA firms.",
-    url: "https://parsify.in",
-    siteName: "Parsify",
+      "Convert bank statement PDF to Excel, CSV & Tally with 99.3% accuracy. Free online AI bank statement converter for all major Indian banks. Instant & secure.",
+    siteName: SITE.name,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Parsify — Convert Bank Statement PDF to Excel instantly",
+        alt: "Parsify — Bank Statement Converter PDF to Excel and CSV",
         type: "image/png",
       },
     ],
@@ -68,11 +50,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bank Statement PDF to Excel — Free Converter for Indian CAs | Parsify",
+    title: "Bank Statement Converter — Free Online PDF to Excel & CSV | Parsify",
     description:
-      "Convert bank statement PDFs to Excel/CSV instantly. Supports HDFC, SBI, ICICI & 200+ banks. Auto GST tagging, Tally import. 99.3% accuracy.",
+      "Convert bank statement PDF to Excel, CSV & Tally with 99.3% accuracy. Free online AI bank statement converter for all major Indian banks.",
     images: ["/og-image.png"],
-    creator: "@parsabordin",
   },
   robots: {
     index: true,
@@ -91,227 +72,148 @@ export const metadata: Metadata = {
   category: "Finance",
 };
 
-// ─── JSON-LD Schemas ─────────────────────────────────────────────────────────────
-
-const organizationSchema = {
+// ─── JSON-LD: one linked @graph (Organization ⇄ WebSite ⇄ SoftwareApplication) ──
+// Page-specific schema (FAQPage, BreadcrumbList, Article) lives in each page so
+// it is never duplicated or shown on pages where the content isn't visible.
+const siteGraph = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Parsify",
-  "url": "https://parsify.in",
-  "logo": "https://parsify.in/icon.svg",
-  "description": "India's #1 bank statement PDF to Excel converter for Chartered Accountants and accounting professionals.",
-  "foundingDate": "2024",
-  "sameAs": [],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer support",
-    "url": "https://parsify.in/contact",
-    "availableLanguage": ["English", "Hindi"]
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "India"
-  }
-};
-
-const softwareAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Parsify — Bank Statement Converter",
-  "operatingSystem": "Web (All platforms)",
-  "applicationCategory": "BusinessApplication",
-  "applicationSubCategory": "Accounting Software",
-  "description": "Convert PDF bank statements from HDFC, SBI, ICICI, Axis & 200+ Indian banks to Excel/CSV. Auto GST tagging, Tally-ready output, 99.3% accuracy.",
-  "screenshot": "https://parsify.in/og-image.png",
-  "featureList": "PDF to Excel, PDF to CSV, Auto bank detection, GST tagging, Tally voucher mapping, Party name extraction, Category tagging",
-  "offers": [
+  "@graph": [
     {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "INR",
-      "name": "Free Plan",
-      "description": "2 free statement conversions daily"
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: SITE.name,
+      legalName: SITE.legalName,
+      url: SITE.url,
+      logo: { "@type": "ImageObject", url: SITE.logo },
+      image: SITE.ogImage,
+      description:
+        "Parsify is an AI bank statement converter that turns PDF bank statements into Excel, CSV and Tally XML for Indian Chartered Accountants and finance teams.",
+      foundingDate: SITE.foundingDate,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: SITE.city,
+        addressCountry: "IN",
+      },
+      ...(SITE.sameAs.length ? { sameAs: SITE.sameAs } : {}),
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        url: SITE.supportUrl,
+        availableLanguage: ["English", "Hindi"],
+        areaServed: "IN",
+      },
+      knowsAbout: [
+        "Bank statement conversion",
+        "PDF to Excel",
+        "Tally Prime import",
+        "Bank reconciliation",
+        "GST",
+        "OCR for scanned bank statements",
+      ],
     },
     {
-      "@type": "Offer",
-      "price": "999",
-      "priceCurrency": "INR",
-      "name": "Starter Plan",
-      "description": "40 statements per month"
+      "@type": "WebSite",
+      "@id": WEBSITE_ID,
+      name: SITE.name,
+      url: SITE.url,
+      inLanguage: "en-IN",
+      publisher: { "@id": ORG_ID },
     },
     {
-      "@type": "Offer",
-      "price": "1999",
-      "priceCurrency": "INR",
-      "name": "Growth Plan",
-      "description": "120 statements per month"
+      "@type": "SoftwareApplication",
+      "@id": APP_ID,
+      name: "Parsify Bank Statement Converter",
+      url: SITE.url,
+      operatingSystem: "Web browser (Windows, macOS, Linux, Android, iOS)",
+      applicationCategory: "FinanceApplication",
+      applicationSubCategory: "Bank statement converter",
+      description: `AI bank statement converter that converts PDF statements from ${FACTS.banksExamples} into ${FACTS.outputs} with ${FACTS.accuracy} accuracy. Handles password-protected and scanned PDFs.`,
+      screenshot: SITE.ogImage,
+      featureList: [
+        "Bank statement PDF to Excel",
+        "Bank statement PDF to CSV",
+        "Tally XML export",
+        "Automatic bank format detection",
+        "Password-protected PDF support",
+        "Scanned PDF OCR",
+        "GST tagging",
+        "Party name extraction",
+        "Tally voucher type mapping",
+      ],
+      offers: FACTS.pricing.map((p) => ({
+        "@type": "Offer",
+        name: `${p.name} Plan`,
+        price: String(p.price),
+        priceCurrency: "INR",
+        description: p.desc,
+        url: `${SITE.url}/pricing`,
+      })),
+      publisher: { "@id": ORG_ID },
     },
-    {
-      "@type": "Offer",
-      "price": "3499",
-      "priceCurrency": "INR",
-      "name": "Pro Plan",
-      "description": "400 statements per month"
-    }
   ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "2400",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
 };
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How to convert bank statement PDF to Excel?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Go to Parsify.in, upload your bank statement PDF, and the AI engine will automatically parse all transactions and deliver a clean Excel (.xlsx) or CSV file in seconds. No templates needed — supports HDFC, SBI, ICICI, Axis, Kotak and 200+ Indian banks."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which is the best bank statement converter for Indian CAs?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Parsify is India's #1 bank statement converter built specifically for Chartered Accountants. It supports 200+ Indian bank formats, handles merged cells and multi-page statements, auto-tags GST, maps Tally voucher types, and delivers 99.3% accuracy. Used by 2,400+ finance teams."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Parsify free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! You can test sample statement conversions for free without signing up. Create a free account to get 5 free trial pages to test full output. Paid plans start at ₹999/month for 40 statements."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does Parsify support HDFC, SBI, and ICICI bank statements?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Parsify supports all major Indian banks including HDFC, SBI, ICICI, Axis, Kotak, PNB, Bank of Baroda, IndusInd, Yes Bank, and 200+ more. The AI engine auto-detects the bank format — no manual configuration needed."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I import Parsify output directly into Tally?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Parsify automatically maps transactions to Tally voucher types (Receipt, Payment, Contra), extracts clean party names, and formats dates uniformly — making the Excel output directly importable into Tally Prime and Tally ERP 9."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate is the bank statement conversion?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Parsify achieves 99.3% accuracy across all supported banks. The AI engine handles merged cells, split transactions, rotated text, multi-page statements, and even low-quality scanned PDFs with smudged numbers."
-      }
-    }
-  ]
-};
-
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Convert Bank Statement PDF to Excel Using Parsify",
-  "description": "Step-by-step guide to convert any Indian bank statement PDF to structured Excel/CSV format using Parsify's AI-powered converter.",
-  "totalTime": "PT30S",
-  "estimatedCost": {
-    "@type": "MonetaryAmount",
-    "currency": "INR",
-    "value": "0"
+const FOOTER_LINKS: { heading: string; links: { href: string; label: string }[] }[] = [
+  {
+    heading: "Tools",
+    links: [
+      { href: "/bank-statement-converter", label: "Bank Statement Converter" },
+      { href: "/pdf-to-excel", label: "Bank Statement PDF to Excel" },
+      { href: "/pdf-to-csv", label: "Bank Statement PDF to CSV" },
+      { href: "/blog/bank-statement-to-tally-xml-converter", label: "Bank Statement to Tally XML" },
+      { href: "/pricing", label: "Pricing" },
+    ],
   },
-  "tool": {
-    "@type": "HowToTool",
-    "name": "Parsify Bank Statement Converter"
+  {
+    heading: "Indian Banks",
+    links: [
+      { href: "/sbi-bank-statement-converter", label: "SBI Statement to Excel" },
+      { href: "/hdfc-bank-statement-converter", label: "HDFC Statement to Excel" },
+      { href: "/icici-bank-statement-converter", label: "ICICI Statement to Excel" },
+      { href: "/axis-bank-statement-converter", label: "Axis Statement to Excel" },
+      { href: "/kotak-bank-statement-converter", label: "Kotak Statement to Excel" },
+      { href: "/pnb-bank-statement-converter", label: "PNB Statement to Excel" },
+      { href: "/bank-of-baroda-statement-converter", label: "Bank of Baroda Statement to Excel" },
+      { href: "/canara-bank-statement-converter", label: "Canara Statement to Excel" },
+    ],
   },
-  "step": [
-    {
-      "@type": "HowToStep",
-      "url": "https://parsify.in/#how",
-      "name": "Upload your bank statement PDF",
-      "text": "Go to Parsify.in and drag-and-drop your bank statement PDF. Supports HDFC, SBI, ICICI, Axis, Kotak and 200+ Indian banks. Password-protected PDFs are handled automatically.",
-      "position": 1
-    },
-    {
-      "@type": "HowToStep",
-      "url": "https://parsify.in/#how",
-      "name": "AI parses all transactions",
-      "text": "Parsify's AI engine reads every row, resolves merged cells, detects the bank format, tags GST, categorizes transactions, and extracts clean party names — all in under 5 seconds.",
-      "position": 2
-    },
-    {
-      "@type": "HowToStep",
-      "url": "https://parsify.in/#how",
-      "name": "Download Excel or CSV",
-      "text": "Download your perfectly formatted Excel (.xlsx) or CSV file. The output includes Date, Description, Debit, Credit, Balance, Category, and GST columns — ready for Tally import or audit.",
-      "position": 3
-    }
-  ]
-};
+  {
+    heading: "Guides",
+    links: [
+      { href: "/blog/how-to-import-pdf-bank-statement-in-tally-prime", label: "Import PDF Statement in Tally Prime" },
+      { href: "/blog/how-to-convert-scanned-pdf-bank-statement-to-excel", label: "Scanned PDF Statement to Excel" },
+      { href: "/blog/bank-statement-reconciliation-process-in-tally", label: "Bank Reconciliation in Tally" },
+      { href: "/blog/how-to-format-bank-statement-in-excel-for-tally", label: "Format Statement for Tally" },
+      { href: "/blog", label: "All Articles" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
+      { href: "/privacy", label: "Privacy" },
+      { href: "/terms", label: "Terms" },
+      { href: "/refund", label: "Refund" },
+    ],
+  },
+];
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const dashboardUrl = DASHBOARD_URL;
   const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-4ZTPN4PH1M";
+  const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+  const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en-IN" className="scroll-smooth">
       <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18169246685"></script>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.$crisp=[];
-              window.CRISP_WEBSITE_ID="1f15e138-4d9d-4e8a-8294-498000837a4e";
-              (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
-
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${gaId}', { 'cookie_domain': 'auto' });
-              gtag('config', 'AW-18169246685');
-
-              // PostHog Tracking snippet
-              ${process.env.NEXT_PUBLIC_POSTHOG_KEY ? `
-                !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessQueue getActiveMatchingSurveys getSurveyResponse getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-                posthog.init('${process.env.NEXT_PUBLIC_POSTHOG_KEY}', {
-                  api_host: '${process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com"}',
-                  person_profiles: 'always',
-                  capture_pageview: true,
-                  capture_pageleave: true
-                });
-              ` : ''}
-            `,
-          }}
-        />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteGraph) }}
         />
       </head>
       <body className="antialiased bg-background text-foreground">
@@ -320,27 +222,73 @@ export default function RootLayout({
         {/* PAGE CONTENT */}
         <main>{children}</main>
 
-        {/* FOOTER */}
+        {/* FOOTER — crawlable internal links to every money page */}
         <footer className="bg-card py-16 border-t-2 border-shadow-color">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary border-2 border-shadow-color brutal-shadow flex items-center justify-center">
-                <span className="text-white font-black leading-none">P</span>
-              </div>
-              <span className="text-xl font-black uppercase tracking-widest text-shadow-color ml-2 font-serif">Parsify</span>
-            </div>
-            <div className="flex gap-6">
-              {['Terms', 'Privacy', 'Refund', 'Contact'].map(link => (
-                <Link key={link} href={`/${link.toLowerCase()}`} className="text-sm font-bold uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors">
-                  {link}
-                </Link>
+          <div className="max-w-7xl mx-auto px-6">
+            <nav aria-label="Footer" className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+              {FOOTER_LINKS.map((col) => (
+                <div key={col.heading}>
+                  <p className="text-xs font-black uppercase tracking-widest text-shadow-color mb-4">{col.heading}</p>
+                  <ul className="space-y-2">
+                    {col.links.map((l) => (
+                      <li key={l.href}>
+                        <Link href={l.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                          {l.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </div>
-            <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
-              © {new Date().getFullYear()} Parsify Inc.
+            </nav>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t-2 border-shadow-color">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-primary border-2 border-shadow-color brutal-shadow flex items-center justify-center">
+                  <span className="text-white font-black leading-none">P</span>
+                </div>
+                <span className="text-xl font-black uppercase tracking-widest text-shadow-color ml-2 font-serif">Parsify</span>
+              </div>
+              <p className="text-sm font-medium text-muted-foreground text-center">
+                AI bank statement converter for Indian CAs — made in {SITE.city}, India.
+              </p>
+              <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                © {new Date().getFullYear()} Parsify
+              </div>
             </div>
           </div>
         </footer>
+
+        {/* Third-party scripts — loaded after hydration so they don't hurt LCP/INP */}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gaId}', { 'cookie_domain': 'auto' });
+            gtag('config', 'AW-18169246685');
+          `}
+        </Script>
+        <Script id="crisp-chat" strategy="lazyOnload">
+          {`
+            window.$crisp=[];
+            window.CRISP_WEBSITE_ID="1f15e138-4d9d-4e8a-8294-498000837a4e";
+            (function(){var d=document;var s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+          `}
+        </Script>
+        {posthogKey ? (
+          <Script id="posthog" strategy="afterInteractive">
+            {`
+              !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessQueue getActiveMatchingSurveys getSurveyResponse getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+              posthog.init('${posthogKey}', {
+                api_host: '${posthogHost}',
+                person_profiles: 'always',
+                capture_pageview: true,
+                capture_pageleave: true
+              });
+            `}
+          </Script>
+        ) : null}
       </body>
     </html>
   );

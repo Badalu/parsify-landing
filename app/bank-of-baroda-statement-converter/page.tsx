@@ -6,16 +6,16 @@ import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
 
 export const metadata: Metadata = {
-  title: 'Bank of Baroda Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify',
+  title: { absolute: 'Bank of Baroda Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
   description:
     'Convert Bank of Baroda bank statement PDF to Excel or CSV instantly. Supports all Bank of Baroda statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
   alternates: {
-    canonical: 'https://parsify.in/bank-of-baroda-bank-statement-converter',
+    canonical: 'https://parsify.in/bank-of-baroda-statement-converter',
   },
   openGraph: {
     title: 'Bank of Baroda Bank Statement to Excel Converter — Free | Parsify',
     description: 'Convert Bank of Baroda bank statement PDF to clean Excel/CSV in seconds. Auto-detects all Bank of Baroda formats. Used by 2,400+ CA firms across India.',
-    url: 'https://parsify.in/bank-of-baroda-bank-statement-converter',
+    url: 'https://parsify.in/bank-of-baroda-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
 };
@@ -72,7 +72,7 @@ const BANK_FORMATS = [
 
 export default function BankOfBarodaConverterPage() {
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
 
       {/* ══ HERO ══ */}
       <section className="relative pt-6 sm:pt-10 lg:pt-16 pb-12 sm:pb-20 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
@@ -122,6 +122,10 @@ export default function BankOfBarodaConverterPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://parsify.in"},{"@type":"ListItem","position":2,"name":"Bank Statement Converter","item":"https://parsify.in/bank-statement-converter"},{"@type":"ListItem","position":3,"name":"Bank of Baroda Bank Statement Converter","item":"https://parsify.in/bank-of-baroda-statement-converter"}]}) }}
         />
       </section>
 
@@ -314,7 +318,7 @@ export default function BankOfBarodaConverterPage() {
       <section className="py-16 border-b-2 border-shadow-color bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-2xl font-black uppercase tracking-tight text-shadow-color font-sans mb-8 text-center">
-            Also supports <span className="text-primary">200+ other banks</span>
+            Also supports <span className="text-primary">all major Indian banks</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             {[
@@ -352,6 +356,6 @@ export default function BankOfBarodaConverterPage() {
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
       </section>
 
-    </main>
+    </div>
   );
 }

@@ -6,16 +6,16 @@ import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
 
 export const metadata: Metadata = {
-  title: 'Indian Bank Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify',
+  title: { absolute: 'Indian Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
   description:
-    'Convert Indian Bank bank statement PDF to Excel or CSV instantly. Supports all Indian Bank statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Convert Indian Bank statement PDF to Excel or CSV instantly. Supports all Indian Bank statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
   alternates: {
-    canonical: 'https://parsify.in/indian-bank-bank-statement-converter',
+    canonical: 'https://parsify.in/indian-bank-statement-converter',
   },
   openGraph: {
-    title: 'Indian Bank Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert Indian Bank bank statement PDF to clean Excel/CSV in seconds. Auto-detects all Indian Bank formats. Used by 2,400+ CA firms across India.',
-    url: 'https://parsify.in/indian-bank-bank-statement-converter',
+    title: 'Indian Bank Statement to Excel Converter — Free | Parsify',
+    description: 'Convert Indian Bank statement PDF to clean Excel/CSV in seconds. Auto-detects all Indian Bank formats. Used by 2,400+ CA firms across India.',
+    url: 'https://parsify.in/indian-bank-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
 };
@@ -26,10 +26,10 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How to convert Indian Bank bank statement PDF to Excel?",
+      "name": "How to convert Indian Bank statement PDF to Excel?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Go to Parsify.in, upload your Indian Bank bank statement PDF, and download a clean Excel file in seconds. Parsify auto-detects all Indian Bank statement formats including savings, current, and credit card statements."
+        "text": "Go to Parsify.in, upload your Indian Bank statement PDF, and download a clean Excel file in seconds. Parsify auto-detects all Indian Bank statement formats including savings, current, and credit card statements."
       }
     },
     {
@@ -42,7 +42,7 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      "name": "Can I convert password-protected Indian Bank bank statements?",
+      "name": "Can I convert password-protected Indian Bank statements?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes! Just upload the PDF and enter the password when prompted. Parsify handles Indian Bank's standard password format (usually your customer ID or date of birth) and extracts all transactions accurately."
@@ -72,7 +72,7 @@ const BANK_FORMATS = [
 
 export default function IndianBankConverterPage() {
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
 
       {/* ══ HERO ══ */}
       <section className="relative pt-6 sm:pt-10 lg:pt-16 pb-12 sm:pb-20 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
@@ -82,7 +82,7 @@ export default function IndianBankConverterPage() {
             {/* Hero Left */}
             <div className="max-w-2xl">
               <div className="inline-block border-2 border-shadow-color bg-card px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
-                Indian Bank Bank Statement Converter
+                Indian Bank Statement Converter
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none mb-6 text-shadow-color uppercase font-sans">
                 Convert Indian Bank<br/>
@@ -90,7 +90,7 @@ export default function IndianBankConverterPage() {
                 to Excel.
               </h1>
               <p className="text-lg text-muted-foreground font-medium mb-10 max-w-lg leading-relaxed">
-                Upload your Indian Bank bank statement PDF — savings, current, or credit card. Get a clean, structured Excel or CSV file in under 5 seconds. Auto GST tagging and Tally-ready output included.
+                Upload your Indian Bank statement PDF — savings, current, or credit card. Get a clean, structured Excel or CSV file in under 5 seconds. Auto GST tagging and Tally-ready output included.
               </p>
 
               <div className="flex flex-wrap gap-3 mb-8">
@@ -122,6 +122,10 @@ export default function IndianBankConverterPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://parsify.in"},{"@type":"ListItem","position":2,"name":"Bank Statement Converter","item":"https://parsify.in/bank-statement-converter"},{"@type":"ListItem","position":3,"name":"Indian Bank Statement Converter","item":"https://parsify.in/indian-bank-statement-converter"}]}) }}
         />
       </section>
 
@@ -184,7 +188,7 @@ export default function IndianBankConverterPage() {
               {
                 num: '01',
                 title: 'Upload Indian Bank PDF',
-                desc: 'Drag and drop your Indian Bank bank statement. Password-protected PDFs are handled automatically. Works with NetBanking, mobile app, and branch downloads.',
+                desc: 'Drag and drop your Indian Bank statement. Password-protected PDFs are handled automatically. Works with NetBanking, mobile app, and branch downloads.',
                 icon: FileText,
               },
               {
@@ -227,7 +231,7 @@ export default function IndianBankConverterPage() {
                 Why CAs Choose Parsify for <span className="bg-secondary text-white px-2 border-2 border-shadow-color inline-block rotate-1 mt-2 lg:mt-0">Indian Bank Statements</span>
               </h2>
               <p className="text-lg text-muted-foreground font-medium mb-10">
-                Indian Bank Bank statements are notoriously difficult to parse — merged header rows, inconsistent date formats, multi-page transaction tables that break mid-row. Parsify&apos;s AI engine was built to handle exactly these edge cases.
+                Indian Bank statements are notoriously difficult to parse — merged header rows, inconsistent date formats, multi-page transaction tables that break mid-row. Parsify&apos;s AI engine was built to handle exactly these edge cases.
               </p>
               <ul className="space-y-4">
                 {[
@@ -253,7 +257,7 @@ export default function IndianBankConverterPage() {
                   <h3 className="text-2xl font-black uppercase text-shadow-color">Zero Data Retention</h3>
                 </div>
                 <p className="text-muted-foreground font-medium mb-6">
-                  Your Indian Bank bank statement is processed in-memory and permanently deleted the moment your conversion is complete. We never store your financial data — ever.
+                  Your Indian Bank statement is processed in-memory and permanently deleted the moment your conversion is complete. We never store your financial data — ever.
                 </p>
                 <div className="inline-flex items-center gap-2 bg-success/10 text-success border-2 border-success px-4 py-2 font-bold text-sm uppercase tracking-wider">
                   <CheckCircle2 className="w-4 h-4" strokeWidth={3} /> Bank-Grade Privacy
@@ -276,7 +280,7 @@ export default function IndianBankConverterPage() {
           <div className="space-y-6">
             {[
               {
-                q: "How to convert Indian Bank bank statement PDF to Excel?",
+                q: "How to convert Indian Bank statement PDF to Excel?",
                 a: "Go to Parsify.in and upload your Indian Bank statement PDF. The AI engine auto-detects the Indian Bank format, parses all transactions (including merged cells and multi-page tables), and delivers a clean Excel file in under 5 seconds. Works with statements from NetBanking, mobile app, and branch-issued copies."
               },
               {
@@ -314,7 +318,7 @@ export default function IndianBankConverterPage() {
       <section className="py-16 border-b-2 border-shadow-color bg-background">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-2xl font-black uppercase tracking-tight text-shadow-color font-sans mb-8 text-center">
-            Also supports <span className="text-primary">200+ other banks</span>
+            Also supports <span className="text-primary">all major Indian banks</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             {[
@@ -343,7 +347,7 @@ export default function IndianBankConverterPage() {
             Convert your Indian Bank <span className="text-secondary bg-white px-2 border-4 border-shadow-color inline-block rotate-2 brutal-shadow mt-2 md:mt-0">statement now</span>
           </h2>
           <p className="text-xl font-bold mb-12 max-w-2xl mx-auto">
-            Join 2,400+ CA firms using Parsify to automate Indian Bank bank statement reconciliation.
+            Join 2,400+ CA firms using Parsify to automate Indian Bank statement reconciliation.
           </p>
           <a href={`${DASHBOARD_URL}/dashboard/convert`} className="brutal-btn-primary bg-secondary text-white border-shadow-color shadow-[6px_6px_0px_0px_#1a1c1d] hover:shadow-[2px_2px_0px_0px_#1a1c1d] hover:translate-x-1 hover:translate-y-1 text-lg sm:text-xl px-8 sm:px-12 py-4 sm:py-6 uppercase tracking-widest w-full sm:w-auto text-center block sm:inline-block">
             Start Converting Free
@@ -352,6 +356,6 @@ export default function IndianBankConverterPage() {
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
       </section>
 
-    </main>
+    </div>
   );
 }

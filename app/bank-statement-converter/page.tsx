@@ -8,8 +8,8 @@ import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { StickyBottomCTA } from '../components/StickyBottomCTA';
 
 export const metadata: Metadata = {
-  title: 'Bank Statement Converter Online — Free PDF to Excel & CSV | Parsify',
-  description: 'The #1 AI-powered bank statement converter for Indian CAs & businesses. Convert password-protected & scanned PDFs from HDFC, SBI, ICICI, Axis to Excel & CSV instantly.',
+  title: { absolute: 'AI Bank Statement Converter for CAs — Scanned & Password-Protected PDFs | Parsify' },
+  description: 'AI bank statement converter built for Indian CAs & businesses. Convert password-protected & scanned PDFs from HDFC, SBI, ICICI, Axis and all major Indian banks to Excel, CSV & Tally instantly.',
   alternates: {
     canonical: 'https://parsify.in/bank-statement-converter',
   },
@@ -32,7 +32,7 @@ const faqSchema = {
       "name": "What is Parsify bank statement converter?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Parsify is an online AI-powered bank statement converter designed to transform PDF bank statements from over 1,000 banks into clean, structured Excel (XLS, XLSX) and CSV files for accounting and audit."
+        "text": "Parsify is an online AI-powered bank statement converter designed to transform PDF bank statements from all major Indian banks into clean, structured Excel (XLS, XLSX) and CSV files for accounting and audit."
       }
     },
     {
@@ -56,7 +56,7 @@ const faqSchema = {
       "name": "Which bank statement formats does Parsify support?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Parsify supports State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Kotak Mahindra, Bank of Baroda, Canara Bank, Union Bank, PNB, and over 1,000 global bank formats."
+        "text": "Parsify supports State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, Kotak Mahindra, Bank of Baroda, Canara Bank, Union Bank, PNB, and every other major Indian bank, plus leading banks in the USA, UK, UAE, Australia and Singapore."
       }
     },
     {
@@ -78,11 +78,11 @@ const faqSchema = {
   ]
 };
 
-export default function BankStatementConverterPage() {
+export default function BankParsifyerPage() {
   const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
       
       {/* ══ 1. HERO ══ */}
       <section className="relative pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-20 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
@@ -92,7 +92,7 @@ export default function BankStatementConverterPage() {
             {/* Hero Left */}
             <div className="max-w-2xl">
               <div className="inline-block border-2 border-shadow-color bg-card px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-6 brutal-shadow">
-                #1 Bank Statement Converter Online
+                AI Bank Statement Converter for CAs
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 text-shadow-color uppercase font-sans">
                 AI Bank Statement <br/>
@@ -127,7 +127,7 @@ export default function BankStatementConverterPage() {
           <div className="brutal-card p-8 bg-background mb-16 border-2 border-shadow-color">
             <h2 className="text-xl font-black uppercase text-primary mb-3">What is an Online Bank Statement Converter?</h2>
             <p className="text-lg text-foreground font-medium leading-relaxed">
-              An online bank statement converter is a specialized software tool designed to extract transaction rows, dates, descriptions, debits, credits, and running balances from PDF statements into structured Excel (XLS/XLSX) and CSV formats. Parsify automates bank statement processing for Chartered Accountants and finance teams with 99.3% accuracy across HDFC, SBI, ICICI, Axis, and 1,000+ banks.
+              An online bank statement converter is a specialized software tool designed to extract transaction rows, dates, descriptions, debits, credits, and running balances from PDF statements into structured Excel (XLS/XLSX) and CSV formats. Parsify automates bank statement processing for Chartered Accountants and finance teams with 99.3% accuracy across HDFC, SBI, ICICI, Axis, and all major Indian banks.
             </p>
           </div>
 
@@ -198,6 +198,6 @@ export default function BankStatementConverterPage() {
 
       <StickyBottomCTA />
 
-    </main>
+    </div>
   );
 }

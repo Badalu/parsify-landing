@@ -8,8 +8,8 @@ import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { StickyBottomCTA } from '../components/StickyBottomCTA';
 
 export const metadata: Metadata = {
-  title: 'PDF to Excel Bank Statement Converter — XLS & XLSX Output | Parsify',
-  description: 'Convert bank statement PDF to Excel (XLS & XLSX) instantly. 99.3% accuracy for HDFC, SBI, ICICI, Axis & 200+ banks. Free online converter for CAs and businesses.',
+  title: { absolute: 'PDF to Excel Bank Statement Converter — XLS & XLSX Output | Parsify' },
+  description: 'Convert bank statement PDF to Excel (XLS & XLSX) instantly. 99.3% accuracy for HDFC, SBI, ICICI, Axis & all major Indian banks. Free online converter for CAs and businesses.',
   alternates: {
     canonical: 'https://parsify.in/pdf-to-excel',
   },
@@ -82,7 +82,7 @@ export default function PdfToExcelPage() {
   const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
       
       {/* ══ 1. HERO ══ */}
       <section className="relative pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-20 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
@@ -127,7 +127,7 @@ export default function PdfToExcelPage() {
           <div className="brutal-card p-8 bg-background mb-16 border-2 border-shadow-color">
             <h2 className="text-xl font-black uppercase text-primary mb-3">What is a PDF to Excel Bank Statement Converter?</h2>
             <p className="text-lg text-foreground font-medium leading-relaxed">
-              A PDF to Excel bank statement converter is an online tool that converts non-editable bank statement PDF files into structured Microsoft Excel spreadsheets (XLS or XLSX). Parsify automatically parses transaction dates, descriptions, debit, credit, and running balances from over 1,000 Indian bank formats including SBI, HDFC, ICICI, and Axis Bank.
+              A PDF to Excel bank statement converter is an online tool that converts non-editable bank statement PDF files into structured Microsoft Excel spreadsheets (XLS or XLSX). Parsify automatically parses transaction dates, descriptions, debit, credit, and running balances from all major Indian bank formats including SBI, HDFC, ICICI, and Axis Bank.
             </p>
           </div>
 
@@ -198,6 +198,6 @@ export default function PdfToExcelPage() {
 
       <StickyBottomCTA />
 
-    </main>
+    </div>
   );
 }

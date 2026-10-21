@@ -8,7 +8,7 @@ import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { StickyBottomCTA } from '../components/StickyBottomCTA';
 
 export const metadata: Metadata = {
-  title: 'PDF to CSV Bank Statement Converter — Online & Free | Parsify',
+  title: { absolute: 'PDF to CSV Bank Statement Converter — Online & Free | Parsify' },
   description: 'Convert bank statement PDF to CSV online instantly. Extract raw transaction data for database imports, Tally, Zoho Books, and custom scripts. 99.3% accuracy.',
   alternates: {
     canonical: 'https://parsify.in/pdf-to-csv',
@@ -82,7 +82,7 @@ export default function PdfToCsvPage() {
   const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
       
       {/* ══ 1. HERO ══ */}
       <section className="relative pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-20 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
@@ -127,7 +127,7 @@ export default function PdfToCsvPage() {
           <div className="brutal-card p-8 bg-background mb-16 border-2 border-shadow-color">
             <h2 className="text-xl font-black uppercase text-secondary mb-3">What is a PDF to CSV Bank Statement Converter?</h2>
             <p className="text-lg text-foreground font-medium leading-relaxed">
-              A PDF to CSV bank statement converter is a software utility that extracts tabular financial data from uneditable PDF bank statements into plain-text Comma-Separated Values (CSV). Parsify converts PDF statements from SBI, HDFC, ICICI, Axis, and 200+ banks into clean CSV files formatted for Tally, Zoho Books, and database imports.
+              A PDF to CSV bank statement converter is a software utility that extracts tabular financial data from uneditable PDF bank statements into plain-text Comma-Separated Values (CSV). Parsify converts PDF statements from SBI, HDFC, ICICI, Axis, and all major Indian banks into clean CSV files formatted for Tally, Zoho Books, and database imports.
             </p>
           </div>
 
@@ -198,6 +198,6 @@ export default function PdfToCsvPage() {
 
       <StickyBottomCTA />
 
-    </main>
+    </div>
   );
 }

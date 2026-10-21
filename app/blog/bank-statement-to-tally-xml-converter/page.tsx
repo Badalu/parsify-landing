@@ -3,7 +3,8 @@ import type { Metadata } from 'next';
 import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
-  title: 'How to convert bank statement PDF to Tally XML — step by step [2025]',
+  alternates: { canonical: '/blog/bank-statement-to-tally-xml-converter' },
+  title: 'How to convert bank statement PDF to Tally XML — step by step [2026]',
   description: 'Learn how to directly convert your PDF bank statements to Tally XML format for instant import. Step-by-step guide for CAs and accountants.',
 };
 
@@ -11,21 +12,25 @@ export default function BankToTallyXML() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "How to convert bank statement PDF to Tally XML — step by step [2025]",
+    "headline": "How to convert bank statement PDF to Tally XML — step by step [2026]",
     "description": "Learn how to directly convert your PDF bank statements to Tally XML format for instant import into Tally Prime.",
-    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
-    "publisher": { "@type": "Organization", "name": "Parsify" }
+    "author": { "@type": "Organization", "name": "Parsify Team", "url": "https://parsify.in/about" },
+    "publisher": { "@id": "https://parsify.in/#organization" },
+    "datePublished": "2026-06-09",
+    "dateModified": "2026-10-21",
+    "image": "https://parsify.in/og-image.png",
+    "mainEntityOfPage": "https://parsify.in/blog/bank-statement-to-tally-xml-converter"
   };
 
   const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://app.parsify.in";
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="brutal-card p-5 md:p-12 bg-card relative">
           <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-8 brutal-shadow">
-            CA Toolkit 2025
+            CA Toolkit 2026
           </div>
           <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-none mb-10 text-shadow-color uppercase font-sans">
             How to convert <span className="text-secondary bg-secondary/10 px-2 border-2 border-secondary inline-block transform -rotate-1 mt-2 md:mt-0">bank statement PDF</span> to Tally XML
@@ -88,6 +93,6 @@ export default function BankToTallyXML() {
           <AuthorBio />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

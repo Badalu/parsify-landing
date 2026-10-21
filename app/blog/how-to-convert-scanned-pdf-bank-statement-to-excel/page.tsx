@@ -3,7 +3,8 @@ import type { Metadata } from 'next';
 import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
-  title: 'How to Convert Scanned PDF Bank Statement to Excel | Parsify',
+  alternates: { canonical: '/blog/how-to-convert-scanned-pdf-bank-statement-to-excel' },
+  title: { absolute: 'How to Convert Scanned PDF Bank Statement to Excel | Parsify' },
   description: 'A comprehensive guide on using OCR technology and AI to convert scanned image-based PDF bank statements into clean, structured Excel data.',
 };
 
@@ -13,12 +14,16 @@ export default function BlogPost2() {
     "@type": "Article",
     "headline": "How to Convert Scanned PDF Bank Statement to Excel",
     "description": "A comprehensive guide on using OCR technology and AI to convert non-searchable, scanned bank statement PDFs into editable Excel sheets.",
-    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
-    "publisher": { "@type": "Organization", "name": "Parsify" }
+    "author": { "@type": "Organization", "name": "Parsify Team", "url": "https://parsify.in/about" },
+    "publisher": { "@id": "https://parsify.in/#organization" },
+    "datePublished": "2026-05-31",
+    "dateModified": "2026-10-21",
+    "image": "https://parsify.in/og-image.png",
+    "mainEntityOfPage": "https://parsify.in/blog/how-to-convert-scanned-pdf-bank-statement-to-excel"
   };
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="brutal-card p-5 md:p-12 bg-card relative">
@@ -62,6 +67,6 @@ export default function BlogPost2() {
           <AuthorBio />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

@@ -1,34 +1,28 @@
-# Parsify.in
+# Parsify
 
-## What is Parsify?
-Parsify is a SaaS tool that converts bank statement PDFs and GST data into structured Excel/CSV files for Indian Chartered Accountants (CAs) and accounting professionals.
+> AI-powered bank statement converter for Indian Chartered Accountants, accountants, and finance teams. Converts PDF bank statements into Excel (XLSX), CSV, and Tally XML with 99.3% accuracy.
 
-## Who is it for?
-- Chartered Accountants (CAs) in India
-- Accounting firms
-- Tax consultants
-- Finance professionals handling ITR, GST, TDS work
+## Overview
+Parsify automates the extraction and reconciliation of bank statements. It handles password-protected files, multi-page layouts, and scanned documents via specialized financial OCR, delivering clean, standardized rows formatted directly for Tally Prime, Zoho Books, and Excel.
 
-## Key Features
-- Bank statement PDF to Excel/CSV conversion
-- GST data extraction and structuring
-- Bulk processing for multiple clients
-- Supports all major Indian bank formats (SBI, HDFC, ICICI, Axis, Kotak etc.)
-- Clean structured output ready for Tally, Excel analysis
+## Key Facts
+- **Supported Banks**: All major Indian banks (SBI, HDFC, ICICI, Axis, Kotak, PNB, Bank of Baroda, Canara, Union Bank, IndusInd, Yes Bank, IDBI, Federal Bank, Indian Bank) plus leading banks in the USA, UK, UAE, Australia, and Singapore.
+- **Accuracy**: 99.3% table and balance extraction accuracy.
+- **Security**: Zero data retention. Files are processed in ephemeral memory and automatically purged.
+- **Output Formats**: Microsoft Excel (.xlsx), CSV, and direct Tally Prime XML with auto-classified voucher types (Payment, Receipt, Contra) and GST tagging.
 
 ## Pricing
-- Free: 1 statement/day (no signup), 2/day (free account)
-- Starter: ₹999/month — 40 statements
-- Growth: ₹1,999/month — 120 statements
-- Pro: ₹3,499/month — 400 statements
+- Free: 1 statement/day without signup; 2 statements/day with a free account.
+- Starter: ₹999/month (~40 statements / 500 pages)
+- Growth: ₹1,999/month (~120 statements / 1,500 pages)
+- Pro: ₹3,499/month (~400 statements / 5,000 pages)
 
-## URL
-https://parsify.in
-https://app.parsify.in
-
-## Use Cases
-- ITR filing preparation
-- GST reconciliation
-- Loan processing document verification
-- Audit trail creation
-- Client bank data analysis
+## Primary Links
+- [Parsify Homepage](https://parsify.in): Main landing page and instant browser-based converter tool.
+- [Bank Statement Converter](https://parsify.in/bank-statement-converter): AI converter for scanned & password-protected PDF statements.
+- [PDF to Excel](https://parsify.in/pdf-to-excel): Convert bank statement PDF to formatted XLSX spreadsheets.
+- [PDF to CSV](https://parsify.in/pdf-to-csv): Convert bank statement PDF to CSV for software import.
+- [Pricing](https://parsify.in/pricing): Subscription tiers and feature breakdown.
+- [About](https://parsify.in/about): Mission, company information, and development team.
+- [Tally XML Guide](https://parsify.in/blog/bank-statement-to-tally-xml-converter): How to convert PDF bank statements to Tally XML format.
+- [Tally Prime Import Guide](https://parsify.in/blog/how-to-import-pdf-bank-statement-in-tally-prime): Step-by-step guide to importing bank statements into Tally Prime.

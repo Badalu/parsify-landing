@@ -10,9 +10,13 @@ export function middleware(request: NextRequest) {
 
   if (isAppSubdomain) {
     // If accessing root of app.parsify.in -> point to /dashboard
-    if (pathname === "/") {
-      return NextResponse.rewrite(new URL("/dashboard", request.url));
-    }
+    const res = pathname === "/"
+      ? NextResponse.rewrite(new URL("/dashboard", request.url))
+      : NextResponse.next();
+    // The app subdomain serves the same Next.js build as parsify.in, so every
+    // marketing page would otherwise be indexable twice (duplicate content).
+    res.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return res;
   }
 
   return NextResponse.next();

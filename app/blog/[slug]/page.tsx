@@ -32,12 +32,13 @@ export async function generateMetadata({ params }: PageProps) {
     };
   }
 
-  const title = post.seo_title || `${post.title} — StatementConvert Blog`;
+  const title = post.seo_title || post.title;
   const description = post.seo_description || post.excerpt || post.title;
 
   return {
     title,
     description,
+    alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title,
       description,
@@ -77,13 +78,14 @@ export default async function BlogPostPage({ params }: PageProps) {
         "@id": `https://parsify.in/blog/${slug}#article`,
         "headline": post.title,
         "description": post.excerpt || post.title,
-        "image": post.cover_image || undefined,
+        "image": post.cover_image || "https://parsify.in/og-image.png",
         "datePublished": post.published_at,
-        "dateModified": post.updated_at,
-        "author": { "@type": "Person", "name": "CA Rahul Sharma" }
+        "dateModified": post.updated_at || post.published_at,
+        "mainEntityOfPage": `https://parsify.in/blog/${slug}`,
+        "author": { "@type": "Organization", "name": "Parsify Team", "url": "https://parsify.in/about" },
+        "publisher": { "@id": "https://parsify.in/#organization" }
       },
       {
-        "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://parsify.in" },
@@ -95,7 +97,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
       {/* Schema Injection */}
       <script
         type="application/ld+json"
@@ -162,7 +164,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <section className="py-16 mt-16 border-t-2 border-shadow-color bg-background relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-2xl font-black uppercase tracking-tight text-shadow-color font-sans mb-8 text-center">
-            Also supports <span className="text-primary">200+ other banks</span>
+            Also supports <span className="text-primary">all major Indian banks</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
             {[
@@ -183,6 +185,6 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

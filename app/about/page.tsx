@@ -1,14 +1,32 @@
 import React from "react";
 import { Building2, ShieldCheck, Cpu } from "lucide-react";
+import { ORG_ID, breadcrumbSchema } from "@/lib/site";
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Parsify",
+  url: "https://parsify.in/about",
+  about: { "@id": ORG_ID },
+  mainEntity: {
+    "@id": ORG_ID,
+    employee: [
+      { "@type": "Person", name: "Badal Hari", jobTitle: "Lead AI Engineer", worksFor: { "@id": ORG_ID } },
+    ],
+  },
+};
 
 export const metadata = {
-  title: "About Us — Parsify",
+  alternates: { canonical: '/about' },
+  title: "About Us",
   description: "Learn about Parsify's mission to eliminate manual bank statement data entry for Indian accountants, CAs and finance teams.",
 };
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background py-24 font-sans bg-grid-pattern">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "About", path: "/about" }])) }} />
       <div className="mx-auto max-w-5xl px-6 relative z-10">
         <div className="text-center mb-20 brutal-card p-12 bg-card">
           <div className="inline-block border-2 border-shadow-color bg-background px-3 py-1 text-sm font-bold uppercase tracking-widest text-primary mb-6 brutal-shadow">
@@ -72,20 +90,7 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="brutal-card p-8 bg-card flex gap-6">
-                <div className="w-24 h-24 bg-background border-2 border-shadow-color brutal-shadow shrink-0 flex items-center justify-center">
-                  <span className="text-3xl font-black text-muted-foreground">RS</span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-black uppercase text-shadow-color mb-1">CA Rahul Sharma</h3>
-                  <div className="text-sm font-bold text-success uppercase tracking-wider mb-4">Head of Finance & Compliance</div>
-                  <p className="text-muted-foreground text-sm font-medium leading-relaxed">
-                    With over 10 years of experience in auditing and bank reconciliation, Rahul ensures that Parsify's outputs perfectly match Tally Prime standards and Indian accounting regulations.
-                  </p>
-                </div>
-              </div>
-
+            <div className="grid md:grid-cols-1 max-w-2xl mx-auto gap-8">
               <div className="brutal-card p-8 bg-card flex gap-6">
                 <div className="w-24 h-24 bg-background border-2 border-shadow-color brutal-shadow shrink-0 flex items-center justify-center">
                   <span className="text-3xl font-black text-muted-foreground">BH</span>

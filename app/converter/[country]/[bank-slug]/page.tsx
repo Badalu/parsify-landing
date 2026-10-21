@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { bankName, countryName } = bankData;
 
   const title = `${bankName} Bank Statement to Excel Converter — Free | ${countryName} | Parsify`;
-  const description = `Convert ${bankName} bank statement PDF to Excel or CSV instantly. Parsify is the #1 AI converter for ${countryName} banks. Auto GST tagging, Tally-ready output. 99.3% accuracy.`;
+  const description = `Convert ${bankName} bank statement PDF to Excel or CSV instantly. Parsify is an AI converter that supports ${countryName} banks. Auto GST tagging, Tally-ready output. 99.3% accuracy.`;
   const url = `https://parsify.in/converter/${country}/${bankSlug}`;
 
   return {
@@ -134,7 +134,7 @@ export default async function ProgrammaticBankConverterPage({ params }: PageProp
   ];
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white">
       
       {/* ══ HERO ══ */}
       <section className="relative pt-6 sm:pt-10 lg:pt-16 pb-12 sm:pb-20 border-b-2 border-shadow-color overflow-hidden bg-grid-pattern">
@@ -377,6 +377,6 @@ export default async function ProgrammaticBankConverterPage({ params }: PageProp
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
       </section>
 
-    </main>
+    </div>
   );
 }

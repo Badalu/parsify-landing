@@ -3,7 +3,8 @@ import type { Metadata } from 'next';
 import { AuthorBio } from '@/app/components/AuthorBio';
 
 export const metadata: Metadata = {
-  title: 'How to Import PDF Bank Statement in Tally Prime | Parsify',
+  alternates: { canonical: '/blog/how-to-import-pdf-bank-statement-in-tally-prime' },
+  title: { absolute: 'How to Import PDF Bank Statement in Tally Prime | Parsify' },
   description: 'Learn the exact steps to convert and import your PDF bank statements directly into Tally Prime using Parsify for automated bank reconciliation.',
 };
 
@@ -13,12 +14,16 @@ export default function BlogPost1() {
     "@type": "Article",
     "headline": "How to Import PDF Bank Statement in Tally Prime",
     "description": "Learn the exact steps to convert and import your PDF bank statements directly into Tally Prime using Parsify for automated bank reconciliation.",
-    "author": { "@type": "Person", "name": "CA Rahul Sharma" },
-    "publisher": { "@type": "Organization", "name": "Parsify" }
+    "author": { "@type": "Organization", "name": "Parsify Team", "url": "https://parsify.in/about" },
+    "publisher": { "@id": "https://parsify.in/#organization" },
+    "datePublished": "2026-05-31",
+    "dateModified": "2026-10-21",
+    "image": "https://parsify.in/og-image.png",
+    "mainEntityOfPage": "https://parsify.in/blog/how-to-import-pdf-bank-statement-in-tally-prime"
   };
 
   return (
-    <main className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white pt-32 pb-24 border-b-2 border-shadow-color bg-grid-pattern">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="brutal-card p-5 md:p-12 bg-card relative">
@@ -75,6 +80,6 @@ export default function BlogPost1() {
           <AuthorBio />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

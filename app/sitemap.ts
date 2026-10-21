@@ -16,7 +16,6 @@ const BANK_PAGES = [
   'canara-bank-statement-converter',
   'idbi-bank-statement-converter',
   'union-bank-statement-converter',
-  'bob-bank-statement-converter',
   'indian-bank-statement-converter',
   'federal-bank-statement-converter',
 ]
