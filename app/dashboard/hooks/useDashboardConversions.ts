@@ -95,7 +95,7 @@ async function fetchData(userId: string): Promise<CacheEntry> {
 
   const pRemaining = userTier === "subscribed"
     ? Math.max(0, credits - stmtMonth)
-    : Math.max(0, REGISTERED_PAGE_LIMIT - pMonth);
+    : Math.max(0, REGISTERED_PAGE_LIMIT - pToday);
 
   return {
     userId,

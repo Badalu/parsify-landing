@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, FileText, CheckCircle2, Shield, Zap, Check } from 'lucide-react';
+import { ArrowRight, FileText, CheckCircle2, Shield, Zap, Check, ShieldCheck, Lock } from 'lucide-react';
 import { Pricing } from './components/pricing';
 import { AnonUpload } from './components/AnonUpload';
 import { TypewriterHeading } from './components/TypewriterHeading';
@@ -84,15 +84,18 @@ export default function HomePage() {
               </div>
 
               {/* Trust Badges */}
-              <div className="mt-8 flex flex-wrap items-center gap-y-2 gap-x-4 text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                <span className="flex items-center gap-1 text-success">
-                  <Check className="w-4 h-4 text-success" strokeWidth={3} /> 99.3% Table Accuracy
+              <div className="mt-8 flex flex-wrap items-center gap-y-2.5 gap-x-3 text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                <span className="flex items-center gap-1.5 text-success bg-success/10 px-2.5 py-1 border border-success/30">
+                  <ShieldCheck className="w-4 h-4 text-success" strokeWidth={2.5} /> 99.9% Math Reconciled
                 </span>
-                <span className="flex items-center gap-1 text-success">
-                  <Check className="w-4 h-4 text-success" strokeWidth={3} /> Zero Data Retention
+                <span className="flex items-center gap-1.5 text-foreground bg-card px-2.5 py-1 border border-shadow-color">
+                  <Check className="w-4 h-4 text-primary" strokeWidth={3} /> Zero Tally Mismatch
                 </span>
-                <span className="flex items-center gap-1 text-success">
-                  <Check className="w-4 h-4 text-success" strokeWidth={3} /> Password &amp; Scanned PDFs
+                <span className="flex items-center gap-1.5 text-foreground bg-card px-2.5 py-1 border border-shadow-color">
+                  <Lock className="w-3.5 h-3.5 text-secondary" strokeWidth={2.5} /> Zero Data Retention
+                </span>
+                <span className="flex items-center gap-1.5 text-foreground bg-card px-2.5 py-1 border border-shadow-color">
+                  <FileText className="w-3.5 h-3.5 text-primary" strokeWidth={2.5} /> Password &amp; Scanned PDFs
                 </span>
               </div>
             </div>
