@@ -48,6 +48,11 @@ export default function ConvertPage() {
   const [resultFileName, setResultFileName] = useState<string>("");
 
   const handleConvert = async () => {
+    if (tier === "registered" && pagesRemaining <= 0) {
+      setErrorMsg("You have reached today's 15 free pages limit. Resets at midnight, or upgrade to Starter plan for unlimited conversions.");
+      return;
+    }
+
     if (!file) {
       setErrorMsg("Please select a bank statement PDF or Image file first.");
       return;
@@ -224,23 +229,33 @@ export default function ConvertPage() {
             </div>
 
             {/* Convert Button */}
-            <button
-              onClick={handleConvert}
-              disabled={converting || !file}
-              className="w-full h-11 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-2xs disabled:opacity-50 cursor-pointer"
-            >
-              {converting ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Converting Bank Statement ({progress}%)…
-                </>
-              ) : (
-                <>
-                  <Zap className="w-4 h-4 fill-current" />
-                  Convert Statement Now
-                </>
-              )}
-            </button>
+            {tier === "registered" && pagesRemaining <= 0 ? (
+              <Link
+                href="/dashboard/usage"
+                className="w-full h-11 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-2xs"
+              >
+                <Zap className="w-4 h-4 fill-current" />
+                Free Limit Reached — Upgrade Plan
+              </Link>
+            ) : (
+              <button
+                onClick={handleConvert}
+                disabled={converting || !file}
+                className="w-full h-11 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-2xs disabled:opacity-50 cursor-pointer"
+              >
+                {converting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Converting Bank Statement ({progress}%)…
+                  </>
+                ) : (
+                  <>
+                    <Zap className="w-4 h-4 fill-current" />
+                    Convert Statement Now
+                  </>
+                )}
+              </button>
+            )}
           </div>
         </div>
 
