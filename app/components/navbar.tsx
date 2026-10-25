@@ -8,8 +8,8 @@ const DASHBOARD_URL =
   process.env.NEXT_PUBLIC_DASHBOARD_URL || "http://localhost:8080";
 
 const NAV_LINKS = [
-  { href: "/#features", label: "Features" },
-  { href: "/#how", label: "How it works" },
+  { href: "/features", label: "Features" },
+  { href: "/how-it-works", label: "How it works" },
   { href: "/pricing", label: "Pricing" },
   { href: "/blog", label: "Blog" },
   { href: "/#faq", label: "FAQ" },

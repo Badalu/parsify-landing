@@ -157,6 +157,8 @@ const FOOTER_LINKS: { heading: string; links: { href: string; label: string }[] 
   {
     heading: "Tools",
     links: [
+      { href: "/features", label: "Features" },
+      { href: "/how-it-works", label: "How It Works" },
       { href: "/bank-statement-converter", label: "Bank Statement Converter" },
       { href: "/pdf-to-excel", label: "Bank Statement PDF to Excel" },
       { href: "/pdf-to-csv", label: "Bank Statement PDF to CSV" },
