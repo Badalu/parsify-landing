@@ -27,6 +27,24 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       isFree: true,
     },
     {
+      id: "basic_plan",
+      name: "Solo",
+      inr: 499,
+      usd: 6,
+      quota: "15 statements",
+      quotaNote: "Per month · unlimited pages each",
+      isPageBased: false,
+      features: [
+        "15 statements / month",
+        "Unlimited pages per statement",
+        "Excel & CSV export",
+        "Standard AI parsing",
+        "Email support",
+      ],
+      popular: false,
+      isFree: false,
+    },
+    {
       id: "starter_plan",
       name: "Starter",
       inr: 999,
@@ -38,11 +56,12 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
       features: [
         "40 statements / month",
         "Unlimited pages per statement",
-        "Excel, CSV & Tally XML",
+        "Direct Tally XML & Excel",
         "Standard AI parsing",
         "Email support",
       ],
       popular: false,
+      isFree: false,
     },
     {
       id: "professional_plan",
@@ -142,19 +161,19 @@ export function Pricing({ DASHBOARD_URL }: { DASHBOARD_URL: string }) {
 
             <div className="p-4 bg-primary/5 border-2 border-primary/60">
               <div className="text-xs font-bold text-primary uppercase tracking-wider mb-1">✅ Parsify AI (Built for CAs)</div>
-              <div className="text-base font-black text-primary mb-1">Flat ₹25 PER STATEMENT (Unlimited Pages)</div>
+              <div className="text-base font-black text-primary mb-1">Flat Plans from ₹499 (Unlimited Pages per Statement)</div>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Whether your bank statement is 5 pages or 100 pages, it counts as <strong>just 1 statement</strong>. 40 statements = <strong>flat ₹999/month</strong>.
+                Whether your bank statement is 5 pages or 100 pages, it counts as <strong>just 1 statement</strong>. Solo starts at <strong>₹499 (15 stmts)</strong>, Starter at <strong>₹999 (40 stmts)</strong>.
               </p>
             </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`brutal-card p-8 bg-card flex flex-col ${
+              className={`brutal-card p-6 bg-card flex flex-col ${
                 plan.popular ? "border-4 border-primary scale-105 z-10 shadow-[8px_8px_0px_0px_#5b21b6] relative" : ""
               }`}
             >

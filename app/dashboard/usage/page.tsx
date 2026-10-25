@@ -93,8 +93,9 @@ export default function UsagePage() {
   };
 
   const plans = [
-    { id: "starter_plan", name: "Starter", inr: 999, usd: 12, statements: 40, popular: false },
-    { id: "professional_plan", name: "Growth", inr: 1999, usd: 25, statements: 120, popular: true },
+    { id: "basic_plan", name: "Solo", inr: 499, usd: 6, statements: 15, popular: false },
+    { id: "starter_plan", name: "Starter", inr: 999, usd: 12, statements: 40, popular: true },
+    { id: "professional_plan", name: "Growth", inr: 1999, usd: 25, statements: 120, popular: false },
     { id: "business_plan", name: "Pro", inr: 3499, usd: 45, statements: 400, popular: false },
   ];
 

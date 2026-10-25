@@ -38,12 +38,15 @@ export async function POST(request: Request) {
       const planId = orderData?.order_tags?.plan_id;
       const orderAmount = orderData?.order_amount;
 
-      if (userId && planId && ["starter_plan", "professional_plan", "business_plan"].includes(planId)) {
+      if (userId && planId && ["basic_plan", "starter_plan", "professional_plan", "business_plan"].includes(planId)) {
         let allocatedCredits = 40;
+        if (planId === "basic_plan") allocatedCredits = 15;
+        if (planId === "starter_plan") allocatedCredits = 40;
         if (planId === "professional_plan") allocatedCredits = 120;
         if (planId === "business_plan") allocatedCredits = 400;
 
         const planName =
+          planId === "basic_plan" ? "Solo (₹499)" :
           planId === "starter_plan" ? "Starter (₹999)" :
           planId === "professional_plan" ? "Growth (₹1999)" : "Pro (₹3499)";
 
