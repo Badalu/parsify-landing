@@ -33,7 +33,7 @@ export default function RefundPage() {
             </p>
             <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">3. How to Request</h2>
             <p>
-              To request a refund, please contact our support team at support@parsify.in with your account details and the reason for the refund.
+              To request a refund, please contact our support team at <strong>haribadal5@gmail.com</strong> or <strong>team@parsify.in</strong>, or call us at <strong>+91 7738973272</strong> with your registered email and transaction reference.
             </p>
             <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">4. Processing Time</h2>
             <p>

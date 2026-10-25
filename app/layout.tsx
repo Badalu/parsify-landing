@@ -246,12 +246,16 @@ export default function RootLayout({
                 <div className="w-8 h-8 bg-primary border-2 border-shadow-color brutal-shadow flex items-center justify-center">
                   <span className="text-white font-black leading-none">P</span>
                 </div>
-                <span className="text-xl font-black uppercase tracking-widest text-shadow-color ml-2 font-serif">Parsify</span>
+                <div>
+                  <span className="text-xl font-black uppercase tracking-widest text-shadow-color ml-2 font-serif">Parsify</span>
+                  <p className="text-[11px] text-muted-foreground ml-2 font-medium">Owned &amp; Operated by <strong className="text-foreground">BADAL RAJESH HARI</strong></p>
+                </div>
               </div>
-              <p className="text-sm font-medium text-muted-foreground text-center">
-                AI bank statement converter for Indian CAs — made in {SITE.city}, India.
-              </p>
-              <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground">
+              <div className="text-xs font-medium text-muted-foreground text-center space-y-1">
+                <p>Support: <a href="mailto:haribadal5@gmail.com" className="hover:underline text-foreground font-semibold">haribadal5@gmail.com</a> | <a href="tel:+917738973272" className="hover:underline text-foreground font-semibold">+91 7738973272</a></p>
+                <p>Mumbai, Maharashtra, India</p>
+              </div>
+              <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 © {new Date().getFullYear()} Parsify
               </div>
             </div>

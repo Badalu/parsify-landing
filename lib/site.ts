@@ -6,14 +6,16 @@
  */
 export const SITE = {
   name: "Parsify",
-  legalName: "Parsify",
+  legalName: "BADAL RAJESH HARI",
+  legalEmail: "haribadal5@gmail.com",
+  phone: "+91 7738973272",
   url: "https://parsify.in",
   appUrl: "https://app.parsify.in",
   logo: "https://parsify.in/icon.svg",
   ogImage: "https://parsify.in/og-image.png",
   foundingDate: "2024",
   country: "India",
-  city: "Bengaluru",
+  city: "Mumbai",
   supportUrl: "https://parsify.in/contact",
   // Add real public profiles here as they are created — this powers
   // Organization.sameAs, the most important entity signal for AI search.

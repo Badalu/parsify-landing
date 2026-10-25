@@ -29,8 +29,34 @@ export default function ContactPage() {
               
               <div className="mt-8 space-y-4">
                 <div className="brutal-card p-4 bg-background">
-                  <div className="text-sm font-bold uppercase tracking-widest text-primary mb-1">Email Us</div>
-                  <a href="mailto:team@parsify.in" className="text-lg font-bold text-shadow-color hover:text-secondary">team@parsify.in</a>
+                  <div className="text-xs font-bold uppercase tracking-widest text-primary mb-1">Legal Entity / Merchant</div>
+                  <p className="text-base font-black text-shadow-color">BADAL RAJESH HARI</p>
+                  <p className="text-xs text-muted-foreground font-medium mt-0.5">Operating under brand name Parsify</p>
+                </div>
+
+                <div className="brutal-card p-4 bg-background">
+                  <div className="text-xs font-bold uppercase tracking-widest text-primary mb-1">Direct Support Email</div>
+                  <a href="mailto:haribadal5@gmail.com" className="text-base font-bold text-shadow-color hover:text-secondary block">
+                    haribadal5@gmail.com
+                  </a>
+                  <a href="mailto:team@parsify.in" className="text-xs text-muted-foreground hover:text-primary mt-1 block">
+                    team@parsify.in
+                  </a>
+                </div>
+
+                <div className="brutal-card p-4 bg-background">
+                  <div className="text-xs font-bold uppercase tracking-widest text-primary mb-1">Phone / Support Contact</div>
+                  <a href="tel:+917738973272" className="text-base font-bold text-shadow-color hover:text-secondary">
+                    +91 7738973272
+                  </a>
+                  <p className="text-xs text-muted-foreground mt-0.5 font-medium">Available Mon-Sat (10:00 AM - 7:00 PM IST)</p>
+                </div>
+
+                <div className="brutal-card p-4 bg-background">
+                  <div className="text-xs font-bold uppercase tracking-widest text-primary mb-1">Registered Address</div>
+                  <p className="text-xs text-muted-foreground font-medium leading-relaxed">
+                    Mumbai, Maharashtra, India - 400001
+                  </p>
                 </div>
               </div>
             </div>

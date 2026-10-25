@@ -21,7 +21,7 @@ export default function TermsPage() {
           
           <div className="prose prose-lg max-w-none text-muted-foreground font-medium space-y-6">
             <p>
-              Welcome to Parsify. By using our website and services, you agree to comply with and be bound by the following terms and conditions.
+              Welcome to Parsify (https://parsify.in). This website and its services are owned and operated by <strong>BADAL RAJESH HARI</strong> (&quot;Parsify&quot;, &quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). By accessing or using our website and services, you agree to comply with and be bound by the following terms and conditions. For any questions or grievances, contact us at <strong>haribadal5@gmail.com</strong> or call <strong>+91 7738973272</strong>.
             </p>
             <h2 className="text-2xl font-black uppercase text-shadow-color mt-10 mb-4">1. Acceptance of Terms</h2>
             <p>
