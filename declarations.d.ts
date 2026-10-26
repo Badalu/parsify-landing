@@ -78,6 +78,22 @@ declare module 'next/navigation' {
   export function useSearchParams(): any;
 }
 
+declare module 'next/script' {
+  import { ComponentType } from 'react';
+  export interface ScriptProps {
+    src?: string;
+    id?: string;
+    strategy?: 'beforeInteractive' | 'afterInteractive' | 'lazyOnload' | 'worker';
+    onLoad?: () => void;
+    onError?: () => void;
+    children?: any;
+    dangerouslySetInnerHTML?: any;
+    [key: string]: any;
+  }
+  const Script: ComponentType<ScriptProps>;
+  export default Script;
+}
+
 declare module 'lucide-react' {
   import { ComponentType } from 'react';
   export const ArrowRight: ComponentType<any>;
@@ -85,6 +101,7 @@ declare module 'lucide-react' {
   export const FileText: ComponentType<any>;
   export const CheckCircle2: ComponentType<any>;
   export const Shield: ComponentType<any>;
+  export const ShieldCheck: ComponentType<any>;
   export const Zap: ComponentType<any>;
   export const Check: ComponentType<any>;
   export const Lock: ComponentType<any>;
@@ -96,6 +113,11 @@ declare module 'lucide-react' {
   export const Menu: ComponentType<any>;
   export const X: ComponentType<any>;
   export const ChevronRight: ComponentType<any>;
+  export const Star: ComponentType<any>;
+  export const HelpCircle: ComponentType<any>;
+  export const Award: ComponentType<any>;
+  export const Database: ComponentType<any>;
+  export const Layers: ComponentType<any>;
   const anyComponent: ComponentType<any>;
   export default anyComponent;
 }
