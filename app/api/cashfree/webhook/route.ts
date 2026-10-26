@@ -56,7 +56,7 @@ export async function POST(request: Request) {
           .from("profiles")
           .select("cashfree_subscription_id, credits, premium_expiry_date")
           .eq("id", userId)
-          .single();
+          .maybeSingle();
 
         if (currentProfile?.cashfree_subscription_id === `cf_order_${orderId}`) {
           return NextResponse.json({ received: true, status: "already_processed" });
@@ -74,15 +74,16 @@ export async function POST(request: Request) {
 
         await supabase
           .from("profiles")
-          .update({
+          .upsert({
+            id: userId,
             tier: "subscribed",
             cashfree_customer_id: `cf_cust_${userId}`,
             cashfree_subscription_id: `cf_order_${orderId}`,
             credits: newCredits,
             plan_name: planName,
             premium_expiry_date: expiryDate.toISOString(),
-          })
-          .eq("id", userId);
+            updated_at: new Date().toISOString(),
+          }, { onConflict: "id" });
 
         try {
           await supabase.from("payment_logs").insert({
