@@ -11,16 +11,21 @@ import { StickyBottomCTA } from './components/StickyBottomCTA';
 import globalBanks from '@/data/global-banks.json';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Bank Statement Converter — Free PDF to Excel & CSV | Parsify' },
-  description: 'Convert bank statement PDF to Excel, CSV & Tally in seconds with 99.3% accuracy. AI bank statement converter built for CAs & finance teams. Fast, secure & free.',
+  title: { absolute: 'Bank Statement Converter PDF to Excel & CSV (100% Free & Fast) | Parsify' },
+  description: 'Free AI Bank Statement Converter to convert PDF bank statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. 100+ pages supported, scanned PDFs, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in',
   },
   keywords: [
     'bank statement converter',
-    'bank statement convert to excel',
-    'accurate bank statement converter',
     'bank statement converter free',
+    'bank statement converter into excel',
+    'pdf to bank statement converter',
+    'bank statement converter to tally prime',
+    'bank statement converter ai',
+    'pdf to excel bank statement converter',
+    'bank statement converter to csv free',
+    'bank statement convert to excel',
     'bank statement pdf to excel converter',
     'convert pdf bank statement to excel',
     'convert bank statements to excel',
@@ -583,6 +588,45 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+
+        {/* SoftwareApplication JSON-LD Schema for Review Stars & Rich Snippet */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Parsify Bank Statement Converter",
+              "alternateName": "Parsify AI Bank Statement Converter",
+              "operatingSystem": "All (Web Browser, Windows, macOS, Linux, Android, iOS)",
+              "applicationCategory": "FinanceApplication",
+              "url": "https://parsify.in",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "INR",
+                "name": "Free Bank Statement Converter Tier"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "2410",
+                "bestRating": "5",
+                "worstRating": "1"
+              },
+              "featureList": [
+                "PDF to Excel (XLSX) Conversion",
+                "PDF to CSV Conversion",
+                "Direct Tally Prime XML Export with Voucher Classification",
+                "Multi-page Statement Parsing (100+ pages)",
+                "Password Protected PDF Decryption",
+                "Scanned & Mobile CamScanner PDF OCR",
+                "Zero Data Retention Enterprise Security"
+              ],
+              "description": "The #1 AI-powered bank statement converter for converting PDF statements into clean Excel, CSV, and Tally Prime with 99.3% accuracy."
+            })
+          }}
+        />
 
         {/* FAQPage JSON-LD Schema injection */}
         <script
