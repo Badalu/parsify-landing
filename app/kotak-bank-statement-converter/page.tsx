@@ -4,17 +4,29 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
+import { BankAeoBlock } from '../components/BankAeoBlock';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Kotak Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
+  title: { absolute: 'Kotak Bank Statement Converter PDF to Excel & CSV (100% Free) | Parsify' },
   description:
-    'Convert Kotak bank statement PDF to Excel or CSV instantly. Supports all Kotak statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Free Kotak Mahindra Bank (Kotak) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in/kotak-bank-statement-converter',
   },
+  keywords: [
+    'kotak bank statement converter',
+    'kotak bank statement converter free',
+    'kotak bank statement to excel',
+    'kotak bank statement to tally prime',
+    'kotak statement to excel free',
+    'convert kotak pdf to excel',
+    'kotak statement password format',
+    'convert kotak bank statement to csv'
+  ],
   openGraph: {
     title: 'Kotak Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert Kotak bank statement PDF to clean Excel/CSV in seconds. Auto-detects all Kotak formats. Used by 2,400+ CA firms across India.',
+    description:
+    'Free Kotak Mahindra Bank (Kotak) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
     url: 'https://parsify.in/kotak-bank-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -145,6 +157,17 @@ export default function KotakConverterPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ AEO & GEO DIRECT ANSWER BLOCK (FOR GOOGLE AI OVERVIEW & LLMS) ══ */}
+      <BankAeoBlock
+        bankName="Kotak"
+        fullName="Kotak Mahindra Bank"
+        slug="kotak-bank-statement-converter"
+        passwordFormat="Customer Relationship Number (CRN) or Date of Birth (DDMMYYYY)"
+        formats={['Savings', 'Current', 'Credit Card', 'OD / CC', 'FD']}
+        accountTypes={['Retail NetBanking', 'Corporate Banking', 'Mobile App', 'Scanned Statements']}
+        ifscPrefix="KKBK"
+      />
 
       {/* ══ SUPPORTED Kotak FORMATS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

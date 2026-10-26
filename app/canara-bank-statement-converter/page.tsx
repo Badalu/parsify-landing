@@ -4,17 +4,29 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
+import { BankAeoBlock } from '../components/BankAeoBlock';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Canara Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
+  title: { absolute: 'Canara Bank Bank Statement Converter PDF to Excel & CSV (100% Free) | Parsify' },
   description:
-    'Convert Canara Bank statement PDF to Excel or CSV instantly. Supports all Canara Bank statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Free Canara Bank (Canara Bank) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in/canara-bank-statement-converter',
   },
+  keywords: [
+    'canara bank bank statement converter',
+    'canara bank bank statement converter free',
+    'canara bank bank statement to excel',
+    'canara bank bank statement to tally prime',
+    'canara bank statement to excel free',
+    'convert canara bank pdf to excel',
+    'canara bank statement password format',
+    'convert canara bank bank statement to csv'
+  ],
   openGraph: {
     title: 'Canara Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert Canara Bank statement PDF to clean Excel/CSV in seconds. Auto-detects all Canara Bank formats. Used by 2,400+ CA firms across India.',
+    description:
+    'Free Canara Bank (Canara Bank) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
     url: 'https://parsify.in/canara-bank-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -145,6 +157,17 @@ export default function CanaraBankConverterPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ AEO & GEO DIRECT ANSWER BLOCK (FOR GOOGLE AI OVERVIEW & LLMS) ══ */}
+      <BankAeoBlock
+        bankName="Canara Bank"
+        fullName="Canara Bank"
+        slug="canara-bank-statement-converter"
+        passwordFormat="Customer ID or registered mobile number + DOB"
+        formats={['Savings', 'Current', 'Credit Card', 'OD / CC', 'FD']}
+        accountTypes={['Retail NetBanking', 'Corporate Banking', 'Mobile App', 'Scanned Statements']}
+        ifscPrefix="CNRB"
+      />
 
       {/* ══ SUPPORTED Canara Bank FORMATS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

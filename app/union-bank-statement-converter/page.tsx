@@ -4,17 +4,29 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
+import { BankAeoBlock } from '../components/BankAeoBlock';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Union Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
+  title: { absolute: 'Union Bank Bank Statement Converter PDF to Excel & CSV (100% Free) | Parsify' },
   description:
-    'Convert Union Bank statement PDF to Excel or CSV instantly. Supports all Union Bank statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Free Union Bank of India (Union Bank) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in/union-bank-statement-converter',
   },
+  keywords: [
+    'union bank bank statement converter',
+    'union bank bank statement converter free',
+    'union bank bank statement to excel',
+    'union bank bank statement to tally prime',
+    'union bank statement to excel free',
+    'convert union bank pdf to excel',
+    'union bank statement password format',
+    'convert union bank bank statement to csv'
+  ],
   openGraph: {
     title: 'Union Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert Union Bank statement PDF to clean Excel/CSV in seconds. Auto-detects all Union Bank formats. Used by 2,400+ CA firms across India.',
+    description:
+    'Free Union Bank of India (Union Bank) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
     url: 'https://parsify.in/union-bank-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -145,6 +157,17 @@ export default function UnionBankConverterPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ AEO & GEO DIRECT ANSWER BLOCK (FOR GOOGLE AI OVERVIEW & LLMS) ══ */}
+      <BankAeoBlock
+        bankName="Union Bank"
+        fullName="Union Bank of India"
+        slug="union-bank-statement-converter"
+        passwordFormat="First 4 letters of first name in caps + DDMM of birth or 15-digit account number"
+        formats={['Savings', 'Current', 'Credit Card', 'OD / CC', 'FD']}
+        accountTypes={['Retail NetBanking', 'Corporate Banking', 'Mobile App', 'Scanned Statements']}
+        ifscPrefix="UBIN"
+      />
 
       {/* ══ SUPPORTED Union Bank FORMATS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

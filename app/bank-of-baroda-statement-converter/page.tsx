@@ -4,17 +4,29 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
+import { BankAeoBlock } from '../components/BankAeoBlock';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Bank of Baroda Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
+  title: { absolute: 'Bank of Baroda Bank Statement Converter PDF to Excel & CSV (100% Free) | Parsify' },
   description:
-    'Convert Bank of Baroda bank statement PDF to Excel or CSV instantly. Supports all Bank of Baroda statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Free Bank of Baroda (BOB) (Bank of Baroda) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in/bank-of-baroda-statement-converter',
   },
+  keywords: [
+    'bank of baroda bank statement converter',
+    'bank of baroda bank statement converter free',
+    'bank of baroda bank statement to excel',
+    'bank of baroda bank statement to tally prime',
+    'bank of baroda statement to excel free',
+    'convert bank of baroda pdf to excel',
+    'bank of baroda statement password format',
+    'convert bank of baroda bank statement to csv'
+  ],
   openGraph: {
     title: 'Bank of Baroda Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert Bank of Baroda bank statement PDF to clean Excel/CSV in seconds. Auto-detects all Bank of Baroda formats. Used by 2,400+ CA firms across India.',
+    description:
+    'Free Bank of Baroda (BOB) (Bank of Baroda) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
     url: 'https://parsify.in/bank-of-baroda-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -145,6 +157,17 @@ export default function BankOfBarodaConverterPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ AEO & GEO DIRECT ANSWER BLOCK (FOR GOOGLE AI OVERVIEW & LLMS) ══ */}
+      <BankAeoBlock
+        bankName="Bank of Baroda"
+        fullName="Bank of Baroda (BOB)"
+        slug="bank-of-baroda-statement-converter"
+        passwordFormat="First 4 letters of name in caps + last 4 digits of mobile or Account Number"
+        formats={['Savings', 'Current', 'Credit Card', 'OD / CC', 'FD']}
+        accountTypes={['Retail NetBanking', 'Corporate Banking', 'Mobile App', 'Scanned Statements']}
+        ifscPrefix="BARB"
+      />
 
       {/* ══ SUPPORTED Bank of Baroda FORMATS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

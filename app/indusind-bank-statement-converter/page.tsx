@@ -4,17 +4,29 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
+import { BankAeoBlock } from '../components/BankAeoBlock';
 
 export const metadata: Metadata = {
-  title: { absolute: 'IndusInd Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
+  title: { absolute: 'IndusInd Bank Statement Converter PDF to Excel & CSV (100% Free) | Parsify' },
   description:
-    'Convert IndusInd bank statement PDF to Excel or CSV instantly. Supports all IndusInd statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Free IndusInd Bank (IndusInd) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in/indusind-bank-statement-converter',
   },
+  keywords: [
+    'indusind bank statement converter',
+    'indusind bank statement converter free',
+    'indusind bank statement to excel',
+    'indusind bank statement to tally prime',
+    'indusind statement to excel free',
+    'convert indusind pdf to excel',
+    'indusind statement password format',
+    'convert indusind bank statement to csv'
+  ],
   openGraph: {
     title: 'IndusInd Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert IndusInd bank statement PDF to clean Excel/CSV in seconds. Auto-detects all IndusInd formats. Used by 2,400+ CA firms across India.',
+    description:
+    'Free IndusInd Bank (IndusInd) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
     url: 'https://parsify.in/indusind-bank-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -145,6 +157,17 @@ export default function IndusindConverterPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ AEO & GEO DIRECT ANSWER BLOCK (FOR GOOGLE AI OVERVIEW & LLMS) ══ */}
+      <BankAeoBlock
+        bankName="IndusInd"
+        fullName="IndusInd Bank"
+        slug="indusind-bank-statement-converter"
+        passwordFormat="DOB in DDMMYYYY format or Customer ID"
+        formats={['Savings', 'Current', 'Credit Card', 'OD / CC', 'FD']}
+        accountTypes={['Retail NetBanking', 'Corporate Banking', 'Mobile App', 'Scanned Statements']}
+        ifscPrefix="INDB"
+      />
 
       {/* ══ SUPPORTED IndusInd FORMATS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

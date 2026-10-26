@@ -3,18 +3,30 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { AnonUpload } from '../components/AnonUpload';
+import { BankAeoBlock } from '../components/BankAeoBlock';
 import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 
 export const metadata: Metadata = {
-  title: { absolute: 'SBI Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
+  title: { absolute: 'SBI Bank Statement Converter PDF to Excel & CSV (100% Free) | Parsify' },
   description:
-    'Convert SBI bank statement PDF to Excel or CSV instantly. Supports all SBI statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Free State Bank of India (SBI) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in/sbi-bank-statement-converter',
   },
+  keywords: [
+    'sbi bank statement converter',
+    'sbi bank statement converter free',
+    'sbi bank statement to excel',
+    'sbi bank statement to tally prime',
+    'sbi statement to excel free',
+    'convert sbi pdf to excel',
+    'sbi statement password format',
+    'convert sbi bank statement to csv'
+  ],
   openGraph: {
     title: 'SBI Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert SBI bank statement PDF to clean Excel/CSV in seconds. Auto-detects all SBI formats. Used by 2,400+ CA firms across India.',
+    description:
+    'Free State Bank of India (SBI) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
     url: 'https://parsify.in/sbi-bank-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -145,6 +157,17 @@ export default function SbiConverterPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ AEO & GEO DIRECT ANSWER BLOCK (FOR GOOGLE AI OVERVIEW & LLMS) ══ */}
+      <BankAeoBlock
+        bankName="SBI"
+        fullName="State Bank of India"
+        slug="sbi-bank-statement-converter"
+        passwordFormat="Last 5 digits of registered mobile number + 4 digits of date of birth (DDMM) or 11-digit account number"
+        formats={['Savings', 'Current', 'Credit Card', 'OD / CC', 'FD']}
+        accountTypes={['Retail NetBanking', 'Corporate Banking', 'Mobile App', 'Scanned Statements']}
+        ifscPrefix="SBIN"
+      />
 
       {/* ══ SUPPORTED SBI FORMATS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

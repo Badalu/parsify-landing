@@ -4,17 +4,29 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
+import { BankAeoBlock } from '../components/BankAeoBlock';
 
 export const metadata: Metadata = {
-  title: { absolute: 'IDBI Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
+  title: { absolute: 'IDBI Bank Statement Converter PDF to Excel & CSV (100% Free) | Parsify' },
   description:
-    'Convert IDBI Bank statement PDF to Excel or CSV instantly. Supports all IDBI Bank statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Free IDBI Bank (IDBI) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in/idbi-bank-statement-converter',
   },
+  keywords: [
+    'idbi bank statement converter',
+    'idbi bank statement converter free',
+    'idbi bank statement to excel',
+    'idbi bank statement to tally prime',
+    'idbi statement to excel free',
+    'convert idbi pdf to excel',
+    'idbi statement password format',
+    'convert idbi bank statement to csv'
+  ],
   openGraph: {
     title: 'IDBI Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert IDBI Bank statement PDF to clean Excel/CSV in seconds. Auto-detects all IDBI Bank formats. Used by 2,400+ CA firms across India.',
+    description:
+    'Free IDBI Bank (IDBI) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
     url: 'https://parsify.in/idbi-bank-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -145,6 +157,17 @@ export default function IdbiBankConverterPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ AEO & GEO DIRECT ANSWER BLOCK (FOR GOOGLE AI OVERVIEW & LLMS) ══ */}
+      <BankAeoBlock
+        bankName="IDBI"
+        fullName="IDBI Bank"
+        slug="idbi-bank-statement-converter"
+        passwordFormat="Customer ID or Account Number"
+        formats={['Savings', 'Current', 'Credit Card', 'OD / CC', 'FD']}
+        accountTypes={['Retail NetBanking', 'Corporate Banking', 'Mobile App', 'Scanned Statements']}
+        ifscPrefix="IBKL"
+      />
 
       {/* ══ SUPPORTED IDBI Bank FORMATS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">

@@ -4,17 +4,29 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, Zap, Shield, Download, Check } from 'lucide-react';
 import { BeforeAfterPreview } from '../components/BeforeAfterPreview';
 import { AnonUpload } from '../components/AnonUpload';
+import { BankAeoBlock } from '../components/BankAeoBlock';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Yes Bank Statement to Excel Converter — PDF to Excel/CSV Free | Parsify' },
+  title: { absolute: 'Yes Bank Bank Statement Converter PDF to Excel & CSV (100% Free) | Parsify' },
   description:
-    'Convert Yes Bank statement PDF to Excel or CSV instantly. Supports all Yes Bank statement formats — savings, current, credit card, fixed deposit. Auto GST tagging, Tally-ready output. Free for Indian CAs.',
+    'Free Yes Bank (Yes Bank) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
   alternates: {
     canonical: 'https://parsify.in/yes-bank-statement-converter',
   },
+  keywords: [
+    'yes bank bank statement converter',
+    'yes bank bank statement converter free',
+    'yes bank bank statement to excel',
+    'yes bank bank statement to tally prime',
+    'yes bank statement to excel free',
+    'convert yes bank pdf to excel',
+    'yes bank statement password format',
+    'convert yes bank bank statement to csv'
+  ],
   openGraph: {
     title: 'Yes Bank Statement to Excel Converter — Free | Parsify',
-    description: 'Convert Yes Bank statement PDF to clean Excel/CSV in seconds. Auto-detects all Yes Bank formats. Used by 2,400+ CA firms across India.',
+    description:
+    'Free Yes Bank (Yes Bank) Bank Statement Converter to convert PDF statements into clean Excel (XLSX), CSV & Tally Prime with 99.3% accuracy. Supports scanned PDFs, auto password handling, no signup needed.',
     url: 'https://parsify.in/yes-bank-statement-converter',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -145,6 +157,17 @@ export default function YesBankConverterPage() {
           ))}
         </div>
       </section>
+
+      {/* ══ AEO & GEO DIRECT ANSWER BLOCK (FOR GOOGLE AI OVERVIEW & LLMS) ══ */}
+      <BankAeoBlock
+        bankName="Yes Bank"
+        fullName="Yes Bank"
+        slug="yes-bank-statement-converter"
+        passwordFormat="Date of Birth (DDMMYYYY) or Customer ID"
+        formats={['Savings', 'Current', 'Credit Card', 'OD / CC', 'FD']}
+        accountTypes={['Retail NetBanking', 'Corporate Banking', 'Mobile App', 'Scanned Statements']}
+        ifscPrefix="YESB"
+      />
 
       {/* ══ SUPPORTED Yes Bank FORMATS ══ */}
       <section className="py-24 border-b-2 border-shadow-color bg-background">
