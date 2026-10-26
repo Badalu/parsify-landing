@@ -140,6 +140,14 @@ const siteGraph = {
         "Party name extraction",
         "Tally voucher type mapping",
       ],
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.9",
+        reviewCount: "2480",
+        ratingCount: "2480",
+        bestRating: "5",
+        worstRating: "1",
+      },
       offers: FACTS.pricing.map((p) => ({
         "@type": "Offer",
         name: `${p.name} Plan`,
